@@ -1,0 +1,65 @@
+@charset "utf-8";
+body {
+  background-color: #f2f2f2;
+}
+header img {
+  width: 100%;
+}
+.container {
+  background-color: #fff;
+}
+.container #sign ul {
+  margin-top: -1.5rem;
+}
+.container #sign ul .head-img {
+  width: 76px;
+  border-radius: 38px;
+  box-shadow: 0px 0px 0px 3px #fff;
+}
+.container #count li {
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.container .li-p-r div {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #ccc;
+}
+.container #img-list li {
+  width: 23%;
+  height: 5rem;
+  overflow: hidden;
+  border: 1px solid red;
+  background-size: cover;
+  background-position: top center;
+}
+.container #main-say-content #content {
+  margin-left: 50px;
+}
+.container #main-article .art img {
+  width: 100%;
+}
+.container #main-article .art .text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.8rem;
+}
+.container #main-article .art .checked {
+  height: 2.5rem;
+  width: 8rem;
+  background-color: #49A0DB;
+  border-radius: 1.2rem;
+  line-height: 2.5rem;
+}
+.container #main-article .art .more {
+  left: 100%;
+  margin-left: -5px;
+  height: 18px;
+}
