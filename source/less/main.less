@@ -3,6 +3,8 @@
 @cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
 @cdb:#dbdbdb;@cc:#ccc;@c3:#333;
 @c6:#666;@c9:#999;@c10:#101010;
+@a:#49A0DB;
+@ba:#49A0DB;
 
 body{
   background-color: @cf2;
@@ -13,14 +15,36 @@ header{
 .container{
   background-color: @cf;
 
+  //留言点赞
+  #mes{
+    ul{
+      height:3rem;
+      .message{
+        border:1px solid @cdb;
+        height:100%;
+        width:18rem;
+        img{height:55%;}
+        border-radius:1.5rem;
+      }
+      .like{
+        height:3rem;
+        width:3rem;
+        border-radius: 1.5rem;
+        background-color: @ba;
+      }
+    }
+  }
+
   //资料信息模块
   #sign{
-    ul{margin-top: -1.5rem;
+    ul{
+      margin-top: -1.5rem;
       .head-img{
-        width:76px;
-        border-radius:38px;
+        width:6.6rem;
+        border-radius:3.3rem;
         box-shadow:0px 0px 0px 3px @cf;
       }
+      .tc{top:-0.5rem;}
     }
   }
 
@@ -76,8 +100,8 @@ header{
       .checked{
         height:2.5rem;
         width:8rem;
-        background-color: #49A0DB;
-        border-radius: 1.2rem;
+        background-color:@a;
+        border-radius: 0.6rem;
         line-height: 2.5rem;
       }
       //列表列排

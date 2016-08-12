@@ -8,13 +8,34 @@ header img {
 .container {
   background-color: #fff;
 }
+.container #mes ul {
+  height: 3rem;
+}
+.container #mes ul .message {
+  border: 1px solid #dbdbdb;
+  height: 100%;
+  width: 18rem;
+  border-radius: 1.5rem;
+}
+.container #mes ul .message img {
+  height: 55%;
+}
+.container #mes ul .like {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  background-color: #49A0DB;
+}
 .container #sign ul {
   margin-top: -1.5rem;
 }
 .container #sign ul .head-img {
-  width: 76px;
-  border-radius: 38px;
+  width: 6.6rem;
+  border-radius: 3.3rem;
   box-shadow: 0px 0px 0px 3px #fff;
+}
+.container #sign ul .tc {
+  top: -0.5rem;
 }
 .container #count li {
   text-align: center;
@@ -55,7 +76,7 @@ header img {
   height: 2.5rem;
   width: 8rem;
   background-color: #49A0DB;
-  border-radius: 1.2rem;
+  border-radius: 0.6rem;
   line-height: 2.5rem;
 }
 .container #main-article .art .more {

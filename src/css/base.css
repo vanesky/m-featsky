@@ -465,6 +465,18 @@ sub {
   -webkit-transform: rotateZ(-90deg);
           transform: rotateZ(-90deg);
 }
+.sxy05 {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+.sx05 {
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.sy05 {
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
 @media screen and (max-width: 1200px) {
   html {
     font-size: 20px;
@@ -546,9 +558,12 @@ nav ul li:before {
 .w95 {
   width: 95%;
 }
+.bs-eb {
+  border: 1px solid #ebebeb;
+}
 .img-head {
-  width: 40px;
-  border-radius: 20px;
+  width: 3.6rem;
+  border-radius: 1.8rem;
 }
 footer {
   padding: 1.5rem 0px;
