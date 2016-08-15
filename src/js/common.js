@@ -2,7 +2,7 @@
 
     "use strict";
 
-    window.alls = {};
+    window.com = {};
 
     (function(){
 
@@ -89,11 +89,11 @@
         }
 
 
-    }).apply(alls);
+    }).apply(com);
 
-    alls.device();
+    com.device();
 
-    alls.page();
+    com.page();
 
 
 

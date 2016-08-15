@@ -3,7 +3,7 @@ var app = {};
 
 (function(){
 
-    this.ajax = function(type,url,data,suc,err,bef){
+    this.ajax = function(type,url,data,sucCallback,errCallback,bef){
 
         $.ajax({
 
@@ -15,19 +15,31 @@ var app = {};
 
             success:function(data,status){
 
-                suc(data,status)
+                sucCallback(data,status)
 
             },
 
             error:function(xhr,err,msg){
 
-                if(err){ err(xhr,err,msg) }else{ alert('错误') }
+                if(errCallback){
+
+                    errCallback(xhr,err,msg);
+
+                }
 
             },
 
-            timeout:5000,
+            //timeout:5000,
 
-            beforeSend:function() { bef() }
+            beforeSend:function(){
+
+                if(bef){
+
+                    bef()
+
+                }
+
+            }
 
         })
 
@@ -45,7 +57,7 @@ var app = {};
 
         if(path == 'develop'){
 
-            base = "http://192.168.117.12:8080/api/";
+            base = "http://127.0.0.1/m-featsky/src/api/";
 
         }else if(path == 'test'){
 
@@ -53,7 +65,7 @@ var app = {};
 
         }else{ base = "http://www.featsky.com/api/" }
 
-        return base + url + "?workName=" + workName;
+        return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 
     }
 
