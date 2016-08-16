@@ -304,7 +304,7 @@ sub {
   html{font-size:14px;}
 }
 @media screen and (max-width: 420px) {
-  html{font-size:13px;}
+  html{font-size:13.4px;}
 }
 @media screen and (max-width: 380px) {
   html{font-size:12px;}
@@ -346,14 +346,27 @@ header{
   background-color:rgba(16,16,16,1);
   z-index: 10;
 
+  //说明中间
+  .titles{
+    line-height: 50px;
+    width:20%;
+    text-align: center;
+    margin:0 auto;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color:@cf2;
+  }
   #logo{
+    float: left;
     width:100px;
+    margin-top:8px;
     margin-left:3%;
   }
 
   ul{
     width:18px;
     height:18px;
+    margin-top:15px;
     margin-right:3%;
     li{
       position:relative;
@@ -642,11 +655,20 @@ footer{
 .fr12 {
   font-size: 1.2rem;
 }
+.fr13 {
+  font-size: 1.3rem;
+}
 .fr14 {
   font-size: 1.4rem;
 }
+.fr15 {
+  font-size: 1.5rem;
+}
 .fr16 {
   font-size: 1.6rem;
+}
+.fr17{
+  font-size: 1.7rem;
 }
 .fr18 {
   font-size: 1.8rem;
@@ -657,18 +679,7 @@ footer{
 .fr22 {
   font-size: 2.2rem;
 }
-.fr24 {
-  font-size: 2.4rem;
-}
-.fr26 {
-  font-size: 2.6rem;
-}
-.fr28 {
-  font-size: 2.8rem;
-}
-.fr30 {
-  font-size: 3.0rem;
-}
+
 
 
 

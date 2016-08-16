@@ -1,0 +1,9 @@
+@charset "utf-8";
+.container .m-list li {
+  height: 15rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: top center;
+  background-image: url('../../img/0.jpg');
+  background-repeat: no-repeat;
+}

@@ -489,7 +489,7 @@ sub {
 }
 @media screen and (max-width: 420px) {
   html {
-    font-size: 13px;
+    font-size: 13.4px;
   }
 }
 @media screen and (max-width: 380px) {
@@ -527,13 +527,25 @@ header {
   background-color: #101010;
   z-index: 10;
 }
+header .titles {
+  line-height: 50px;
+  width: 20%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #f2f2f2;
+}
 header #logo {
+  float: left;
   width: 100px;
+  margin-top: 8px;
   margin-left: 3%;
 }
 header ul {
   width: 18px;
   height: 18px;
+  margin-top: 15px;
   margin-right: 3%;
 }
 header ul li {
@@ -800,11 +812,20 @@ footer {
 .fr12 {
   font-size: 1.2rem;
 }
+.fr13 {
+  font-size: 1.3rem;
+}
 .fr14 {
   font-size: 1.4rem;
 }
+.fr15 {
+  font-size: 1.5rem;
+}
 .fr16 {
   font-size: 1.6rem;
+}
+.fr17 {
+  font-size: 1.7rem;
 }
 .fr18 {
   font-size: 1.8rem;
@@ -814,16 +835,4 @@ footer {
 }
 .fr22 {
   font-size: 2.2rem;
-}
-.fr24 {
-  font-size: 2.4rem;
-}
-.fr26 {
-  font-size: 2.6rem;
-}
-.fr28 {
-  font-size: 2.8rem;
-}
-.fr30 {
-  font-size: 3.0rem;
 }
