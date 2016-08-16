@@ -82,7 +82,7 @@
 
             var foot = '<footer><p>Copyright &copy;http://www.featsky.com</p><p>Email 641151096qq.com</p></footer>';
 
-            $('body').prepend(head);
+            //$('body').prepend(head);
 
             $('.container').append(foot);
 
