@@ -545,7 +545,7 @@ header #logo {
 header ul {
   width: 18px;
   height: 18px;
-  margin-top: 15px;
+  margin-top: 17px;
   margin-right: 3%;
 }
 header ul li {
@@ -566,6 +566,11 @@ header ul li:before {
 .container {
   position: relative;
   top: 50px;
+}
+.w85,
+.w90,
+.w95 {
+  margin: 0 auto;
 }
 .w85 {
   width: 85%;

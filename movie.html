@@ -25,18 +25,55 @@
 
     <div class="container bs-b">
 
-        <ul class="m-list">
-            <li>
-                <p class="fr24">第三方</p>
+        <ul class="pr-list">
+            <li class="movie-list">
+                <img src="img/0.jpg" alt="">
+                <div class="movie-mask pa">
+                    <ul class="summary fx-row-b pa cf">
+                        <li class="ml10">
+                            <p class="c-a">关于火控系统</p>
+                            <p class="mt3">ACEde的方式发送到</p>
+                        </li>
+                        <li class="mr10 cf2">2016-02-15</li>
+                    </ul>
+                </div>
             </li>
-            <li>
 
+            <li class="movie-list">
+                <img src="img/3.jpg" alt="">
+                <div class="movie-mask pa">
+                    <ul class="summary fx-row-b pa cf">
+                        <li class="ml10">
+                            <p class="c-a">关于火控系统</p>
+                            <p class="mt3">ACEde的方式发送到</p>
+                        </li>
+                        <li class="mr10 cf2">2016-02-15</li>
+                    </ul>
+                </div>
             </li>
         </ul>
 
     </div>
 
-<script src="src/lib/zepto.min.js"></script>
+<script src="src/lib/zepto.js"></script>
 <script src="src/js/common.js"></script>
+
+    <script>
+
+        $(function(){
+
+            $('body').on('tap',function(){
+
+                alert('ss');
+
+                $('.c-a').addClass('c3');
+
+            })
+
+        })
+
+
+    </script>
+
 </body>
 </html>

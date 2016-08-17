@@ -24,7 +24,6 @@ body {
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
-  background-color: #49A0DB;
 }
 .container #sign ul {
   margin-top: -1.5rem;
@@ -34,11 +33,10 @@ body {
   border-radius: 3.3rem;
   box-shadow: 0px 0px 0px 3px #fff;
 }
-.container #sign ul .tc {
-  top: -0.5rem;
+.container #sign ul .sign-top {
+  top: -0.2rem;
 }
 .container #count li {
-  text-align: center;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -60,7 +58,7 @@ body {
   background-position: top center;
 }
 .container #main-say-content #content {
-  margin-left: 50px;
+  margin-left: 45px;
 }
 .container #main-article .art img {
   width: 100%;
