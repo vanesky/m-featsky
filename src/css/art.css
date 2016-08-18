@@ -1,16 +1,13 @@
 @charset "utf-8";
 nav {
-  position: fixed;
   top: 50px;
   height: 40px;
   width: 100%;
-  background-color: #fff;
   z-index: 10;
 }
 nav ul.sel li {
   width: 50px;
   height: 40px;
-  text-align: center;
 }
 nav ul.sel li p {
   margin-top: 12px;
@@ -24,16 +21,12 @@ nav ul.sel li div {
 .container {
   top: 100px;
 }
-.container .list {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ebebeb;
-  padding-bottom: 1rem;
-}
 .container .list li p {
   width: 70%;
   font-size: 1.3rem;
 }
 .container .list .li-bg {
+  margin-bottom: .5rem;
   height: 15rem;
   background: url("../../img/0.jpg");
   background-position: top center;

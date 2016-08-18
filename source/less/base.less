@@ -253,6 +253,12 @@ sup {
 sub {
   vertical-align: text-bottom;
 }
+.clamp{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 .bs-r{
   border: 1px solid red;
 }
@@ -331,7 +337,6 @@ sub {
 body{color:@c10;}
 
 .ul-row{
-  text-align: center;
   position: relative;
 }
 .ul-row > li{
@@ -368,11 +373,12 @@ header{
     height:18px;
     margin-top:17px;
     margin-right:3%;
+    float:right;
     li{
       position:relative;
       height:2px;
       width:100%;
-      background-color: #f2f2f2;
+      background-color:@cf2;
     }
     li:before{
       position:absolute;
@@ -380,7 +386,7 @@ header{
       content: "";
       width:3px;
       height:2px;
-      background:#f2f2f2;
+      background:@cf2;
     }
   }
 
@@ -411,9 +417,14 @@ h3{font-size: 1.4rem;}
 //常用按钮
 //多使用类
 //1px边框
-.bs-eb{
-  border:1px solid #ebebeb;
+.bt-eb{
+  border-top:1px solid #ebebeb;
 }
+.bb-eb{
+  border-bottom:1px solid #ebebeb;
+}
+.line-18{line-height:1.8rem;}
+.line-20{line-height:2rem;}
 //按钮圆角
 //透明背景
 //flex顶部对齐
@@ -462,33 +473,6 @@ footer{
   margin-top: 5.0rem;
 }
 
-.mb3 {
-  margin-bottom: 0.3rem;
-}
-.mb5 {
-  margin-bottom: 0.5rem;
-}
-.mb7 {
-  margin-bottom: 0.7rem;
-}
-.mb10 {
-  margin-bottom: 1.0rem;
-}
-.mb15 {
-  margin-bottom: 1.5rem;
-}
-.mb20 {
-  margin-bottom: 2.0rem;
-}
-.mb30 {
-  margin-bottom: 3.0rem;
-}
-.mb40 {
-  margin-bottom: 4.0rem;
-}
-.mb50 {
-  margin-bottom: 5.0rem;
-}
 
 .mr1 {
   margin-right: 0.1rem;
