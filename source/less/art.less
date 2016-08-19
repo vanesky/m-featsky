@@ -7,11 +7,16 @@
 @ba:#49A0DB;
 
 nav{
+  position: fixed;
   top:50px;
   height:40px;
   width:100%;
   z-index: 10;
+  background-color:@cf;
   ul.sel{
+    font-size:16px;
+    width:85%;
+    margin:0 auto;
     li{
       width:50px;
       height:40px;
@@ -31,12 +36,22 @@ nav{
   top:100px;
   //文章列表
   .list{
+    margin-top:1rem;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: .5rem;
+    &:first-child{
+      margin-top:0;
+    }
+
     li{
+      margin-bottom: .5rem;
+      padding:0 1rem;
       p{
         width:70%;
         font-size: 1.3rem;
       }
     }
+    //背景图
     .li-bg{
       margin-bottom:.5rem;
       height:15rem;

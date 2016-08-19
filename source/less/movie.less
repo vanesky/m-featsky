@@ -12,8 +12,13 @@
   //视频列表Li
   .pr-list{
     .movie-list{
+      position: relative;
+      margin:0 auto;
+      margin-top: .5rem;
+      width:95%;
       height:15rem;
       border-radius:0.3rem;
+      overflow: hidden;
       &>img{
         position: absolute;
         top:0px;
@@ -33,7 +38,9 @@
 
         //描述文字
         .summary{
-          top: 75%;
+          position: absolute;
+          color:@cf;
+          top: 72%;
           width:100%;
         }
       }

@@ -50,19 +50,6 @@ a{text-decoration:none;}
   float: right;
 }
 
-.pr {
-  position: relative;
-}
-.pa {
-  position: absolute;
-}
-.pf {
-  position: fixed;
-}
-.ps {
-  position: static;
-}
-
 .hide {
   display: none !important;
 }
@@ -75,9 +62,6 @@ a{text-decoration:none;}
 
 /*-----------------字体文本样式-------------------*/
 
-.auto {
-  margin:0 auto;
-}
 .tl {
   text-align: left;
 }
@@ -316,7 +300,7 @@ sub {
   html{font-size:12px;}
 }
 @media screen and (max-width: 330px) {
-  html{font-size:10px;}
+  html{font-size:62.5%;}
 }
 
 /*=============featsky全局样式===============*/
@@ -334,7 +318,10 @@ sub {
   background-color:#49A0DB;
 }
 
-body{color:@c10;}
+body{
+  color:@c10;
+  font-size: 1.2rem;
+}
 
 .ul-row{
   position: relative;
@@ -411,11 +398,11 @@ header{
 }
 //主题颜色
 //常用字体大小 h1 h2
-h1{font-size:1.8rem;}
-h2{font-size: 1.6rem;}
-h3{font-size: 1.4rem;}
+h1{font-size:2rem;}
+h2{font-size: 1.8rem;}
+h3{font-size: 1.6rem;}
+h4{font-size: 1.4rem;}
 //常用按钮
-//多使用类
 //1px边框
 .bt-eb{
   border-top:1px solid #ebebeb;
@@ -426,6 +413,7 @@ h3{font-size: 1.4rem;}
 .line-18{line-height:1.8rem;}
 .line-20{line-height:2rem;}
 //按钮圆角
+.br5{border-radius: 0.5rem;}
 //透明背景
 //flex顶部对齐
 //图片大小
@@ -441,6 +429,7 @@ footer{
   text-align: center;
   background-color:@cf2;
   color:@c9;
+  font-size: 1rem;
 }
 
 /******************移动端*********************/
@@ -640,20 +629,11 @@ footer{
 .fr12 {
   font-size: 1.2rem;
 }
-.fr13 {
-  font-size: 1.3rem;
-}
 .fr14 {
   font-size: 1.4rem;
 }
-.fr15 {
-  font-size: 1.5rem;
-}
 .fr16 {
   font-size: 1.6rem;
-}
-.fr17{
-  font-size: 1.7rem;
 }
 .fr18 {
   font-size: 1.8rem;

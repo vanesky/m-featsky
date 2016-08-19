@@ -105,18 +105,6 @@ a {
 .fr {
   float: right;
 }
-.pr {
-  position: relative;
-}
-.pa {
-  position: absolute;
-}
-.pf {
-  position: fixed;
-}
-.ps {
-  position: static;
-}
 .hide {
   display: none !important;
 }
@@ -127,9 +115,6 @@ a {
   display: inline-block;
 }
 /*-----------------字体文本样式-------------------*/
-.auto {
-  margin: 0 auto;
-}
 .tl {
   text-align: left;
 }
@@ -505,7 +490,7 @@ sub {
 }
 @media screen and (max-width: 330px) {
   html {
-    font-size: 10px;
+    font-size: 62.5%;
   }
 }
 /*=============featsky全局样式===============*/
@@ -517,6 +502,7 @@ sub {
 }
 body {
   color: #101010;
+  font-size: 1.2rem;
 }
 .ul-row {
   position: relative;
@@ -588,12 +574,15 @@ header ul li:before {
   width: 95%;
 }
 h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 h3 {
+  font-size: 1.6rem;
+}
+h4 {
   font-size: 1.4rem;
 }
 .bt-eb {
@@ -608,6 +597,9 @@ h3 {
 .line-20 {
   line-height: 2rem;
 }
+.br5 {
+  border-radius: 0.5rem;
+}
 .img-head {
   width: 3.2rem;
   border-radius: 1.6rem;
@@ -617,6 +609,7 @@ footer {
   text-align: center;
   background-color: #f2f2f2;
   color: #999;
+  font-size: 1rem;
 }
 /******************移动端*********************/
 .mt3 {
@@ -805,20 +798,11 @@ footer {
 .fr12 {
   font-size: 1.2rem;
 }
-.fr13 {
-  font-size: 1.3rem;
-}
 .fr14 {
   font-size: 1.4rem;
 }
-.fr15 {
-  font-size: 1.5rem;
-}
 .fr16 {
   font-size: 1.6rem;
-}
-.fr17 {
-  font-size: 1.7rem;
 }
 .fr18 {
   font-size: 1.8rem;

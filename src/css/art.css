@@ -1,9 +1,16 @@
 @charset "utf-8";
 nav {
+  position: fixed;
   top: 50px;
   height: 40px;
   width: 100%;
   z-index: 10;
+  background-color: #fff;
+}
+nav ul.sel {
+  font-size: 16px;
+  width: 85%;
+  margin: 0 auto;
 }
 nav ul.sel li {
   width: 50px;
@@ -20,6 +27,18 @@ nav ul.sel li div {
 }
 .container {
   top: 100px;
+}
+.container .list {
+  margin-top: 1rem;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: .5rem;
+}
+.container .list:first-child {
+  margin-top: 0;
+}
+.container .list li {
+  margin-bottom: .5rem;
+  padding: 0 1rem;
 }
 .container .list li p {
   width: 70%;

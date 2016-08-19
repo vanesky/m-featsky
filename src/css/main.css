@@ -21,7 +21,7 @@ body {
 .container #mes ul .message img {
   height: 55%;
 }
-.container #mes ul .like {
+.container #mes ul .call {
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
@@ -37,8 +37,12 @@ body {
 }
 .container #sign ul .sign-top {
   position: relative;
-  top: -0.2rem;
+  top: -0.5rem;
   margin-left: 1rem;
+}
+.container #count {
+  text-align: center;
+  margin-top: 1rem;
 }
 .container #count li {
   -webkit-box-flex: 1;
@@ -71,6 +75,7 @@ body {
 }
 .container #main-article .art {
   margin: 1rem 0;
+  text-align: center;
 }
 .container #main-article .art img {
   width: 100%;
@@ -84,7 +89,6 @@ body {
   margin-top: 1.5rem;
   background-color: #49A0DB;
   color: #fff;
-  text-align: center;
 }
 .container #main-article .art .more {
   position: absolute;
