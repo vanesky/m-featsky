@@ -1,4 +1,23 @@
 @charset "utf-8";
-.container video {
+#movie {
+  position: fixed;
   width: 100%;
+  top: 50px;
+}
+#movie video {
+  width: 100%;
+}
+.container {
+  padding-top: 1rem;
+}
+.container .source-img,
+.container .source-span {
+  vertical-align: middle;
+}
+.container .source-span {
+  height: 1.1rem;
+  opacity: 0.5;
+}
+.container footer {
+  margin-top: 3rem;
 }

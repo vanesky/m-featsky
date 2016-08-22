@@ -3,9 +3,8 @@
   position: relative;
   margin: 0 auto;
   margin-top: .5rem;
-  width: 95%;
+  width: 100%;
   height: 15rem;
-  border-radius: 0.3rem;
   overflow: hidden;
 }
 .container .pr-list .movie-list > img {
@@ -28,6 +27,17 @@
 .container .pr-list .movie-list .movie-mask .summary {
   position: absolute;
   color: #fff;
-  top: 72%;
+  top: 95%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
   width: 100%;
+}
+.container .pr-list .movie-list .movie-mask .summary .detail {
+  width: 55%;
+  margin-left: 1rem;
+}
+.container .pr-list .movie-list .movie-mask .summary .detail p:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

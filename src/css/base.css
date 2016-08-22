@@ -585,6 +585,9 @@ h3 {
 h4 {
   font-size: 1.4rem;
 }
+h5 {
+  font-size: 1.3rem;
+}
 .bt-eb {
   border-top: 1px solid #ebebeb;
 }
@@ -605,6 +608,7 @@ h4 {
   border-radius: 1.6rem;
 }
 footer {
+  display: block;
   padding: 1.5rem 0px;
   text-align: center;
   background-color: #f2f2f2;
@@ -797,6 +801,9 @@ footer {
 }
 .fr12 {
   font-size: 1.2rem;
+}
+.fr13 {
+  font-size: 1.3rem;
 }
 .fr14 {
   font-size: 1.4rem;

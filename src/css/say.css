@@ -1,0 +1,21 @@
+@charset "utf-8";
+.container .say {
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid #ebebeb;
+}
+.container .say-tit {
+  margin: 0 auto;
+}
+.container .say-tit > div {
+  margin-left: 0.4rem;
+}
+.container .say-text {
+  margin-top: 1.5rem;
+  margin-left: 4rem;
+}
+.container .say-text img {
+  margin-top: 0.9rem;
+}
+.container .say-text .more-img li {
+  width: 30%;
+}

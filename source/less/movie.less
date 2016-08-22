@@ -15,9 +15,9 @@
       position: relative;
       margin:0 auto;
       margin-top: .5rem;
-      width:95%;
+      width:100%;
       height:15rem;
-      border-radius:0.3rem;
+      //border-radius:0.3rem;
       overflow: hidden;
       &>img{
         position: absolute;
@@ -40,9 +40,21 @@
         .summary{
           position: absolute;
           color:@cf;
-          top: 72%;
+          top: 95%;
+          transform: translateY(-100%);
           width:100%;
+
+          .detail{
+            width:55%;
+            margin-left:1rem;
+            p:last-child{
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
         }
+
       }
     }
   }
