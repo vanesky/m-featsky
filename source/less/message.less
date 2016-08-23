@@ -10,36 +10,60 @@ body{
 
 }
 .container{
-
+  background-color:@cf2;
+}
   //点击留言
   #mes-input{
-
-
-
+    height:3.5rem;
+    background-color: @cf;
+    border-bottom: 1px solid @ceb;
+    line-height: 3.5rem;
+    color:@cc;
+    padding:0 1rem;
   }
 
   //列表容器
-  .item-main{
+  .item-list{
+    position: relative;
+    height:15rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid @ceb;
+    padding:1rem;
+    background-color:@cf;
+
+    .item-text{
+      position: absolute;
+      top:50%;
+      width:70%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+    }
+  }
+
+  //留言写入模块
+  #writing{
+    position:absolute;
+    z-index: 10;
+    top:0;
+    //left:10%;
+    width:100%;
+    height:100%;
     background-color:@cf2;
-    //列表
-    .item-list{
-      position: relative;
-      height:15rem;
-      padding:1rem;
-      margin-top:0.7rem;
-      border-bottom: 1px solid @ceb;
-      background-color:@cf;
-      //留言内容
-      .item-text{
-        position: absolute;
-        top:50%;
-        width:70%;
-        left:50%;
-        transform: translate(-50%,-50%);
+
+    .writ-context{
+      height:40%;
+      background-color: pink;
+
+      ::-webkit-input-placeholder{color:@cf2;}
+      input[name="writ-tit"]{
+        height:3rem;
+        width:100%;
+        border: none;
+        border-bottom:1px dashed @ceb;
+        background-color: transparent;
         text-align: center;
       }
     }
   }
 
-
-}
