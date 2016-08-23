@@ -3,14 +3,16 @@
 .D22B5F {
   color: #D22B5F;
 }
-.container #content {
+#content {
+  margin-top: 1.5rem;
+  letter-spacing: 1px;
   font-size: 1.4rem;
   color: #333;
 }
-.container #content p {
+#content p {
   margin-top: 1rem;
 }
-.container #content img {
+#content img {
   max-width: 100%;
   display: block;
   margin: 1rem auto;

@@ -9,17 +9,21 @@
 body{
   background-color: @cf2;
 }
-#banner{
-  img{width:100%}
-}
+
 .container{ 
   background-color: @cf;
+}
 
+  #banner{
+    img{width:100%}
+  }
   //留言点赞
-  #mes{
-    ul{
+  #leaving{
+    .leaving-main{
       height:3rem;
-      .message{
+      margin:1.5rem auto 0;
+      width:85%;
+      .leaving-mes{
         height:100%;
         width:18rem;
         padding:0 .7rem;
@@ -37,7 +41,7 @@ body{
   }
 
   //资料信息模块
-  #sign{
+  #main-sign{
     ul{
       margin-top: -1.5rem;
       .head-img{
@@ -57,11 +61,10 @@ body{
   #count{
     text-align: center;
     margin-top:1rem;
-    li{flex-grow: 1;}
   }
 
   //更多
-  .li-p-r{
+  .more{
     div{
       display: inline-block;
       width:4px;
@@ -72,22 +75,28 @@ body{
   }
 
   //图片模块列
-  #img-list li{
-    width:23%;
-    height:5rem;
-    overflow:hidden;
-    border: 1px solid red;
-    background-size:cover;
-    background-position:top center;
+  #latest-item{
+    width:90%;
+    margin:1rem auto 0;
+    .list-box{
+      width:23%;
+      height:5rem;
+      overflow:hidden;
+      border: 1px solid red;
+      background-size:cover;
+      background-position:top center;
+    }
   }
 
   //首页说说内容文字
   #main-say-content{
-    #content{
-      width:90%;
-      margin:0 auto;
-      margin-top:0.3rem;
-      p{margin-left:4rem;}
+    margin-top:0.5rem;
+    #say-text{
+      margin-left:4rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
     }
   }
 
@@ -97,19 +106,25 @@ body{
       margin:1rem 0;
       text-align: center;
       img{width:100%;}
+      //文章标题
+      //文章内容
+      .art-text{
+        width:85%;
+        margin:1rem auto 0;
+        line-height: 1.8rem;
+      }
       //查看按钮
       .checked{
         height:2.5rem;
         width:8rem;
         border-radius: 0.6rem;
         line-height: 2.5rem;
-        margin:0 auto;
-        margin-top:1.5rem;
+        margin:1.5rem auto 0;
         background-color: @ba;
         color:@cf;
       }
       //列表列排
-      .more{
+      .pos-more{
         position: absolute;
         left:95%;
         margin-left: -4px;
@@ -120,7 +135,3 @@ body{
 
   }
 
-
-
-
-}

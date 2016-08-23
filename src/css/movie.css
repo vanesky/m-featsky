@@ -1,5 +1,5 @@
 @charset "utf-8";
-.container .pr-list .movie-list {
+#movie-item .movie-list {
   position: relative;
   margin: 0 auto;
   margin-top: .5rem;
@@ -7,14 +7,14 @@
   height: 15rem;
   overflow: hidden;
 }
-.container .pr-list .movie-list > img {
+#movie-item .movie-list > img {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
 }
-.container .pr-list .movie-list .movie-mask {
+#movie-item .movie-list .movie-mask {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -24,19 +24,18 @@
   background: linear-gradient(rgba(204, 204, 204, 0.2), rgba(16, 16, 16, 0.8));
   z-index: 2;
 }
-.container .pr-list .movie-list .movie-mask .summary {
+#movie-item .movie-list .movie-mask .summary {
   position: absolute;
   color: #fff;
-  top: 95%;
+  top: 93%;
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   width: 100%;
 }
-.container .pr-list .movie-list .movie-mask .summary .detail {
+#movie-item .movie-list .movie-mask .summary .detail {
   width: 55%;
-  margin-left: 1rem;
 }
-.container .pr-list .movie-list .movie-mask .summary .detail p:last-child {
+#movie-item .movie-list .movie-mask .summary .detail p:last-child {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

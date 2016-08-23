@@ -6,54 +6,52 @@
 @a:#49A0DB;
 @ba:#49A0DB;
 
-nav{
-  position: fixed;
-  top:50px;
-  height:40px;
-  width:100%;
-  z-index: 10;
-  background-color:@cf;
-  ul.sel{
-    font-size:16px;
-    width:85%;
-    margin:0 auto;
-    li{
-      width:50px;
-      height:40px;
-      p{margin-top: 12px;}
-      div{
-        margin:0 auto;
-        margin-top: 5px;
-        height:3px;
-        width:40px;
+.container{
+  top:100px;
+}
+
+  nav{
+    position: fixed;
+    top:50px;
+    height:40px;
+    width:100%;
+    z-index: 10;
+    background-color:@cf;
+    .nav-item{
+      font-size:16px;
+      width:85%;
+      margin:0 auto;
+      .item-list{
+        width:50px;
+        height:40px;
+        .list-tit{
+          margin-top: 12px;
+        }
+        .list-line{
+          margin:0 auto;
+          margin-top: 5px;
+          height:3px;
+          width:40px;
+        }
       }
     }
   }
 
-}
 
-.container{
-  top:100px;
   //文章列表
-  .list{
-    margin-top:1rem;
+  .article-item{
+    margin-top:.8rem;
     border-bottom: 1px solid #ebebeb;
-    padding-bottom: .5rem;
+    padding-bottom:.8rem;
+    //第一个文章上边距0
     &:first-child{
       margin-top:0;
     }
 
-    li{
-      margin-bottom: .5rem;
-      padding:0 1rem;
-      p{
-        width:70%;
-        font-size: 1.3rem;
-      }
-    }
     //背景图
-    .li-bg{
-      margin-bottom:.5rem;
+    .list-bg{
+      margin-bottom: .7rem;
+      display: block;
       height:15rem;
       background:url("../../img/0.jpg");
       background-position: top center;
@@ -61,7 +59,8 @@ nav{
       overflow: hidden;
     }
   }
-}
+
+
 
 
 

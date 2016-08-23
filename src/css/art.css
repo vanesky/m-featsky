@@ -1,4 +1,7 @@
 @charset "utf-8";
+.container {
+  top: 100px;
+}
 nav {
   position: fixed;
   top: 50px;
@@ -7,45 +10,35 @@ nav {
   z-index: 10;
   background-color: #fff;
 }
-nav ul.sel {
+nav .nav-item {
   font-size: 16px;
   width: 85%;
   margin: 0 auto;
 }
-nav ul.sel li {
+nav .nav-item .item-list {
   width: 50px;
   height: 40px;
 }
-nav ul.sel li p {
+nav .nav-item .item-list .list-tit {
   margin-top: 12px;
 }
-nav ul.sel li div {
+nav .nav-item .item-list .list-line {
   margin: 0 auto;
   margin-top: 5px;
   height: 3px;
   width: 40px;
 }
-.container {
-  top: 100px;
-}
-.container .list {
-  margin-top: 1rem;
+.article-item {
+  margin-top: .8rem;
   border-bottom: 1px solid #ebebeb;
-  padding-bottom: .5rem;
+  padding-bottom: .8rem;
 }
-.container .list:first-child {
+.article-item:first-child {
   margin-top: 0;
 }
-.container .list li {
-  margin-bottom: .5rem;
-  padding: 0 1rem;
-}
-.container .list li p {
-  width: 70%;
-  font-size: 1.3rem;
-}
-.container .list .li-bg {
-  margin-bottom: .5rem;
+.article-item .list-bg {
+  margin-bottom: .7rem;
+  display: block;
   height: 15rem;
   background: url("../../img/0.jpg");
   background-position: top center;

@@ -2,62 +2,62 @@
 body {
   background-color: #f2f2f2;
 }
-#banner img {
-  width: 100%;
-}
 .container {
   background-color: #fff;
 }
-.container #mes ul {
-  height: 3rem;
+#banner img {
+  width: 100%;
 }
-.container #mes ul .message {
+#leaving .leaving-main {
+  height: 3rem;
+  margin: 1.5rem auto 0;
+  width: 85%;
+}
+#leaving .leaving-main .leaving-mes {
   height: 100%;
   width: 18rem;
   padding: 0 .7rem;
   border: 1px solid #dbdbdb;
   border-radius: 1.5rem;
 }
-.container #mes ul .message img {
+#leaving .leaving-main .leaving-mes img {
   height: 55%;
 }
-.container #mes ul .call {
+#leaving .leaving-main .call {
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
   background-color: #49A0DB;
 }
-.container #sign ul {
+#main-sign ul {
   margin-top: -1.5rem;
 }
-.container #sign ul .head-img {
+#main-sign ul .head-img {
   width: 6.6rem;
   border-radius: 3.3rem;
   box-shadow: 0px 0px 0px 3px #fff;
 }
-.container #sign ul .sign-top {
+#main-sign ul .sign-top {
   position: relative;
   top: -0.5rem;
   margin-left: 1rem;
 }
-.container #count {
+#count {
   text-align: center;
   margin-top: 1rem;
 }
-.container #count li {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-.container .li-p-r div {
+.more div {
   display: inline-block;
   width: 4px;
   height: 4px;
   border-radius: 2px;
   background-color: #ccc;
 }
-.container #img-list li {
+#latest-item {
+  width: 90%;
+  margin: 1rem auto 0;
+}
+#latest-item .list-box {
   width: 23%;
   height: 5rem;
   overflow: hidden;
@@ -65,32 +65,38 @@ body {
   background-size: cover;
   background-position: top center;
 }
-.container #main-say-content #content {
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 0.3rem;
+#main-say-content {
+  margin-top: 0.5rem;
 }
-.container #main-say-content #content p {
+#main-say-content #say-text {
   margin-left: 4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
-.container #main-article .art {
+#main-article .art {
   margin: 1rem 0;
   text-align: center;
 }
-.container #main-article .art img {
+#main-article .art img {
   width: 100%;
 }
-.container #main-article .art .checked {
+#main-article .art .art-text {
+  width: 85%;
+  margin: 1rem auto 0;
+  line-height: 1.8rem;
+}
+#main-article .art .checked {
   height: 2.5rem;
   width: 8rem;
   border-radius: 0.6rem;
   line-height: 2.5rem;
-  margin: 0 auto;
-  margin-top: 1.5rem;
+  margin: 1.5rem auto 0;
   background-color: #49A0DB;
   color: #fff;
 }
-.container #main-article .art .more {
+#main-article .art .pos-more {
   position: absolute;
   left: 95%;
   margin-left: -4px;

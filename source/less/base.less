@@ -203,6 +203,13 @@ a{text-decoration:none;}
   align-items:center;
   flex-wrap: wrap;
 }
+.fx-col-e{
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  align-items:center;
+  flex-wrap: wrap;
+}
 /*------------------项目属性-----------------*/
 .fx-sf-c{
   align-self :center;
@@ -218,6 +225,9 @@ a{text-decoration:none;}
 }
 .fx-sf-se{
   align-self: stretch;
+}
+.fx-g{
+  flex-grow: 1;
 }
 
 /*-----------------其他样式-----------------*/
@@ -236,12 +246,6 @@ sup {
 }
 sub {
   vertical-align: text-bottom;
-}
-.clamp{
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 .bs-r{
   border: 1px solid red;
@@ -411,8 +415,6 @@ h5{font-size: 1.3rem;}
 .bb-eb{
   border-bottom:1px solid #ebebeb;
 }
-.line-18{line-height:1.8rem;}
-.line-20{line-height:2rem;}
 //按钮圆角
 .br5{border-radius: 0.5rem;}
 //透明背景

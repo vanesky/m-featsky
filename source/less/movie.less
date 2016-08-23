@@ -9,15 +9,15 @@
 
 .container{
 
+}
   //视频列表Li
-  .pr-list{
+  #movie-item{
     .movie-list{
       position: relative;
       margin:0 auto;
       margin-top: .5rem;
       width:100%;
       height:15rem;
-      //border-radius:0.3rem;
       overflow: hidden;
       &>img{
         position: absolute;
@@ -40,13 +40,12 @@
         .summary{
           position: absolute;
           color:@cf;
-          top: 95%;
+          top: 93%;
           transform: translateY(-100%);
           width:100%;
 
           .detail{
             width:55%;
-            margin-left:1rem;
             p:last-child{
               overflow: hidden;
               text-overflow: ellipsis;
@@ -58,6 +57,3 @@
       }
     }
   }
-
-
-}

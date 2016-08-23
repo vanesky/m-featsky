@@ -1,4 +1,7 @@
 @charset "utf-8";
+.container {
+  padding-top: 1rem;
+}
 #movie {
   position: fixed;
   width: 100%;
@@ -7,17 +10,14 @@
 #movie video {
   width: 100%;
 }
-.container {
-  padding-top: 1rem;
-}
-.container .source-img,
-.container .source-span {
+#movie-main .source-img,
+#movie-main .source-span {
   vertical-align: middle;
 }
-.container .source-span {
+#movie-main .source-span {
   height: 1.1rem;
   opacity: 0.5;
 }
-.container footer {
+footer {
   margin-top: 3rem;
 }

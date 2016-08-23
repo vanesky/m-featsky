@@ -369,6 +369,28 @@ a {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
+.fx-col-e {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
 /*------------------项目属性-----------------*/
 .fx-sf-c {
   -webkit-align-self: center;
@@ -395,6 +417,12 @@ a {
       -ms-flex-item-align: stretch;
           align-self: stretch;
 }
+.fx-g {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
 /*-----------------其他样式-----------------*/
 button,
 input[type="button"],
@@ -413,12 +441,6 @@ sup {
 }
 sub {
   vertical-align: text-bottom;
-}
-.clamp {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 .bs-r {
   border: 1px solid red;
@@ -593,12 +615,6 @@ h5 {
 }
 .bb-eb {
   border-bottom: 1px solid #ebebeb;
-}
-.line-18 {
-  line-height: 1.8rem;
-}
-.line-20 {
-  line-height: 2rem;
 }
 .br5 {
   border-radius: 0.5rem;
