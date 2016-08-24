@@ -41,29 +41,90 @@ body{
     }
   }
 
-  //留言写入模块
+  /*==============留言写入模块===================*/
   #writing{
-    position:absolute;
+    position:fixed;
     z-index: 10;
     top:0;
     //left:10%;
     width:100%;
     height:100%;
-    background-color:@cf2;
+    background-color:#FCFBF9;
+    background-color:@cf;
 
+    //标题内容
     .writ-context{
       height:40%;
-      background-color: pink;
+      background-color:#9B9CB3;
 
-      ::-webkit-input-placeholder{color:@cf2;}
+      ::-webkit-input-placeholder{color:@cf;font-size: 1rem}
       input[name="writ-tit"]{
-        height:3rem;
+        height:18%;
         width:100%;
         border: none;
-        border-bottom:1px dashed @ceb;
+        border-bottom:1px dashed @cc;
         background-color: transparent;
         text-align: center;
+        color:@cf;
+      }
+      //内容
+      .pr-text{
+        height:75%;
+        padding:0 2rem;
+        overflow: hidden;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+    }
+    //图片选择
+    .sel-img{
+      width:85%;
+      margin:0rem auto;
+      .list-img{
+        position: relative;
+        width:4rem;
+        height:4rem;
+        img{
+          position: absolute;
+          top:0px;
+          left:0px;
+          width:4rem;
+          border-radius: 2rem;
+        }
+        //选择按钮
+        .select-img{
+          position: absolute;
+          width:16px;
+          height:16px;
+          border-radius:16px;
+          border: 2px solid @cf;
+          background-color:@ba;
+          z-index: 2;
+          //内部对勾
+          .select-y{
+            width:8px;
+            height:4px;
+            border: 1px solid @cf;
+            border-bottom-color: transparent;
+            border-left-color:transparent;
+            transform: rotateZ(130deg);
+            margin-left: 3px;
+            margin-top: 3px;
+          }
+        }
       }
     }
+
+    //头像选择
+    .sub-cancel{
+      width: 85%;
+      margin:0 auto 0.5rem;
+      height:3rem;
+      background-color:@cf;
+      color:@c6;
+    }
+
   }
+
 

@@ -27,26 +27,80 @@
           transform: translate(-50%, -50%);
   text-align: center;
 }
+/*==============留言写入模块===================*/
 #writing {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #f2f2f2;
+  background-color: #FCFBF9;
+  background-color: #fff;
 }
 #writing .writ-context {
   height: 40%;
-  background-color: pink;
+  background-color: #9B9CB3;
 }
 #writing .writ-context ::-webkit-input-placeholder {
-  color: #f2f2f2;
+  color: #fff;
+  font-size: 1rem;
 }
 #writing .writ-context input[name="writ-tit"] {
-  height: 3rem;
+  height: 18%;
   width: 100%;
   border: none;
-  border-bottom: 1px dashed #ebebeb;
+  border-bottom: 1px dashed #ccc;
   background-color: transparent;
   text-align: center;
+  color: #fff;
+}
+#writing .writ-context .pr-text {
+  height: 75%;
+  padding: 0 2rem;
+  overflow: hidden;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#writing .sel-img {
+  width: 85%;
+  margin: 0rem auto;
+}
+#writing .sel-img .list-img {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+#writing .sel-img .list-img img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 4rem;
+  border-radius: 2rem;
+}
+#writing .sel-img .list-img .select-img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  border: 2px solid #fff;
+  background-color: #49A0DB;
+  z-index: 2;
+}
+#writing .sel-img .list-img .select-img .select-y {
+  width: 8px;
+  height: 4px;
+  border: 1px solid #fff;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotateZ(130deg);
+          transform: rotateZ(130deg);
+  margin-left: 3px;
+  margin-top: 3px;
+}
+#writing .sub-cancel {
+  width: 85%;
+  margin: 0 auto 0.5rem;
+  height: 3rem;
+  background-color: #fff;
+  color: #666;
 }
