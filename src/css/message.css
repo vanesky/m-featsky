@@ -31,7 +31,7 @@
 #writing {
   position: fixed;
   z-index: 10;
-  top: 0;
+  top: 50px;
   width: 100%;
   height: 100%;
   background-color: #FCFBF9;
@@ -78,6 +78,7 @@
   border-radius: 2rem;
 }
 #writing .sel-img .list-img .select-img {
+  display: none;
   position: absolute;
   width: 16px;
   height: 16px;
@@ -85,8 +86,9 @@
   border: 2px solid #fff;
   background-color: #49A0DB;
   z-index: 2;
+  margin: -1px 0 0 -1px;
 }
-#writing .sel-img .list-img .select-img .select-y {
+#writing .sel-img .list-img .select-img .select-yes {
   width: 8px;
   height: 4px;
   border: 1px solid #fff;

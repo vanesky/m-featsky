@@ -548,9 +548,8 @@ header .titles {
   width: 20%;
   text-align: center;
   margin: 0 auto;
-  font-size: 16px;
   letter-spacing: 1px;
-  color: #f2f2f2;
+  color: #fff;
 }
 header #logo {
   float: left;
@@ -558,20 +557,20 @@ header #logo {
   margin-top: 8px;
   margin-left: 3%;
 }
-header ul {
+header .nav-list {
   width: 18px;
   height: 18px;
-  margin-top: 17px;
+  margin-top: 16px;
   margin-right: 3%;
   float: right;
 }
-header ul li {
+header .nav-list li {
   position: relative;
   height: 2px;
   width: 100%;
   background-color: #f2f2f2;
 }
-header ul li:before {
+header .nav-list li:before {
   position: absolute;
   left: -6px;
   content: "";

@@ -3,12 +3,10 @@
 @cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
 @cdb:#dbdbdb;@cc:#ccc;@c3:#333;
 @c6:#666;@c9:#999;@c10:#101010;
+@cf9:#F9F9F9;
 @a:#49A0DB;
 @ba:#49A0DB;
 
-body{
-  background-color: @cf2;
-}
 
 .container{ 
   background-color: @cf;
@@ -59,8 +57,12 @@ body{
 
   //计数模块
   #count{
+    padding:.7rem 0;
     text-align: center;
-    margin-top:1rem;
+    margin-top:2rem;
+    border-top: 1px solid @ceb;
+    border-bottom: 1px solid @ceb;
+    background-color:@cf9;
   }
 
   //更多
@@ -75,35 +77,45 @@ body{
   }
 
   //图片模块列
-  #latest-item{
-    width:90%;
-    margin:1rem auto 0;
-    .list-box{
-      width:23%;
-      height:5rem;
-      overflow:hidden;
-      border: 1px solid red;
-      background-size:cover;
-      background-position:top center;
+  #latest{
+    padding:1rem 0;
+
+    .latest-item{
+      margin:1rem auto 0;
+      width:90%;
+      .list-box{
+        width:23%;
+        height:5rem;
+        overflow:hidden;
+        border: 1px solid red;
+        background-size:cover;
+        background-position:top center;
+      }
     }
+  }
+
+
+  //首页说说
+  #main-say{
+    background-color: @cf9;
+    padding:.8rem 0;
+    border-top:1px solid @ceb;
+    border-bottom:1px solid @ceb;
   }
 
   //首页说说内容文字
   #main-say-content{
-    margin-top:0.5rem;
+    padding: 1rem;
+    padding-bottom:1.5rem;
     #say-text{
-      margin-left:4rem;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
+      margin-left:2.9rem;
     }
   }
 
   //首页文章
   #main-article{
     .art{
-      margin:1rem 0;
+      margin:1.5rem 0;
       text-align: center;
       img{width:100%;}
       //文章标题
@@ -112,6 +124,11 @@ body{
         width:85%;
         margin:1rem auto 0;
         line-height: 1.8rem;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
       }
       //查看按钮
       .checked{

@@ -1,8 +1,11 @@
 @charset "utf-8";
+#movie-item {
+  padding: 1rem 0;
+}
 #movie-item .movie-list {
   position: relative;
   margin: 0 auto;
-  margin-top: .5rem;
+  margin-bottom: .5rem;
   width: 100%;
   height: 15rem;
   overflow: hidden;
