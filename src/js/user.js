@@ -32,7 +32,13 @@ window.user = {
 
         var uid = localStorage.getItem('uid');
 
-        if(uid == null || uid == ''){ window.open('login.html','_self')};
+        if(uid == null || uid == ''){
+
+            window.open('login.html','_self');
+
+        }else{
+            return 1;
+        }
 
     },
 

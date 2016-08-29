@@ -15,7 +15,7 @@ window.app = {};
 
             success:function(data,status){
 
-                sucCallback(data,status)
+                sucCallback(JSON.parse(data),status)
 
             },
 
