@@ -1,5 +1,5 @@
 
-var app = {};
+window.app = {};
 
 (function(){
 

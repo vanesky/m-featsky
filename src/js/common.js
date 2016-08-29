@@ -2,7 +2,7 @@
 
     "use strict";
 
-    window.com = {};
+    window.bom = {};
 
     (function(){
 
@@ -78,23 +78,18 @@
 
         this.page = function(){
 
-            var head = '<nav class="fx-row-b bs-r"><img id="logo" src="img/logo.png" alt=""> <ul class="fx-col-b bs-r"> <li></li> <li></li> <li></li> </ul> </nav>';
-
             var foot = '<footer><p>Copyright &copy;http://www.featsky.com</p><p>Email 641151096qq.com</p></footer>';
-
-            //$('body').prepend(head);
 
             $('.container').append(foot);
 
         }
 
 
-    }).apply(com);
+    }).apply(bom);
 
-    com.device();
+    bom.device();
 
-    com.page();
-
+    bom.page();
 
 
 }(window);
