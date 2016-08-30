@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/base.css">
+    <style>
+        ul li{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <ul>
+        <li> <input type="text" name="name"></li>
+        <li> <input type="text" name="loginName"></li>
+        <li> <input type="text" name="loginPass"></li>
+        <li> <input type="text" name="phone"></li>
+    </ul>
+
+    <input id="button" type="button" value="demo">
+
+    <script src="src/lib/zepto.min.js"></script>
+    <script src="src/js/validate.js"></script>
+    <script>
+
+        //校验对象规则
+        var validateRule = {
+
+            rules:{
+
+                name:{require:true,nameRule:true},
+
+                loginName:{require:true,loginNameRule:true},
+
+                loginPass:{require:true,loginPassRule:6},
+
+                phone:{require:true,phoneRule:11},
+            },
+            prompt:{
+
+                name:{require:"请填写用户名",nameRule:"请输入正确的用户名"},
+
+                loginName:{require:"请输入登录名",loginNameRule:"请输入正确的登录名"},
+
+                loginPass:{require:"请输入登录密码",loginPassRule:"登录密码最少六位"},
+
+                phone:{require:"请输入电话号码",phoneRule:"电话号码最少11位"}
+            }
+        }
+
+
+        //校验方法
+        function validate(obj){
+
+            var box = [];
+
+            $.each(obj,function(attrName,attrValue){
+
+                var result = $("[name='"+ attrName +"']").val();
+
+                for(var i in attrValue){
+
+                    if(!validateMethod[i]){return}
+
+                    if(!validateMethod[i](result,attrValue[i])){
+
+                        box.push(validateRule.prompt[attrName][i]);
+
+                    }
+                }
+            })
+
+            if(box.length>0){ alert(box[0]); return false;}
+
+            return true;
+        }
+
+
+
+        $(function(){
+
+            document.getElementById('button').onclick = function(){
+
+                validate(validateRule.rules)
+
+            }
+
+        })
+
+    </script>
+    
+</body>
+</html>
