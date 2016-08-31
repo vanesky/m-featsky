@@ -45,26 +45,26 @@
         <section id="channel-latest" class="">
 
             <h3 class="date-tit">2015-05-15</h3>
-            <ul class="clearfix">
+            <ul class="list-item clearfix">
                 <li class="img-list">s</li>
                 <li class="img-list">s</li>
                 <li class="img-list">f</li>
                 <li class="img-list">s</li>
             </ul>
             <h3 class="date-tit">2015-05-15</h3>
-            <ul class="clearfix">
+            <ul class="list-item clearfix">
                 <li class="img-list">s</li>
             </ul>
             <h3 class="date-tit">2015-05-15</h3>
-            <ul class="clearfix">
+            <ul class="list-item clearfix">
                 <li class="img-list">s</li>
                 <li class="img-list">s</li>
             </ul>
 
         </section>
 
-        <section id="channel-all" class="hide">
-            <ul class="clearfix">
+        <section id="channel-all" class="">
+            <ul class="list-item clearfix">
                 <li class="img-list">s</li>
                 <li class="img-list">s</li>
                 <li class="img-list">f</li>
@@ -81,29 +81,22 @@
 
         $(function(){
 
-            var latestObj = $('#channel-latest');
+            //latestObj.on('tap','.img-list',function(){
 
-            var allObj = $('#channel-all');
+            //});
 
-            latestObj.on('tap','.img-list',function(){
-
-            });
-
-
-            imgListWidth(latestObj.children('ul'),2);
-
-            imgListWidth(allObj.children('ul'),2);
+            imgListWidth($('.list-item'),2);
 
         })
 
         //图片大小和边距
-        function imgListWidth(obj,param){
+        function imgListWidth(objList,param){
 
             var w = JSON.parse(localStorage.getItem('device')).w
 
             var liw = (w-param*2)/3 - 0.1;
 
-            $(obj).find('.img-list').css({
+            $('.img-list').css({
 
                 width:liw + 'px',
 
@@ -112,7 +105,7 @@
             });
 
             //边距
-            obj.each(function(index,ulObj){
+            objList.each(function(index,ulObj){
 
                 var obj = $(ulObj).find('.img-list');
 
@@ -121,7 +114,6 @@
                     if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
 
                 }
-
             })
         }
 

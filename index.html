@@ -178,6 +178,7 @@
         </ul>
     </div>
 
+
     <script src="src/lib/zepto.min.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/component.js"></script>
@@ -186,15 +187,19 @@
     <script>
         $(function(){
 
-            app.ajax('get',app.url('demo.php'),{},function(){
+            //app.ajax('get',app.url('demo.php'),{},function(){
 
+            //})
 
+            var listObj = $('.list-box');
 
-            })
-
-            //com.load()
+            listObj.css('height',listObj.css('width'))
 
         })
+
+
+
+
     </script>
 </body>
 </html>
