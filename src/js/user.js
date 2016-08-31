@@ -3,28 +3,28 @@ window.user = {
 
     setCookie : function(name,value,expday){
 
-    var expdate = new Date();
+        var expdate = new Date();
 
-    expdate.setTime(expdate.getTime()+expday*60*1000);
+        expdate.setTime(expdate.getTime()+expday*60*1000);
 
-    document.cookie = name+'='+encodeURIComponent(value)+';expires='+expdate.toUTCString()+";path=/";
+        document.cookie = name+'='+encodeURIComponent(value)+';expires='+expdate.toUTCString()+";path=/";
 
     },
 
     getCookie : function(c_name){
 
-    if(document.cookie.length>0){
+        if(document.cookie.length>0){
 
-        var arrstr = document.cookie.split("; ");
+            var arrstr = document.cookie.split("; ");
 
-        for(var i = 0;i<arrstr.length;i++){
+            for(var i = 0;i<arrstr.length;i++){
 
-            var temp = arrstr[i].split("=");
+                var temp = arrstr[i].split("=");
 
-            if(temp[0] == c_name) {return decodeURIComponent(temp[1]); }
+                if(temp[0] == c_name) {return decodeURIComponent(temp[1]); }
+            }
+
         }
-
-    }
 
     },
 

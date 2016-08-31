@@ -8,7 +8,7 @@
 
         this.device = function(){                          //种植设备信息
 
-            if(window.localStorage.device){return false}
+            //if(window.localStorage.device){return false}
 
             var bom1 = navigator.userAgent,send = {};
 

@@ -30,22 +30,19 @@
   height: 3px;
   width: 40px;
 }
-#channel-latest {
-  margin-bottom: 2rem;
-}
-#channel-latest .img-list {
+.img-list {
   float: left;
-  width: 32.6%;
-  height: 8.2rem;
-  margin-left: 2px;
   margin-top: 2px;
   overflow: hidden;
   background-size: cover;
   background-position: top center;
   background-image: url("../../img/0.jpg");
 }
+#channel-latest {
+  margin-bottom: 2rem;
+}
 #channel-latest .date-tit {
-  padding: 1rem 0 1rem 0.5rem;
+  padding: 2rem 0 1rem 0.5rem;
 }
 #channel-latest .date-tit:first-child {
   padding-top: 0;

@@ -50,10 +50,9 @@
                 <li class="img-list">s</li>
                 <li class="img-list">f</li>
                 <li class="img-list">s</li>
-                <li class="img-list">s</li>
             </ul>
             <h3 class="date-tit">2015-05-15</h3>
-            <ul class="img-item clearfix">
+            <ul class="clearfix">
                 <li class="img-list">s</li>
             </ul>
             <h3 class="date-tit">2015-05-15</h3>
@@ -64,9 +63,12 @@
 
         </section>
 
-        <section id="channel-all">
+        <section id="channel-all" class="hide">
             <ul class="clearfix">
-
+                <li class="img-list">s</li>
+                <li class="img-list">s</li>
+                <li class="img-list">f</li>
+                <li class="img-list">s</li>
             </ul>
         </section>
 
@@ -77,7 +79,70 @@
 
     <script>
 
+        $(function(){
+
+            var latestObj = $('#channel-latest');
+
+            var allObj = $('#channel-all');
+
+            latestObj.on('tap','.img-list',function(){
+
+            });
+
+
+            imgListWidth(latestObj.children('ul'),2);
+
+            imgListWidth(allObj.children('ul'),2);
+
+        })
+
+        //图片大小和边距
+        function imgListWidth(obj,param){
+
+            var w = JSON.parse(localStorage.getItem('device')).w
+
+            var liw = (w-param*2)/3 - 0.1;
+
+            $(obj).find('.img-list').css({
+
+                width:liw + 'px',
+
+                height:liw + 'px'
+
+            });
+
+            //边距
+            obj.each(function(index,ulObj){
+
+                var obj = $(ulObj).find('.img-list');
+
+                for(var i=0;i<obj.length;i++){
+
+                    if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
+
+                }
+
+            })
+        }
+
     </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
