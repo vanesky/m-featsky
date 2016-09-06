@@ -187,13 +187,20 @@
     <script>
         $(function(){
 
-            //app.ajax('get',app.url('demo.php'),{},function(){
-
-            //})
-
             var listObj = $('.list-box');
 
-            listObj.css('height',listObj.css('width'))
+            listObj.css('height',listObj.css('width'));
+
+
+
+
+            app.ajax('get',app.url('demo.php'),{},function(data){
+
+                console.log(typeof data)
+
+            })
+
+
 
         })
 
