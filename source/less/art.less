@@ -8,6 +8,7 @@
 
 .container{
   top:100px;
+  background-color: @cf2;
 }
 
   .nav-tit{
@@ -43,9 +44,11 @@
 
   //文章列表
   .article-item{
-    margin-top:.8rem;
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom:.8rem;
+    //border-bottom: 1px solid #ebebeb;
+    box-shadow: 0 1px 1px 0px @cdb;
+    padding-bottom:1rem;
+    margin-bottom: .5rem;
+    background-color: @cf;
     //第一个文章上边距0
     &:first-child{
       margin-top:0;
@@ -53,13 +56,22 @@
 
     //背景图
     .list-bg{
-      margin-bottom: .7rem;
+      position: relative;
       display: block;
-      height:15rem;
+      height:16rem;
       background:url("../../img/0.jpg");
-      background-position: top center;
+      background-position: center center;
       background-size: cover;
       overflow: hidden;
+      //内部标题
+      .list-tit{
+        height:3.5rem;
+        width:100%;
+        position: absolute;
+        top:100%;
+        margin-top: -3.5rem;
+        //background:rgba(35,35,35,0.5);
+      }
     }
   }
 

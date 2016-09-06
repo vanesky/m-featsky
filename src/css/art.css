@@ -1,6 +1,7 @@
 @charset "utf-8";
 .container {
   top: 100px;
+  background-color: #f2f2f2;
 }
 .nav-tit {
   position: fixed;
@@ -31,19 +32,27 @@
   width: 40px;
 }
 .article-item {
-  margin-top: .8rem;
-  border-bottom: 1px solid #ebebeb;
-  padding-bottom: .8rem;
+  box-shadow: 0 1px 1px 0px #dbdbdb;
+  padding-bottom: 1rem;
+  margin-bottom: .5rem;
+  background-color: #fff;
 }
 .article-item:first-child {
   margin-top: 0;
 }
 .article-item .list-bg {
-  margin-bottom: .7rem;
+  position: relative;
   display: block;
-  height: 15rem;
+  height: 16rem;
   background: url("../../img/0.jpg");
-  background-position: top center;
+  background-position: center center;
   background-size: cover;
   overflow: hidden;
+}
+.article-item .list-bg .list-tit {
+  height: 3.5rem;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  margin-top: -3.5rem;
 }

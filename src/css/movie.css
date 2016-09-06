@@ -30,7 +30,7 @@
 #movie-item .movie-list .movie-mask .summary {
   position: absolute;
   color: #fff;
-  top: 93%;
+  top: 94%;
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   width: 100%;
@@ -38,7 +38,9 @@
 #movie-item .movie-list .movie-mask .summary .detail {
   width: 55%;
 }
-#movie-item .movie-list .movie-mask .summary .detail p:last-child {
+#movie-item .movie-list .movie-mask .summary .detail .detail-text {
+  font-size: 1.0rem;
+  margin-top: 0.3rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
