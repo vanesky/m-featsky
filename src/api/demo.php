@@ -1,6 +1,5 @@
 <?php
 
-
     $con = mysql_connect("localhost","root","");
 
     if (!$con){
@@ -28,7 +27,17 @@
     $sayResult = mysql_query("SELECT * FROM say");
     $sayList = mysql_num_rows($sayResult);
 
-    echo 123;
+    $indexObj['imgSrc'] = $imgObj['imgSrc'];
+
+    $indexObj['artNum'] = $artList;
+
+    $indexObj['movieNum'] = $movieList;
+
+    $indexObj['sayNum'] = $sayList;
+
+    echo  json_encode($indexObj);
+
+
 
 
 
