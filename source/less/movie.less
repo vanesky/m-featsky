@@ -8,7 +8,7 @@
 
 
 .container{
-
+  background-color: @cf2;
 }
   //视频列表Li
   #movie-item{
@@ -16,22 +16,23 @@
     .movie-list{
       position: relative;
       margin:0 auto;
-      margin-bottom: .5rem;
+      margin-bottom:.6rem;
       width:100%;
-      height:15rem;
+      height:18rem;
       overflow: hidden;
       &>img{
         position: absolute;
         top:0px;
         left:0px;
         width:100%;
-        height:100%;
+        height:15rem;
       }
       //透明色遮罩
       .movie-mask{
         position: absolute;
         width:100%;
-        height:100%;
+       // height:100%;
+        height:15rem;
         top:0px;
         left:0px;
         background: linear-gradient(rgba(204,204,204,0.2),rgba(16,16,16,0.8));
@@ -41,22 +42,37 @@
         .summary{
           position: absolute;
           color:@cf;
-          top: 94%;
+          top: 90%;
           transform: translateY(-100%);
           width:100%;
 
-          .detail{
+          .detail-text{
+            margin-left: 1.5rem;
             width:55%;
-            .detail-text{
-              font-size: 1.0rem;
-              margin-top: 0.3rem;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
+            font-size: 1rem;
+            margin-top:.5rem;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
 
       }
+      .movie-box{
+        position: absolute;
+        top:100%;
+        width:100%;
+        height:3rem;
+        transform: translateY(-100%);
+        background-color: @cf;
+
+        line-height: 3rem;
+
+        .box-text{
+          margin-left:1.5rem;
+        }
+      }
+      //movie-list over
     }
   }
