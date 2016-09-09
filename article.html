@@ -85,5 +85,32 @@
 
     <script src="src/lib/zepto.min.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="src/js/ajax.js"></script>
+
+    <script>
+
+
+        var listObj = $('.list-box');
+
+        listObj.css('height',listObj.css('width'));
+
+        var pageResult = 0,pageCount = 1;
+
+        $(window).click(function(){
+
+            app.ajax('get',app.url('article.php'),{page:pageCount,pageStart:pageResult},function(data){
+
+                var obj = data;
+
+                console.log(obj);
+
+                return pageResult = pageResult + pageCount;
+
+            })
+        })
+
+
+
+    </script>
 </body>
 </html>
