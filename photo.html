@@ -76,10 +76,30 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="src/js/ajax.js"></script>
 
     <script>
 
         $(function(){
+
+            var pageResult = 0,pageCount = 2;
+
+            $(window).click(function(){
+
+                app.ajax('get',app.url('getImgList.php'),{page:pageCount,pageStart:pageResult},function(data){
+
+                    var obj = data;
+
+                    console.log(obj);
+
+                    return pageResult = pageResult + pageCount;
+
+                })
+
+
+            })
+
+
 
             //latestObj.on('tap','.img-list',function(){
 

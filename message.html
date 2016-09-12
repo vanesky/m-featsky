@@ -34,8 +34,8 @@
             <div class="item-list">
                 <img class="img-head va-c" src="img/1.jpg" alt="">
                 <div class="dp-ib va-c ml3">
-                    <h4>Featsky</h4>
-                    <p class="fr10 c9">2016-02-15</p>
+                    <h5>Featsky</h5>
+                    <p class="fr10 c6 mt1">2016-02-15</p>
                 </div>
                 <p class="item-text">你这是多少fffffff放松放松的方式的范德萨发生的发送到发送到</p>
             </div>
@@ -43,8 +43,8 @@
             <div class="item-list">
                 <img class="img-head va-c" src="img/1.jpg" alt="">
                 <div class="dp-ib va-c ml3">
-                    <h4>Featsky</h4>
-                    <p class="fr10 c9">2016-02-15</p>
+                    <h5>Featsky</h5>
+                    <p class="fr10 c6 mt1">2016-02-15</p>
                 </div>
                 <p class="item-text">你这是多少fffffff放松放松的方式的范德萨发生的发送到发送到</p>
             </div>
@@ -106,10 +106,35 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-
+    <script src="src/js/ajax.js"></script>
     <script>
+        $(function(){
 
 
+            var pageResult = 0,pageCount = 3;
+
+            $(window).click(function(){
+
+                app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
+
+                    var obj = data;
+
+                    if(obj.statusCode == 404){
+
+                        alert('sssssssss')
+
+                        return;
+
+                    }
+
+                    console.log(obj);
+
+                    return pageResult = pageResult + pageCount;
+
+                })
+            })
+
+        })
     </script>
 
 </body>

@@ -65,22 +65,37 @@
 
 <script src="src/lib/zepto.js"></script>
 <script src="src/js/common.js"></script>
+<script src="src/js/ajax.js"></script>
 
     <script>
+    $(function(){
 
-        $(function(){
 
-            $('body').on('tap',function(){
+        var pageResult = 0,pageCount = 1;
 
-                alert('ss');
+        $(window).click(function(){
 
-                $('.c-a').addClass('c3');
+            app.ajax('get',app.url('getMovieList.php'),{page:pageCount,pageStart:pageResult},function(data){
+
+                var obj = data;
+
+                if(obj.statusCode == 404){
+
+                    alert('sssssssss')
+
+                    return;
+
+                }
+
+                console.log(obj);
+
+                return pageResult = pageResult + pageCount;
 
             })
-
         })
 
 
+    })
     </script>
 
 </body>

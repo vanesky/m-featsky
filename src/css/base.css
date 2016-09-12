@@ -747,6 +747,9 @@ footer {
   font-size: 13px;
 }
 /******************移动端*********************/
+.mt1 {
+  margin-top: 0.1rem;
+}
 .mt3 {
   margin-top: 0.3rem;
 }

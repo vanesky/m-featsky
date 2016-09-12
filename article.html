@@ -88,29 +88,36 @@
     <script src="src/js/ajax.js"></script>
 
     <script>
+        $(function(){
 
 
-        var listObj = $('.list-box');
 
-        listObj.css('height',listObj.css('width'));
+            var pageResult = 0,pageCount = 2;
 
-        var pageResult = 0,pageCount = 1;
+            $(window).click(function(){
 
-        $(window).click(function(){
+                app.ajax('get',app.url('getArticleList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
-            app.ajax('get',app.url('article.php'),{page:pageCount,pageStart:pageResult},function(data){
+                    var obj = data;
 
-                var obj = data;
+                    /*if(obj.statusCode == 404){
 
-                console.log(obj);
+                        alert('sssssssss')
 
-                return pageResult = pageResult + pageCount;
+                        return;
 
+                    }*/
+
+                    console.log(obj);
+
+                    return pageResult = pageResult + pageCount;
+
+                })
             })
+
+
+
         })
-
-
-
     </script>
 </body>
 </html>
