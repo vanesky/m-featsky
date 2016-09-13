@@ -45,8 +45,8 @@ body{
   #writing{
     position:fixed;
     z-index: 10;
-    top:50px;
-    //left:10%;
+    top:0px;
+    left:0%;
     width:100%;
     height:100%;
     background-color:#FCFBF9;
@@ -57,7 +57,7 @@ body{
       height:40%;
       background-color:#9B9CB3;
 
-      ::-webkit-input-placeholder{color:@cf;font-size: 1rem}
+      ::-webkit-input-placeholder{color:@cf2;font-size: 1rem}
       input[name="writ-tit"]{
         height:18%;
         width:100%;
@@ -65,15 +65,23 @@ body{
         border-bottom:1px dashed @cc;
         background-color: transparent;
         text-align: center;
-        color:@cf;
+        color:@cf2;
       }
-      //内容
+      //内容父级
       .pr-text{
         height:75%;
         padding:0 2rem;
         overflow: hidden;
         text-align: center;
         letter-spacing: 1px;
+        //内容
+        .writ-text{
+          text-align: center;
+          max-width: 70%;
+          //border: 1px solid red;
+          padding:3rem 3rem;
+          color:@cf2;
+        }
       }
 
     }
@@ -121,7 +129,7 @@ body{
     //头像选择
     .sub-cancel{
       width: 85%;
-      margin:0 auto 0.5rem;
+      margin:0.5rem auto;
       height:3rem;
       background-color:@cf;
       color:@c6;

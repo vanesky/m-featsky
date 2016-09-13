@@ -31,7 +31,8 @@
 #writing {
   position: fixed;
   z-index: 10;
-  top: 50px;
+  top: 0px;
+  left: 0%;
   width: 100%;
   height: 100%;
   background-color: #FCFBF9;
@@ -42,7 +43,7 @@
   background-color: #9B9CB3;
 }
 #writing .writ-context ::-webkit-input-placeholder {
-  color: #fff;
+  color: #f2f2f2;
   font-size: 1rem;
 }
 #writing .writ-context input[name="writ-tit"] {
@@ -52,7 +53,7 @@
   border-bottom: 1px dashed #ccc;
   background-color: transparent;
   text-align: center;
-  color: #fff;
+  color: #f2f2f2;
 }
 #writing .writ-context .pr-text {
   height: 75%;
@@ -60,6 +61,12 @@
   overflow: hidden;
   text-align: center;
   letter-spacing: 1px;
+}
+#writing .writ-context .pr-text .writ-text {
+  text-align: center;
+  max-width: 70%;
+  padding: 3rem 3rem;
+  color: #f2f2f2;
 }
 #writing .sel-img {
   width: 85%;
@@ -101,7 +108,7 @@
 }
 #writing .sub-cancel {
   width: 85%;
-  margin: 0 auto 0.5rem;
+  margin: 0.5rem auto;
   height: 3rem;
   background-color: #fff;
   color: #666;
