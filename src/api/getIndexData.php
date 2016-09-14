@@ -50,13 +50,21 @@
 
     }
     //说说对象
-    $indexObj['sayObj'] = mysql_fetch_object($sayResult);
+    $sayObj = mysql_fetch_object($sayResult);
+    $indexObj['sayObj']['id'] = $sayObj->{'id'};
+    $indexObj['sayObj']['time'] = $sayObj->{'time'};
+    $indexObj['sayObj']['text'] = $sayObj->{'text'};
     //文章对象
-    $indexObj['articleObj'] = mysql_fetch_object($artResult);
+    $articleObj = mysql_fetch_object($artResult);
 
+    $indexObj['articleObj']['id'] = $articleObj->{'id'};
+    $indexObj['articleObj']['title'] = $articleObj->{'title'};
+    $indexObj['articleObj']['time'] = $articleObj->{'time'};
 
-
-
+    $firstImg = explode(',',$articleObj->{'imgArrPath'});
+    $indexObj['articleObj']['imgPath'] = $firstImg[0];
+    $firstText = explode(',',$articleObj->{'textArr'});
+    $indexObj['articleObj']['text'] = $firstText[0];
 
 
 

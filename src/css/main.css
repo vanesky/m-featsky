@@ -5,9 +5,12 @@
 #banner img {
   width: 100%;
 }
+#leaving {
+  margin-top: 2rem;
+}
 #leaving .leaving-main {
   height: 3rem;
-  margin: 1.5rem auto 0;
+  margin: 0 auto;
   width: 85%;
 }
 #leaving .leaving-main .leaving-mes {
@@ -29,9 +32,7 @@
 #main-sign {
   position: relative;
   z-index: 3;
-}
-#main-sign > ul {
-  margin-top: -1.5rem;
+  margin-top: -1rem;
 }
 #main-sign > ul .head-img {
   width: 6.2rem;
@@ -158,7 +159,7 @@
   background-color: #ccc;
 }
 #latest {
-  padding: 1rem 0;
+  padding: 1rem 0 1.3rem;
 }
 #latest .latest-item {
   margin: 1rem auto 0;

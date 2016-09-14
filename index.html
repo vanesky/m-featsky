@@ -37,8 +37,8 @@
                     <h2>Tekapo</h2>
                     <span class="fl"></span>
                     <ul class="sign-text fl">
-                        <li class="li-text">这天气有点实在不好</li>
-                        <li class="li-text">2016-05-15</li>
+                        <li class="li-text">暂无数据</li>
+                        <li class="li-text">0</li>
                     </ul>
                 </li>
             </ul>
@@ -198,13 +198,13 @@
 
                 console.log(obj)
 
-                //计数渲染
+                //计数数据
                 for(var i in obj.count){
 
                     $('#'+i).text(obj.count[i]);
 
                 }
-                //相册渲染
+                //相册数据
                 var listObj = $('.list-box');
 
                 listObj.css('height',listObj.css('width'));
@@ -219,7 +219,15 @@
 
                     listObj.eq(i).css('background-image','url(img/'+obj.imgArrPath[i].imgPath+')')
                 }
-                //
+                //说说数据
+                var liTextObj = $('.li-text');
+
+                liTextObj.eq(0).text(obj.sayObj.text);
+
+                liTextObj.eq(1).text(obj.sayObj.time);
+
+                //文章数据
+
 
 
             })
