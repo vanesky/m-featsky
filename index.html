@@ -31,11 +31,15 @@
 
         <!--资料信息模块-->
         <section id="main-sign">
-            <ul class="w90 ul-row">
-                <li><img class="head-img" src="img/1.jpg" alt=""></li>
-                <li class="sign-top">
-                    <h1>Tekapo</h1>
-                    <p class="c6">101 lineright</p>
+            <ul class="w90 clearfix">
+                <li class="fl"><img class="head-img" src="img/1.jpg" alt=""></li>
+                <li class="sign-top fl">
+                    <h2>Tekapo</h2>
+                    <span class="fl"></span>
+                    <ul class="sign-text fl">
+                        <li class="li-text">这天气有点实在不好</li>
+                        <li class="li-text">2016-05-15</li>
+                    </ul>
                 </li>
             </ul>
         </section>
@@ -56,20 +60,20 @@
         <!--计数模块-->
         <ul id="count" class="fx-row-b">
             <li class="fx-g">
-                <h3>21</h3>
+                <h3 id="artCount">0</h3>
                 <p>Article</p>
             </li>
             <li class="fx-g">
-                <h3>26</h3>
-                <p>Article</p>
+                <h3 id="movieCount">0</h3>
+                <p>Movie</p>
             </li>
             <li class="fx-g">
-                <h3>26</h3>
-                <p>Article</p>
+                <h3 id="imgCount">0</h3>
+                <p>Picture</p>
             </li>
             <li class="fx-g">
-                <h3>26</h3>
-                <p>Article</p>
+                <h3 id="sayCount">0</h3>
+                <p>History</p>
             </li>
         </ul>
 
@@ -78,7 +82,7 @@
             <!--图片头部-->
             <ul class="w90 fx-row-b">
                 <li>
-                    <h3>2015/4/12</h3>
+                    <h3 id="latest-time"></h3>
                     <h5 class="c9">Latest</h5>
                 </li>
                 <li class="more">
@@ -90,15 +94,15 @@
 
             <!--图片列表-->
             <ul class="latest-item fx-row-b">
-                <li class="list-box">r</li>
-                <li class="list-box">r</li>
-                <li class="list-box">r</li>
-                <li class="list-box">r</li>
+                <li class="list-box"></li>
+                <li class="list-box"></li>
+                <li class="list-box"></li>
+                <li class="list-box"></li>
             </ul>
         </section>
 
         <!--首页说说-->
-        <section id="main-say">
+        <!--<section id="main-say">
             <ul class="w90 fx-row-b">
                 <li>
                     <img src="img/1.jpg" class="img-head va-c">
@@ -117,9 +121,10 @@
 
         <section id="main-say-content">
             <div class="w90">
-                <p id="say-text">反倒是发送到发送到反倒是放水电费水电费水电费水电费</p>
+                <p id="say-text">这是最新的分享</p>
             </div>
-        </section>
+        </section>-->
+
 
         <!--文章模块-->
         <section id="main-article">
@@ -187,17 +192,38 @@
 
         $(function(){
 
-            var listObj = $('.list-box');
-
-            listObj.css('height',listObj.css('width'));
-
             app.ajax('get',app.url('getIndexData.php'),{},function(data){
 
                 var obj = data;
 
-                console.log(obj);
+                console.log(obj)
+
+                //计数渲染
+                for(var i in obj.count){
+
+                    $('#'+i).text(obj.count[i]);
+
+                }
+                //相册渲染
+                var listObj = $('.list-box');
+
+                listObj.css('height',listObj.css('width'));
+
+                for(var i=0;i<obj.imgArrPath.length;i++){
+
+                    if(i==0){
+
+                        $('#latest-time').text(obj.imgArrPath[i].time);
+
+                    }
+
+                    listObj.eq(i).css('background-image','url(img/'+obj.imgArrPath[i].imgPath+')')
+                }
+                //
+
 
             })
+
 
         })
 
