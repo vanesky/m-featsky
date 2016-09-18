@@ -22,9 +22,6 @@
   width: 50px;
   height: 40px;
 }
-.nav-tit .nav-item .item-list .list-tit {
-  margin-top: 12px;
-}
 .nav-tit .nav-item .item-list .list-line {
   margin: 0 auto;
   margin-top: 5px;
@@ -47,11 +44,4 @@
   background-position: center center;
   background-size: cover;
   overflow: hidden;
-}
-.article-item .list-bg .list-tit {
-  height: 3.5rem;
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  margin-top: -3.5rem;
 }

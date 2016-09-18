@@ -39,7 +39,7 @@
 
         }
 
-        $firstImg = explode(",",$artObj->arrImg);
+        $firstImg = explode(",",$artObj->imgArrPath);
 
         $resultObj[$i]['id'] = $artObj->{'id'};
 
@@ -47,9 +47,7 @@
 
         $resultObj[$i]['time'] =  $artObj->{'time'};
 
-        $resultObj[$i]['description'] =  $artObj->{'description'};
-
-        $resultObj[$i]['arrImg'] = $firstImg[0];
+        $resultObj[$i]['imgPath'] = $firstImg[0];
 
     }
 

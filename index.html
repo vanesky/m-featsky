@@ -26,7 +26,7 @@
     <div class="container">
 
         <section id="banner">
-            <img class="show" src="img/cb2.jpg" alt="">
+            <img class="bannerImg show" src="" alt="">
         </section>
 
         <!--资料信息模块-->
@@ -129,8 +129,8 @@
         <!--文章模块-->
         <section id="main-article">
             <div class="art">
-                <img src="img/4.jpg" alt="" class="show">
-                <h4 class="fw mt10">关于火控系统</h4>
+                <img id="art-img" src="img/4.jpg" alt="" class="show">
+                <h4 id="art-title" class="fw mt10">关于火控系统</h4>
                 <div class="art-text">
                     德萨发生的放水电费水送到反倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费
                 </div>
@@ -196,7 +196,8 @@
 
                 var obj = data;
 
-                console.log(obj)
+                //banner数据
+                $('.bannerImg').prop('src','img/'+obj.bannerPath);
 
                 //计数数据
                 for(var i in obj.count){
@@ -227,8 +228,11 @@
                 liTextObj.eq(1).text(obj.sayObj.time);
 
                 //文章数据
+                $('#art-img').prop('src','img/'+obj.articleObj.imgPath);
 
+                $('#art-title').text(obj.articleObj.title);
 
+                $('.art-text').text(obj.articleObj.text);
 
             })
 

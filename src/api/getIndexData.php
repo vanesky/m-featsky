@@ -12,8 +12,8 @@
 
 
     //首页图片
-    $imgResult = mysql_query("SELECT * FROM featsky where id=1");
-    $imgObj = mysql_fetch_array($imgResult);
+    $indexImgResult = mysql_query("SELECT * FROM featsky where name='bannerPath'");
+    $imgObj = mysql_fetch_array($indexImgResult);
 
     //文章
     $artResult = mysql_query("SELECT * FROM article order by id desc");
@@ -30,7 +30,7 @@
 
 
     //首页图片
-    $indexObj['bannerPath'] = $imgObj['bannerPath'];
+    $indexObj['bannerPath'] = $imgObj['data1'];
 
     //建立对象 - 计数器
     $indexCount['artCount'] = $artNumbers;
