@@ -79,17 +79,17 @@
 
                     //console.log(obj);
 
-                    var model = $('.article-item');
+                    var model = $('.article-item').clone();
 
                     var str = '';
 
                     for(var i=0;i<obj.length;i++){
 
-                        var modelObj = model.clone();
+                        //var modelObj = model.;
 
-                        modelObj.find('.list-bg').css('background-image',"url(img/"+obj[i].imgPath+")");
+                        model.find('.list-bg').css('background-image',"url(img/"+obj[i].imgPath+")");
 
-                        str += "<div class='article-item'>" + modelObj.html() + "</div>"
+                        str += "<div class='article-item'>" + model.html() + "</div>";
                     }
 
                     console.log(str)
