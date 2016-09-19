@@ -41,13 +41,19 @@
 
         $firstImg = explode(",",$artObj->imgArrPath);
 
+        $resultObj[$i]['imgPath'] = $firstImg[0];
+
+        $firstText = explode(",",$artObj->textArr);
+
+        $resultObj[$i]['text'] =  $firstText[0];
+
         $resultObj[$i]['id'] = $artObj->{'id'};
 
         $resultObj[$i]['title'] =  $artObj->{'title'};
 
         $resultObj[$i]['time'] =  $artObj->{'time'};
 
-        $resultObj[$i]['imgPath'] = $firstImg[0];
+
 
     }
 
