@@ -48,7 +48,7 @@
 
         $resultObj[$i]['description'] =  $movieObj->{'description'};
 
-        $resultObj[$i]['imgSrc'] = $movieObj->{'imgSrc'};
+        $resultObj[$i]['imgPath'] = $movieObj->{'imgPath'};
 
     }
 

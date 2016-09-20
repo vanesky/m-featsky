@@ -43,36 +43,40 @@
     <div class="container">
 
         <section id="channel-latest" class="">
-
-            <h3 class="date-tit">2015-05-15</h3>
+            <!--<h3 class="date-tit">2015-05-15</h3>
             <ul class="list-item clearfix">
-                <li class="img-list">s</li>
-                <li class="img-list">s</li>
-                <li class="img-list">f</li>
-                <li class="img-list">s</li>
-            </ul>
-            <h3 class="date-tit">2015-05-15</h3>
-            <ul class="list-item clearfix">
-                <li class="img-list">s</li>
-            </ul>
-            <h3 class="date-tit">2015-05-15</h3>
-            <ul class="list-item clearfix">
-                <li class="img-list">s</li>
-                <li class="img-list">s</li>
-            </ul>
-
+                <li class="img-list"></li>
+                <li class="img-list"></li>
+                <li class="img-list"></li>
+                <li class="img-list"></li>
+            </ul>-->
         </section>
 
-        <section id="channel-all" class="">
+        <section id="channel-all" class="hide">
             <ul class="list-item clearfix">
-                <li class="img-list">s</li>
-                <li class="img-list">s</li>
-                <li class="img-list">f</li>
-                <li class="img-list">s</li>
+                <li class="img-list"></li>
+                <li class="img-list"></li>
+                <li class="img-list"></li>
+                <li class="img-list"></li>
             </ul>
         </section>
 
     </div>
+
+    <!--最近模板-->
+    <div id="model-1" class="hide">
+        <h3 data-name="time" class="date-tit"></h3>
+        <ul data-name="imgPath" class="list-item clearfix">
+
+        </ul>
+    </div>
+
+    <!--最近模板(子模板)-->
+    <div id="model-1-a" class="hide">
+        <li class="img-list"></li>
+    </div>
+
+    <!--全部模板-->
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -84,33 +88,81 @@
 
             var pageResult = 0,pageCount = 2;
 
+            renderImg();
+
+            //图片间隔宽度
+            imgListWidth(2);
+
             $(window).click(function(){
+
+                //renderImg()
+
+            })
+
+            //图片渲染
+            function renderImg(){
 
                 app.ajax('get',app.url('getImgList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
-                    var obj = data;
+                    var obj = data,str = '';
 
                     console.log(obj);
+
+                    var model = $('#model-1').clone();
+
+                    var imgListModel = $("#model-1-a").clone();
+
+
+                    for(var i=0;i<obj.length;i++){
+
+                        var imgStr = '';
+
+                        if(obj[i].statusCode == 404){continue;}
+
+                        //列表id
+                        //model.find('.list-item').attr('data-id',obj[i].id);
+
+                        //时间
+                        model.find("[data-name='time']").text(obj[i].time);
+
+                        //========================================================
+                        for(var j=0;j<obj[i].imgPath.length;j++){
+
+                            imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].imgPath[j]+")").attr('data-id',j);
+
+                            imgStr += imgListModel.html();
+
+                        }
+                        //向内存中的dom模板插入图片数列表 && 顺带添加id
+                        model.find('.list-item').html(imgStr).attr('data-id',obj[i].id);
+
+                        imgListLeft(model.find('.img-list'),2);
+
+                        //=============================================================
+                        //保存对象列表字符串到变量
+                        str +=  model.html();
+                    }
+
+                    if(str == ''){
+
+                        alert('没了')
+
+                    }else{
+                        //将变量字符串插入真实dom
+                        $('#channel-latest').append(str);
+
+                    }
 
                     return pageResult = pageResult + pageCount;
 
                 })
-
-
-            })
-
-
-
-            //latestObj.on('tap','.img-list',function(){
-
-            //});
-
-            imgListWidth($('.list-item'),2);
+            }
 
         })
 
+
         //图片大小和边距
-        function imgListWidth(objList,param){
+        function imgListWidth(param){
 
             var w = JSON.parse(localStorage.getItem('device')).w
 
@@ -120,22 +172,21 @@
 
                 width:liw + 'px',
 
-                height:liw + 'px'
+                height:liw + 'px',
 
             });
-
-            //边距
-            objList.each(function(index,ulObj){
-
-                var obj = $(ulObj).find('.img-list');
-
-                for(var i=0;i<obj.length;i++){
-
-                    if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
-
-                }
-            })
         }
+
+        //边距(分别获取设置边距)
+        function imgListLeft(obj,param){
+
+            for(var i=0;i<obj.length;i++){
+
+                if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
+
+            }
+        }
+
 
     </script>
 

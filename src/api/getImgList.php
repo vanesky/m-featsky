@@ -40,7 +40,7 @@
 
         $resultObj[$i]['time'] =  $imgObj->{'time'};
 
-        $resultObj[$i]['imgArrPath'] = explode(",",$imgObj->imgArrPath);
+        $resultObj[$i]['imgPath'] = explode(",",$imgObj->imgPath);
 
     }
 

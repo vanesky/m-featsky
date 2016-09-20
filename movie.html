@@ -27,7 +27,8 @@
 
         <ul id="movie-item">
             <!--<li class="movie-list">
-                <img src="img/0.jpg" alt="">
+                &lt;!&ndash;<img src="img/0.jpg" alt="">&ndash;&gt;
+                <div class="movie-content"></div>
                 <div class="movie-mask">
                     &lt;!&ndash;<ul class="summary fx-row-b">
                         <li class="detail ml15">
@@ -52,29 +53,28 @@
     <!--列表模板-->
     <div id="model-1" class="hide">
         <li class="movie-list">
-            <img src="img/0.jpg" alt="">
+            <div data-name="imgPath" class="movie-content"></div>
             <div class="movie-mask">
                 <div class="summary fx-row-b">
-                    <p class="detail-text">在那屋反倒是发送到发送到发送到发送到第三方士大夫</p>
-                    <span class="mr15 fr10">02-15</span>
+                    <p data-name="description" class="detail-text"></p>
+                    <span data-name="time" class="mr15 fr10"></span>
                 </div>
             </div>
             <div class="movie-box">
-                <h5 class="box-text">关于火力控制</h5>
+                <h5 data-name="title" class="box-text"></h5>
             </div>
         </li>
     </div>
 
 
     <script src="src/lib/zepto.js"></script>
-<script src="src/js/common.js"></script>
-<script src="src/js/ajax.js"></script>
+    <script src="src/js/common.js"></script>
+    <script src="src/js/ajax.js"></script>
 
     <script>
     $(function(){
 
-        var pageResult = 0,pageCount = 1;
-
+        var pageResult = 0,pageCount = 2;
 
         renderData();
 
@@ -93,7 +93,7 @@
                     if(obj[i].statusCode == 404){continue;}
 
                     //列表id
-                    model.find('.article-item').attr('data-id',obj[i].id);
+                    model.find('.movie-list').attr('data-id',obj[i].id);
 
                     //列表背景
                     model.find("[data-name='imgPath']").css('background-image',"url(img/"+obj[i].imgPath+")");
@@ -104,8 +104,8 @@
                     //时间
                     model.find("[data-name='time']").text(obj[i].time);
 
-                    //内容
-                    model.find("[data-name='text']").text(obj[i].text);
+                    //介绍
+                    model.find("[data-name='description']").text(obj[i].description);
 
                     str +=  model.html();
                 }
@@ -116,7 +116,7 @@
 
                 }else{
 
-                    $('footer').before(str);
+                    $('#movie-item').append(str);
 
                 }
 
