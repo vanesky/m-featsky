@@ -14,10 +14,51 @@
 
     $start = $_GET['pageStart'];
 
-    //列表
-    $imgResult = mysql_query("SELECT * FROM img order by id desc limit $start,$num");
+
+
+
+    $arr = Array();
+
+    $counts = (int)$start;
+
 
     for($i=0;$i<$num;$i++){
+
+        $firstImgResult = mysql_query("SELECT * FROM img order by id desc limit $counts,1");
+
+        @$firstResult = mysql_fetch_object($firstImgResult)->{'time'};
+
+        if(!$firstResult){
+
+        }else{
+
+            $allImgResult = mysql_query("SELECT * FROM img where time ='$firstResult' order by id desc");
+
+            for($j=0;$j<mysql_num_rows($allImgResult);$j++){
+
+                $allResult = mysql_fetch_object($allImgResult);
+
+                $arr[$i]['data'][$j] = $allResult;
+
+            }
+
+            $counts += mysql_num_rows($allImgResult);
+
+            $arr[$i]['page'] = $counts;
+
+        }
+
+    }
+
+    $resultObj = $arr;
+
+    //$resultObj['pageNow'] = $counts;
+
+
+
+
+
+    /*for($i=0;$i<$num;$i++){
 
         $imgObj = mysql_fetch_object($imgResult);
         //结果集无数据返回
@@ -36,13 +77,13 @@
         }
 
 
-        $resultObj[$i]['id'] = $imgObj->{'id'};
+        //$resultObj[$i]['id'] = $imgObj->{'id'};
 
-        $resultObj[$i]['time'] =  $imgObj->{'time'};
+        //$resultObj[$i]['time'] =  $imgObj->{'time'};
 
-        $resultObj[$i]['imgPath'] = explode(",",$imgObj->imgPath);
+        //$resultObj[$i]['imgPath'] = explode(",",$imgObj->imgPath);
 
-    }
+    }*/
 
         echo json_encode($resultObj);
 

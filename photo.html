@@ -86,7 +86,7 @@
 
         $(function(){
 
-            var pageResult = 0,pageCount = 2;
+            var pageResult = 0,pageCount = 1;
 
             renderImg();
 
@@ -95,7 +95,7 @@
 
             $(window).click(function(){
 
-                //renderImg()
+                renderImg()
 
             })
 
@@ -104,7 +104,7 @@
 
                 app.ajax('get',app.url('getImgList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
-                    var obj = data,str = '';
+                    var obj = data,str = '',page = '';
 
                     console.log(obj);
 
@@ -119,28 +119,26 @@
 
                         if(obj[i].statusCode == 404){continue;}
 
-                        //列表id
-                        //model.find('.list-item').attr('data-id',obj[i].id);
+                        for(var j=0;j<obj[i].data.length;j++){
 
-                        //时间
-                        model.find("[data-name='time']").text(obj[i].time);
+                            //时间
+                            model.find("[data-name='time']").text(obj[i].data[j].time)
 
-                        //========================================================
-                        for(var j=0;j<obj[i].imgPath.length;j++){
-
-                            imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].imgPath[j]+")").attr('data-id',j);
+                            imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].data[j].imgPath+")").attr('data-id',obj[i].data[j].id);
 
                             imgStr += imgListModel.html();
-
                         }
-                        //向内存中的dom模板插入图片数列表 && 顺带添加id
-                        model.find('.list-item').html(imgStr).attr('data-id',obj[i].id);
+
+                        //向内存中的dom模板插入图片数列表
+                        model.find('.list-item').html(imgStr);
 
                         imgListLeft(model.find('.img-list'),2);
 
-                        //=============================================================
+
                         //保存对象列表字符串到变量
                         str +=  model.html();
+
+                        page = obj[i].page;
                     }
 
                     if(str == ''){
@@ -148,46 +146,79 @@
                         alert('没了')
 
                     }else{
+
                         //将变量字符串插入真实dom
                         $('#channel-latest').append(str);
 
                     }
 
-                    return pageResult = pageResult + pageCount;
-
+                    return pageResult =  page;
                 })
             }
 
-        })
 
 
-        //图片大小和边距
-        function imgListWidth(param){
 
-            var w = JSON.parse(localStorage.getItem('device')).w
 
-            var liw = (w-param*2)/3 - 0.1;
 
-            $('.img-list').css({
+            //图片大小和边距
+            function imgListWidth(param){
 
-                width:liw + 'px',
+                var w = JSON.parse(localStorage.getItem('device')).w
 
-                height:liw + 'px',
+                var liw = (w-param*2)/3 - 0.1;
 
-            });
-        }
+                $('.img-list').css({
 
-        //边距(分别获取设置边距)
-        function imgListLeft(obj,param){
+                    width:liw + 'px',
 
-            for(var i=0;i<obj.length;i++){
+                    height:liw + 'px',
 
-                if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
-
+                });
             }
-        }
+
+            //边距(分别获取设置边距)
+            function imgListLeft(obj,param){
+
+                for(var i=0;i<obj.length;i++){
+
+                    if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
+
+                }
+            }
 
 
+            /*for(var i=0;i<obj.length;i++){
+
+             var imgStr = '';
+
+             if(obj[i].statusCode == 404){continue;}
+
+             //列表id
+             //model.find('.list-item').attr('data-id',obj[i].id);
+
+             //时间
+             model.find("[data-name='time']").text(obj[i].time);
+
+             //========================================================
+             for(var j=0;j<obj[i].imgPath.length;j++){
+
+             imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].imgPath[j]+")").attr('data-id',j);
+
+             imgStr += imgListModel.html();
+
+             }
+             //向内存中的dom模板插入图片数列表 && 顺带添加id
+             model.find('.list-item').html(imgStr).attr('data-id',obj[i].id);
+
+             imgListLeft(model.find('.img-list'),2);
+
+             //=============================================================
+             //保存对象列表字符串到变量
+             str +=  model.html();
+             }*/
+
+        })
     </script>
 
 </body>
