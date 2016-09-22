@@ -2,20 +2,28 @@
 .say {
   padding: 1.2rem 0rem;
   border-bottom: 1px solid #ebebeb;
+  /*.say-main{
+      width:28rem;
+      margin:0 auto;
+    }*/
 }
-.say-tit {
+.say .say-tit {
   margin: 0 auto;
 }
-.say-tit > div {
+.say .say-tit > div {
   margin-left: 0.4rem;
 }
-.say-text {
+.say .p-text {
   margin-top: 1.5rem;
-  margin-left: 4rem;
 }
-.say-text img {
+.say .p-text,
+.say .img-item {
+  margin-left: 4.35rem;
+}
+.say .img-item {
   margin-top: 0.9rem;
+  width: 23rem;
 }
-.say-text .more-img li {
-  width: 30%;
+.say .img-item .img-list img {
+  max-width: 100%;
 }

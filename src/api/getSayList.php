@@ -14,45 +14,54 @@
 
     $start = $_GET['pageStart'];
 
-    //建立返回对象
-    $resultObj = Array();
-    //列表
-    $sayResult = mysql_query("SELECT * FROM say order by id desc limit $start,$num");
 
-    for($i=0;$i<$num;$i++){
+    //================================================================================
 
-        $sayObj = mysql_fetch_object($sayResult);
-        //结果集无数据返回
-        if(!$sayObj){
+    function sayList($s,$n){
 
-            $resultObj[$i]['statusCode'] = 404;
+        //建立返回对象
+        $resultObj = Array();
 
-            echo json_encode($resultObj);
+        //列表
+        $sayResult = mysql_query("SELECT * FROM say order by id desc limit $s,$n");
 
-            return;
+        for($i=0;$i<$n;$i++){
 
-        }else{
+            $sayObj = mysql_fetch_object($sayResult);
+            //结果集无数据返回
+            if(!$sayObj){
 
-            $resultObj[$i]['statusCode'] = 200;
+                $resultObj[$i]['statusCode'] = 404;
 
+                echo json_encode($resultObj);
+
+                return;
+
+            }else{
+
+                $resultObj[$i]['statusCode'] = 200;
+
+            }
+
+            $resultObj[$i]['id'] =  $sayObj->{'id'};
+
+            $resultObj[$i]['headPath'] =  $sayObj->{'headPath'};
+
+            $resultObj[$i]['time'] =  $sayObj->{'time'};
+
+            $resultObj[$i]['text'] =  $sayObj->{'text'};
+
+            $resultObj[$i]['name'] = $sayObj->{'name'};
+
+            $resultObj[$i]['imgArrPath'] = explode(",",$sayObj->imgArrPath);
         }
 
-        $resultObj[$i]['headSrc'] =  $sayObj->{'headSrc'};
-
-        $resultObj[$i]['time'] =  $sayObj->{'time'};
-
-        $resultObj[$i]['text'] =  $sayObj->{'text'};
-
-        $resultObj[$i]['name'] = $sayObj->{'name'};
-
-        $resultObj[$i]['imgArrPath'] = explode(",",$sayObj->imgArrPath);
-
-
-
+        return $resultObj;
     }
 
+    //================================================================================
 
-        echo json_encode($resultObj);
+        echo json_encode(sayList($start,$num));
 
 
 ?>

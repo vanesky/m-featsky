@@ -25,54 +25,33 @@
 
     <div class="container">
 
-        <section class="say">
-            <div class="w90">
-                <div class="say-tit clearfix">
-                    <img class="img-head va-c" src="img/1.jpg" alt="">
-                    <div class="dp-ib va-c">
-                        <h4>Featsky</h4>
-                        <p class="fr10 c6">2016-02-15</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="say-text">
-                        <p>fsdfdsf的是方法反反复复反复反复反复即将于Yuiu意义</p>
-                        <img src="img/1.jpg" alt="" style="max-width:100%">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="say">
-            <div class="w90">
-                <div class="say-tit clearfix">
-                    <img class="img-head va-c" src="img/1.jpg" alt="">
-                    <div class="dp-ib va-c">
-                        <h4>Featsky</h4>
-                        <p class="fr10 c6">2016-02-15</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="say-text">
-                        <p>fsdfdsf的是方法反反复复反复反复反复即将于Yuiu意义</p>
-
-                        <img src="img/1.jpg" alt="" style="max-width:100%">
-
-                        <ul class="more-img fx-row-s">
-                            <li class="bs-b">f</li>
-                            <li class="bs-b">f</li>
-                            <li class="bs-b">f</li>
-                            <li class="bs-b">f</li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-        </section>
 
     </div>
 
+    <!--模板列表-->
+    <div id="model-1" class="hide">
+        <section class="say">
+            <div class="w90">
+                <div class="say-tit clearfix">
+                    <div data-name="headPath" class="img-head dp-ib va-c"></div>
+                    <div class="dp-ib va-c">
+                        <h4 data-name="name">Featsky</h4>
+                        <p data-name="time" class="fr10 c6">2016-02-15</p>
+                    </div>
+                </div>
 
+                <p data-name="text" class="p-text">fsdfdsf的是方法反反复复反复反复反复即将于Yuiu意义</p>
+                <ul data-name="imgArrPath" class="img-item clearfix">
+                    <!--列表图片(子模板)-->
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!--列表图片(子模板)-->
+    <div id="model-1-a" class="hide">
+        <li class="img-list fl"><img src="img/1.jpg" alt=""></li>
+    </div>
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -80,32 +59,133 @@
     <script>
         $(function(){
 
-
-            var pageResult = 0,pageCount = 1;
+            var pageResult = 0,pageCount = 2;
 
             $(window).click(function(){
 
                 app.ajax('get',app.url('getSayList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
-                    var obj = data;
-
-                    if(obj.statusCode == 404){
-
-                        alert('sssssssss')
-
-                        return;
-
-                    }
+                    var obj = data,str = '';
 
                     console.log(obj);
 
-                    return pageResult = pageResult + pageCount;
+                    var model = $('#model-1').clone();
 
+                    for(var i=0;i<obj.length;i++){
+
+                        var imgListModel = $("#model-1-a").clone();
+
+                        //每一条说说的所有图片字符串
+                        var imgStr = '';
+
+                        if(obj[i].statusCode == 404){continue;}
+
+                        //如果是两张图片设置相应的CSS属性
+                        if(obj[i].imgArrPath.length == 2){
+
+                            var w = $('#model-1').find('.img-item').css('width');
+
+                            w = w.substr(0,w.length-2);
+
+
+                            var liw = (w-10*1)/2 - 0.1;
+
+                            imgListModel.find('.img-list').css({
+
+                                width:liw + 'px',
+
+                                height:liw + 'px',
+
+                            });
+
+                        }
+
+                        //向内存中的子模板循环插入图片
+                        for(var j=0;j<obj[i].imgArrPath.length;j++){
+
+                            imgListModel.find('img').prop('src','img/'+obj[i].imgArrPath[j]);
+
+                            imgStr += imgListModel.html();
+
+                        }
+
+
+                        //列表id
+                        model.find('.say').attr('data-id',obj[i].id);
+
+                        //名字
+                        model.find("[data-name='name']").text(obj[i].name);
+
+                        //时间
+                        model.find("[data-name='time']").text(obj[i].time);
+
+                        //头像
+                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
+
+                        //内容
+                        model.find("[data-name='text']").text(obj[i].text);
+
+
+                        //向内存中的dom模板插入图片数列表
+                        model.find("[data-name='imgArrPath']").html(imgStr);
+
+                        //获取刚插入的图片列表根据数量设置间距
+                        var liNum = model.find("[data-name='imgArrPath']").find('li');
+
+                        if(liNum.length>1){
+
+                            /*for(var i=0;i<liNum.length;i++){
+
+                                if(i%liNum.length!=0){ liNum.eq(i).css('margin-left',10 + 'px') }
+
+                            }*/
+                        }
+
+                        str +=  model.html();
+                    }
+
+                    if(str == ''){
+
+                        alert('没了')
+
+                    }else{
+
+                        $('footer').before(str);
+
+                    }
+
+                    return pageResult = pageResult + pageCount;
                 })
             })
 
-        })
 
+            //图片大小和边距
+            function imgListWidth(param){
+
+                var w = JSON.parse(localStorage.getItem('device')).w
+
+                var liw = (w-param*2)/3 - 0.1;
+
+                $('.img-list').css({
+
+                    width:liw + 'px',
+
+                    height:liw + 'px',
+
+                });
+            }
+
+            //边距(分别获取设置边距)
+            function imgListLeft(obj,param){
+
+                for(var i=0;i<obj.length;i++){
+
+                    if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
+
+                }
+            }
+
+        })
     </script>
 
 </body>

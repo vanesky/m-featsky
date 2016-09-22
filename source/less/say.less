@@ -14,28 +14,35 @@
     padding:1.2rem 0rem;
     border-bottom: 1px solid @ceb;
 
-  }
-  //头部标题
-  .say-tit{
-    margin:0 auto;
-    &>div{
-      margin-left: 0.4rem;
-    }
-  }
+    /*.say-main{
+      width:28rem;
+      margin:0 auto;
+    }*/
 
-  //内容模板
-  .say-text{
-    margin-top:1.5rem;
-    margin-left:4rem;
-
-    img{
-      margin-top:0.9rem;
-    }
-
-    .more-img{
-      li{
-        width:30%;
+    //头部标题
+    .say-tit{
+      margin:0 auto;
+      &>div{
+        margin-left: 0.4rem;
       }
     }
-  }
 
+    //内容模板
+    .p-text{
+      margin-top:1.5rem;
+    }
+    .p-text,.img-item{
+      margin-left:4.35rem;
+    }
+    //图片列表容器
+    .img-item{
+      margin-top:0.9rem;
+      width:23rem;
+      .img-list{
+        img{ max-width: 100%;}
+      }
+    }
+
+
+
+}

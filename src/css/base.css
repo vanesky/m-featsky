@@ -626,7 +626,11 @@ h5 {
 }
 .img-head {
   width: 3.2rem;
+  height: 3.2rem;
   border-radius: 1.6rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 div#nav {
   position: fixed;
