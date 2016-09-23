@@ -33,9 +33,7 @@
 
                 $resultObj[$i]['statusCode'] = 404;
 
-                echo json_encode($resultObj);
-
-                return;
+                return $resultObj;
 
             }else{
 

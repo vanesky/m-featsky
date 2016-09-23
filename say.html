@@ -33,7 +33,7 @@
         <section class="say">
             <div class="w90">
                 <div class="say-tit clearfix">
-                    <div data-name="headPath" class="img-head dp-ib va-c"></div>
+                    <div data-name="headPath" class="img-head bg-fill dp-ib va-c"></div>
                     <div class="dp-ib va-c">
                         <h4 data-name="name">Featsky</h4>
                         <p data-name="time" class="fr10 c6">2016-02-15</p>
@@ -50,7 +50,7 @@
 
     <!--列表图片(子模板)-->
     <div id="model-1-a" class="hide">
-        <li class="img-list fl"><img src="img/1.jpg" alt=""></li>
+        <li data-name="imgList" class="img-list bg-fill fl"><img src="img/1.jpg" alt=""></li>
     </div>
 
     <script src="src/lib/zepto.js"></script>
@@ -61,7 +61,9 @@
 
             var pageResult = 0,pageCount = 2;
 
-            $(window).click(function(){
+            renderImg();
+
+            function renderImg(){
 
                 app.ajax('get',app.url('getSayList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
@@ -73,22 +75,25 @@
 
                     for(var i=0;i<obj.length;i++){
 
+                        if(obj[i].statusCode == 404){continue;}
+
                         var imgListModel = $("#model-1-a").clone();
 
                         //每一条说说的所有图片字符串
                         var imgStr = '';
 
-                        if(obj[i].statusCode == 404){continue;}
+                        //设置相应的CSS属性
+                        if(obj[i].imgArrPath.length > 1){
 
-                        //如果是两张图片设置相应的CSS属性
-                        if(obj[i].imgArrPath.length == 2){
+                            var lineNum = 2;
 
                             var w = $('#model-1').find('.img-item').css('width');
 
-                            w = w.substr(0,w.length-2);
+                                w = w.substr(0,w.length-2);
 
+                            if(obj[i].imgArrPath.length>2){lineNum = 3};
 
-                            var liw = (w-10*1)/2 - 0.1;
+                            var liw = (w-2*(obj[i].imgArrPath.length-1))/lineNum;
 
                             imgListModel.find('.img-list').css({
 
@@ -103,7 +108,9 @@
                         //向内存中的子模板循环插入图片
                         for(var j=0;j<obj[i].imgArrPath.length;j++){
 
-                            imgListModel.find('img').prop('src','img/'+obj[i].imgArrPath[j]);
+                            imgListModel.find('img').prop('src',"img/"+obj[i].imgArrPath[j])
+
+                            //imgListModel.find("[data-name='imgList']").css('background-image',"url(img/"+obj[i].imgArrPath[j]+")");
 
                             imgStr += imgListModel.html();
 
@@ -125,24 +132,47 @@
                         //内容
                         model.find("[data-name='text']").text(obj[i].text);
 
-
                         //向内存中的dom模板插入图片数列表
                         model.find("[data-name='imgArrPath']").html(imgStr);
+
+
+                        //============================================================================
 
                         //获取刚插入的图片列表根据数量设置间距
                         var liNum = model.find("[data-name='imgArrPath']").find('li');
 
                         if(liNum.length>1){
+                            //margin-left边距
+                            liNum.each(function(index,obj){
 
-                            /*for(var i=0;i<liNum.length;i++){
+                                if(index%liNum.length!=0){
 
-                                if(i%liNum.length!=0){ liNum.eq(i).css('margin-left',10 + 'px') }
+                                    obj.style.marginLeft = "2px";
 
-                            }*/
-                        }
+                                }
+
+                            })
+
+                            //根据图片比例填充
+                            liNum.find('img').each(function(index,obj){
+
+                                if(obj.width<obj.height){
+
+                                    obj.style.width = "100%";
+
+                                }else{
+
+                                    obj.style.height = "100%";
+
+                                }
+                            })
+
+                        }else{  liNum.find('img').css('max-width','100%'); }
 
                         str +=  model.html();
+
                     }
+
 
                     if(str == ''){
 
@@ -156,34 +186,8 @@
 
                     return pageResult = pageResult + pageCount;
                 })
-            })
-
-
-            //图片大小和边距
-            function imgListWidth(param){
-
-                var w = JSON.parse(localStorage.getItem('device')).w
-
-                var liw = (w-param*2)/3 - 0.1;
-
-                $('.img-list').css({
-
-                    width:liw + 'px',
-
-                    height:liw + 'px',
-
-                });
             }
 
-            //边距(分别获取设置边距)
-            function imgListLeft(obj,param){
-
-                for(var i=0;i<obj.length;i++){
-
-                    if(i%3!=0){ obj.eq(i).css('margin-left',param + 'px') }
-
-                }
-            }
 
         })
     </script>
