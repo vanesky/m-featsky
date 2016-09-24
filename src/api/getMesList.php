@@ -16,43 +16,53 @@
     $start = $_GET['pageStart'];
 
 
-    //建立返回对象
-    $resultObj = Array();
 
-    //列表
-    $mesResult = mysql_query("SELECT * FROM message order by id desc limit $start,$num");
+    function getMesList(){
 
+        global $num,$start;
 
-    for($i=0;$i<$num;$i++){
+       //建立返回对象
+        $resultObj = Array();
 
-        $mesObj = mysql_fetch_object($mesResult);
-        //结果集无数据返回
-        if(!$mesObj){
+        //列表
+        $mesResult = mysql_query("SELECT * FROM message order by id desc limit $start,$num");
 
-            $resultObj[$i]['statusCode'] = 404;
+        for($i=0;$i<$num;$i++){
 
-            echo json_encode($resultObj);
+            $mesObj = mysql_fetch_object($mesResult);
+            //结果集无数据返回
+            if(!$mesObj){
 
-            return;
+                $resultObj[$i]['statusCode'] = 404;
 
-        }else{
+                //echo json_encode();
 
-            $resultObj[$i]['statusCode'] = 200;
+                return $resultObj;
+
+            }else{
+
+                $resultObj[$i]['statusCode'] = 200;
+
+            }
+
+            $resultObj[$i]['id'] = $mesObj->{'id'};
+
+            $resultObj[$i]['headPath'] =  $mesObj->{'headPath'};
+
+            $resultObj[$i]['time'] =  $mesObj->{'time'};
+
+            $resultObj[$i]['text'] =  $mesObj->{'text'};
+
+            $resultObj[$i]['name'] = $mesObj->{'name'};
 
         }
 
-        $resultObj[$i]['headSrc'] =  $mesObj->{'headSrc'};
-
-        $resultObj[$i]['time'] =  $mesObj->{'time'};
-
-        $resultObj[$i]['text'] =  $mesObj->{'text'};
-
-        $resultObj[$i]['name'] = $mesObj->{'name'};
+        return $resultObj;
 
     }
 
 
-        echo json_encode($resultObj);
+        echo json_encode(getMesList());
 
 
 

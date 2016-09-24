@@ -31,8 +31,8 @@
         </div>
 
         <section id="mes-item">
-            <div class="item-list">
-                <img class="img-head va-c" src="img/1.jpg" alt="">
+            <div class="item-list hide">
+                <div class="img-head bs-b dp-ib va-c"></div>
                 <div class="dp-ib va-c ml3">
                     <h5>Featsky</h5>
                     <p class="fr10 c6 mt1">2016-02-15</p>
@@ -40,19 +40,25 @@
                 <p class="item-text">你这是多少fffffff放松放松的方式的范德萨发生的发送到发送到</p>
             </div>
 
-            <div class="item-list">
-                <img class="img-head va-c" src="img/1.jpg" alt="">
-                <div class="dp-ib va-c ml3">
-                    <h5>Featsky</h5>
-                    <p class="fr10 c6 mt1">2016-02-15</p>
-                </div>
-                <p class="item-text">你这是多少fffffff放松放松的方式的范德萨发生的发送到发送到</p>
-            </div>
         </section>
-
     </div>
 
-    <section id="writing">
+    <!--=================列表模板===================-->
+    <div id="model-1" class="hide">
+        <div data-name="id" class="item-list">
+            <div data-name="headPath" class="img-head bg-fill dp-ib va-c"></div>
+            <!--<img class="img-head va-c" src="img/1.jpg" alt="">-->
+            <div class="dp-ib va-c ml3">
+                <h5 data-name="name"></h5>
+                <p data-name="time" class="fr10 c6 mt1"></p>
+            </div>
+            <p data-name="text" class="item-text"></p>
+        </div>
+    </div>
+    <!--==============================================-->
+
+    <!--留言填写-->
+    <section id="writing" class="hide">
 
         <header style="position:relative;">
             <!--<img id="logo" src="img/logo.png" alt="">-->
@@ -119,28 +125,55 @@
     <script>
         $(function(){
 
-            var pageResult = 0,pageCount = 3;
+            var pageResult = 0,pageCount = 2;
 
-            /*$(window).click(function(){
+            $(window).click(function(){
 
                 app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
-                    var obj = data;
+                    var obj = data,str = '';
 
-                    if(obj.statusCode == 404){
+                    console.log(obj);
 
-                        alert('sssssssss')
+                    var model = $('#model-1').clone();
 
-                        return;
+                    for(var i=0;i<obj.length;i++){
+
+                        if(obj[i].statusCode == 404){continue;}
+
+                        //列表id
+                        model.find("[data-name='id']").attr('data-id',obj[i].id);
+
+                        //列表背景
+                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
+
+                        //标题
+                        model.find("[data-name='name']").text(obj[i].name);
+
+                        //时间
+                        model.find("[data-name='time']").text(obj[i].time);
+
+                        //内容
+                        model.find("[data-name='text']").text(obj[i].text);
+
+                        str +=  model.html();
+                    }
+
+                    if(str == ''){
+
+                        alert('没了')
+
+                    }else{
+
+                        $('#mes-item').append(str);
 
                     }
 
-                    console.log(obj);
 
                     return pageResult = pageResult + pageCount;
 
                 })
-            })*/
+            })
 
             /*==================================================*/
 
