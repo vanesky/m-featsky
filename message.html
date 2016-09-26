@@ -26,7 +26,7 @@
     <div class="container">
 
         <div id="mes-input">
-            <img class="img-mes va-c" src="img/edit.png" alt="">
+            <img class="img-edit va-c" src="img/edit.png" alt="">
             <span class="ml5 va-c">留言一番 . .</span>
         </div>
 
@@ -58,7 +58,7 @@
     <!--==============================================-->
 
     <!--留言填写-->
-    <section id="writing" class="hide">
+    <section id="writing">
 
         <header style="position:relative;">
             <!--<img id="logo" src="img/logo.png" alt="">-->
@@ -122,8 +122,11 @@
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
+    <script src="src/js/component.js"></script>
     <script>
         $(function(){
+
+            com.mesAnimate($('#mes-input'),$('#writing'));
 
             var pageResult = 0,pageCount = 2;
 

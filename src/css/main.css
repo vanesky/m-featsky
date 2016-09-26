@@ -12,6 +12,7 @@
   height: 3rem;
   margin: 0 auto;
   width: 85%;
+  text-align: center;
 }
 #leaving .leaving-main .leaving-mes {
   height: 100%;
@@ -20,14 +21,15 @@
   border: 1px solid #dbdbdb;
   border-radius: 1.5rem;
 }
-#leaving .leaving-main .leaving-mes img {
-  height: 55%;
-}
 #leaving .leaving-main .call {
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
   background-color: #49A0DB;
+  line-height: 3rem;
+}
+#leaving .leaving-main .call a {
+  color: #fff;
 }
 #main-sign {
   position: relative;

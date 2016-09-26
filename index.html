@@ -26,7 +26,7 @@
     <div class="container">
 
         <section id="banner">
-            <img class="bannerImg show" src="" alt="">
+            <img data-name="bannerPath" class="bannerImg show" src="" alt="">
         </section>
 
         <!--资料信息模块-->
@@ -37,8 +37,8 @@
                     <h2>Tekapo</h2>
                     <span class="fl"></span>
                     <ul class="sign-text fl">
-                        <li class="li-text">暂无数据</li>
-                        <li class="li-text">0</li>
+                        <li data-name="text" class="li-text">暂无数据</li>
+                        <li data-name="time" class="li-text">0</li>
                     </ul>
                 </li>
             </ul>
@@ -48,11 +48,13 @@
         <section id="leaving">
             <ul class="fx-row-a leaving-main">
                 <li class="leaving-mes fx-row-a">
-                    <img src="img/clock.png" alt="">
-                    <span class="fr10 fw c6 mr30">Leaving a message</span>
+                    <img class="img-edit ml10" src="img/clock.png" alt="">
+                    <a href="message.html" target="_self">
+                        <span class="fr10 fw c6 mr30">Leaving a message</span>
+                    </a>
                 </li>
-                <li class="call">
-
+                <li class="call tc">
+                    <a href="tel:18092828092">M</a>
                 </li>
             </ul>
         </section>
@@ -60,20 +62,28 @@
         <!--计数模块-->
         <ul id="count" class="fx-row-b">
             <li class="fx-g">
-                <h3 id="artCount">0</h3>
+                <a href="article.html" target="_self">
+                <h3 data-name="artCount">0</h3>
                 <p>Article</p>
+                </a>
             </li>
             <li class="fx-g">
-                <h3 id="movieCount">0</h3>
+                <a href="movie.html" target="_self">
+                <h3 data-name="movieCount">0</h3>
                 <p>Movie</p>
+                </a>
             </li>
             <li class="fx-g">
-                <h3 id="imgCount">0</h3>
+                <a href="photo.html" target="_self">
+                <h3 data-name="imgCount">0</h3>
                 <p>Picture</p>
+                </a>
             </li>
             <li class="fx-g">
-                <h3 id="sayCount">0</h3>
+                <a href="photo.html" target="_self">
+                <h3 data-name="sayCount">0</h3>
                 <p>History</p>
+                </a>
             </li>
         </ul>
 
@@ -82,14 +92,16 @@
             <!--图片头部-->
             <ul class="w90 fx-row-b">
                 <li>
-                    <h3 id="latest-time"></h3>
-                    <h5 class="c9">Latest</h5>
+                    <h3 data-name="time"></h3>
+                    <p class="c9">最近更新</p>
                 </li>
+                <a href="photo.html" target="_self">
                 <li class="more">
                     <div></div>
                     <div></div>
                     <div></div>
                 </li>
+                </a>
             </ul>
 
             <!--图片列表-->
@@ -129,17 +141,19 @@
         <!--文章模块-->
         <section id="main-article">
             <div class="art">
-                <img id="art-img" src="img/4.jpg" alt="" class="show">
-                <h4 id="art-title" class="fw mt10">关于火控系统</h4>
-                <div class="art-text">
+                <img data-name="imgPath" src="img/4.jpg" alt="" class="show">
+                <h4 data-name="title" class="fw mt10">关于火控系统</h4>
+                <div data-name="text" class="art-text">
                     德萨发生的放水电费水送到反倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费
                 </div>
                 <ul class="w90">
+                    <a href="article.html" target="_self">
                     <li class="more fx-col-b pos-more">
                         <div></div>
                         <div></div>
                         <div></div>
                     </li>
+                    </a>
                     <li class="checked">查看</li>
                 </ul>
             </div>
@@ -184,7 +198,7 @@
     </div>
 
 
-    <script src="src/lib/zepto.min.js"></script>
+    <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
 
@@ -199,14 +213,17 @@
                 console.log(obj)
 
                 //banner数据
-                $('.bannerImg').prop('src','img/'+obj.bannerPath);
+                $("[data-name='bannerPath']").prop('src','img/'+obj.bannerPath);
 
                 //计数数据
+                var countObj = $('#count');
+
                 for(var i in obj.count){
 
-                    $('#'+i).text(obj.count[i]);
+                    countObj.find("[data-name='"+i+"']").text(obj.count[i])
 
                 }
+
                 //相册数据
                 var listObj = $('.list-box');
 
@@ -216,25 +233,39 @@
 
                     if(i==0){
 
-                        $('#latest-time').text(obj.imgArrPath[i].time);
+                        $('#latest').find("[data-name='time']").text(obj.imgArrPath[i].time);
 
                     }
 
-                    listObj.eq(i).css('background-image','url(img/'+obj.imgArrPath[i].imgPath+')')
+                    listObj.eq(i).css('background-image','url(img/'+obj.imgArrPath[i].imgPath+')').attr('data-id',obj.imgArrPath[i].id);
+
                 }
-                //说说数据
-                var liTextObj = $('.li-text');
 
-                liTextObj.eq(0).text(obj.sayObj.text);
+                //说说数据sign-text
+                var liTextObj = $('#main-sign');
 
-                liTextObj.eq(1).text(obj.sayObj.time);
+                liTextObj.find("[data-name='text']").text(obj.sayObj.text);
+
+                liTextObj.find("[data-name='time']").text(obj.sayObj.time);
 
                 //文章数据
-                $('#art-img').prop('src','img/'+obj.articleObj.imgPath);
+                var artObj = $('#main-article');
 
-                $('#art-title').text(obj.articleObj.title);
+                artObj.find("[data-name='imgPath']").prop('src','img/'+obj.articleObj.imgPath);
 
-                $('.art-text').text(obj.articleObj.text);
+                artObj.find("[data-name='title']").text(obj.articleObj.title);
+
+                artObj.find("[data-name='text']").text(obj.articleObj.text);
+
+            })
+
+            //=====================================================================
+
+            $('#latest').on('tap','.list-box',function(){
+
+                var id = $(this).attr('data-id');
+
+                console.log(id);
 
             })
 
