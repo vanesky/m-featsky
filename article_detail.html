@@ -27,11 +27,11 @@
 
         <section id="context" class="pd15">
 
-            <h2 class="fw">宇宙最诡异时空 人类所有定律竟全部失效！</h2>
+            <h3 data-name="title" class="fw">宇宙最诡异时空 人类所有定律竟全部失效！</h3>
             <div class="mt7 c6">
-                <span>Featsky</span>
+                <span data-name="author">Featsky</span>
                 &nbsp;
-                <span>2015.02.16</span>
+                <span data-name="time">2015.02.16</span>
             </div>
 
             <div id="content">
@@ -43,10 +43,41 @@
             </div>
         </section>
 
-
     </div>
 
-<script src="src/lib/zepto.min.js"></script>
-<script src="src/js/common.js"></script>
+    <script src="src/lib/zepto.min.js"></script>
+    <script src="src/js/common.js"></script>
+    <script src="src/js/ajax.js"></script>
+    <script>
+        $(function(){
+
+            app.ajax('get',app.url('articleDetail.php'),{id:5},function(data){
+
+                var obj = data;
+
+                console.log(obj)
+
+                var dataNameList = $('#context').find("[data-name]");
+
+                for(var i=0;i<dataNameList.length;i++){
+
+                    var dataObj = $(dataNameList[i]);
+
+                    dataObj.text(obj[dataObj.attr('data-name')]);
+
+                }
+
+                $('#context').find('#content').html(obj.textArr);
+
+            })
+
+        })
+    </script>
+
 </body>
 </html>
+
+
+
+
+

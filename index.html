@@ -113,38 +113,13 @@
             </ul>
         </section>
 
-        <!--首页说说-->
-        <!--<section id="main-say">
-            <ul class="w90 fx-row-b">
-                <li>
-                    <img src="img/1.jpg" class="img-head va-c">
-                    <ul class="dp-ib va-c pdl3">
-                        <li class="fw">FEATSKY 梦中</li>
-                        <li class="c9 fr10">3min 以前</li>
-                    </ul>
-                </li>
-                <li class="more">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </li>
-            </ul>
-        </section>
-
-        <section id="main-say-content">
-            <div class="w90">
-                <p id="say-text">这是最新的分享</p>
-            </div>
-        </section>-->
-
-
         <!--文章模块-->
         <section id="main-article">
             <div class="art">
                 <img data-name="imgPath" src="img/4.jpg" alt="" class="show">
                 <h4 data-name="title" class="fw mt10">关于火控系统</h4>
                 <div data-name="text" class="art-text">
-                    德萨发生的放水电费水送到反倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费倒是放水电费水电费水电费水电费
+
                 </div>
                 <ul class="w90">
                     <a href="article.html" target="_self">
@@ -206,6 +181,7 @@
 
         $(function(){
 
+            //RENDER***********************************************************
             app.ajax('get',app.url('getIndexData.php'),{},function(data){
 
                 var obj = data;
@@ -259,8 +235,9 @@
 
             })
 
-            //=====================================================================
+            //OVER***********************************************************
 
+            //相册事件
             $('#latest').on('tap','.list-box',function(){
 
                 var id = $(this).attr('data-id');
@@ -268,6 +245,14 @@
                 console.log(id);
 
             })
+
+            //文章查看
+            $('.checked').on('tap',function(){
+
+
+
+            })
+
 
 
         })

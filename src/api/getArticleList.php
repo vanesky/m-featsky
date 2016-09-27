@@ -39,21 +39,34 @@
 
         }
 
-        $firstImg = explode(",",$artObj->imgArrPath);
+        //$firstImg = explode(",",$artObj->imgArrPath);
 
-        $resultObj[$i]['imgPath'] = $firstImg[0];
+        //$resultObj[$i]['imgPath'] = $firstImg[0];
 
-        $firstText = explode(",",$artObj->textArr);
+        preg_match('/(<img.+>)/U',$artObj->{'textArr'},$matches);
 
-        $resultObj[$i]['text'] =  $firstText[0];
+        $resultObj[$i]['imgPath'] = $matches[0];
+
+
+
+        //$firstText = explode(",",$artObj->textArr);
+
+        //$resultObj[$i]['text'] =  $firstText[0];
+
+        preg_match('/(<.+>.+<\/.+>)/U',$artObj->textArr,$matches);
+
+        $preText = preg_replace('/<.+>(.+)<\/.+>/U','$1',$matches[0]);
+
+        //echo $preText;
+
+        $resultObj[$i]['text'] = $preText;
+
 
         $resultObj[$i]['id'] = $artObj->{'id'};
 
         $resultObj[$i]['title'] =  $artObj->{'title'};
 
         $resultObj[$i]['time'] =  $artObj->{'time'};
-
-
 
     }
 

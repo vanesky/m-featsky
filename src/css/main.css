@@ -173,19 +173,6 @@
   background-size: cover;
   background-position: top center;
 }
-#main-say {
-  background-color: #F9F9F9;
-  padding: .8rem 0;
-  border-top: 1px solid #ebebeb;
-  border-bottom: 1px solid #ebebeb;
-}
-#main-say-content {
-  padding: 1rem;
-  padding-bottom: 1.5rem;
-}
-#main-say-content #say-text {
-  margin-left: 2.9rem;
-}
 #main-article .art {
   margin-bottom: 1.5rem;
   text-align: center;
