@@ -177,8 +177,8 @@
   margin-bottom: 1.5rem;
   text-align: center;
 }
-#main-article .art img {
-  width: 100%;
+#main-article .art .img-box {
+  height: 15rem;
 }
 #main-article .art .art-text {
   width: 85%;

@@ -116,7 +116,7 @@
         <!--文章模块-->
         <section id="main-article">
             <div class="art">
-                <img data-name="imgPath" src="img/4.jpg" alt="" class="show">
+                <div data-name="imgPath" class="img-box bg-fill"></div>
                 <h4 data-name="title" class="fw mt10">关于火控系统</h4>
                 <div data-name="text" class="art-text">
 
@@ -227,7 +227,9 @@
                 //文章数据
                 var artObj = $('#main-article');
 
-                artObj.find("[data-name='imgPath']").prop('src','img/'+obj.articleObj.imgPath);
+                //artObj.find("[data-name='imgPath']").prop('src','img/'+obj.articleObj.imgPath);
+
+                artObj.find("[data-name='imgPath']").css('background-image','url(img/'+obj.articleObj.imgPath+')');
 
                 artObj.find("[data-name='title']").text(obj.articleObj.title);
 

@@ -54,19 +54,22 @@
     $indexObj['sayObj']['id'] = $sayObj->{'id'};
     $indexObj['sayObj']['time'] = $sayObj->{'time'};
     $indexObj['sayObj']['text'] = $sayObj->{'text'};
-    //文章对象
+
+    //文章对象;
     $articleObj = mysql_fetch_object($artResult);
 
     $indexObj['articleObj']['id'] = $articleObj->{'id'};
     $indexObj['articleObj']['title'] = $articleObj->{'title'};
     $indexObj['articleObj']['time'] = $articleObj->{'time'};
 
-    $firstImg = explode(',',$articleObj->{'imgArrPath'});
-    $indexObj['articleObj']['imgPath'] = $firstImg[0];
-    $firstText = explode(',',$articleObj->{'textArr'});
-    $indexObj['articleObj']['text'] = $firstText[0];
+    //第一张图片
+    preg_match('/<img.+\"(.+\.(jpg|png)).+>/U',$articleObj->text,$matches);
+    $indexObj['articleObj']['imgPath'] = $matches[1];
 
-
+    //第一句文章
+    preg_match('/(<.+>.+<\/.+>)/U',$articleObj->text,$matches);
+    $preText = preg_replace('/<.+>(.+)<\/.+>/U','$1',$matches[0]);
+    $indexObj['articleObj']['text'] = $preText;
 
     echo  json_encode($indexObj);
 
