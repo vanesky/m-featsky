@@ -94,7 +94,7 @@
                         model.find('.article-item').attr('data-id',obj[i].id);
 
                         //列表背景
-                        model.find("[data-name='imgPath']").css('background-image',"url(img/"+obj[i].imgPath+")");
+                        model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
 
                         //标题
                         model.find("[data-name='title']").text(obj[i].title);

@@ -16,21 +16,6 @@
 
     $resultObj = mysql_fetch_object($artResult);
 
-
-    $artObj['title'] = $resultObj->{'title'};
-
-    $artObj['time'] = $resultObj->{'time'};
-
-    $artObj['id'] = $resultObj->{'id'};
-
-    $artObj['author'] = $resultObj->{'author'};
-
-    //preg_match('/(<.+>.+<\/.+>)/U',$resultObj->{'textArr'},$matches);
-
-    //$artObj['text'] = $matches[0];
-
-
-
     echo json_encode($resultObj);
 
 

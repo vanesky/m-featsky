@@ -15,15 +15,16 @@
 
     <header>
         <!--<img id="logo" src="img/logo.png" alt="">-->
-        <ul class="nav-list fx-col-b">
+        <!--<ul class="nav-list fx-col-b">
             <li></li>
             <li></li>
             <li></li>
-        </ul>
+        </ul>-->
+        <h4 class="titles">视频详情</h4>
     </header>
 
     <section id="movie">
-        <video src="video/justin.mp4" controls="controls">
+        <video id="video" src="video/justin.mp4" controls="controls">
             您的浏览器不支持 video 标签。
         </video>
     </section>
@@ -33,17 +34,17 @@
         <section id="movie-main">
             <ul class="w90 fx-row-b c9">
                 <li>
-                    <h4 class="c3">关于防守打法</h4>
+                    <h4 data-name="title" class="c3">关于防守打法</h4>
                     <!--<div class="mt5">
                         <img class="source-span" src="img/earth.png" alt="">
                         <span class="source-img">featsky</span>
                     </div>-->
                 </li>
-                <li class="source-time">2016-02-15</li>
+                <li data-name="time">2016-02-15</li>
             </ul>
             <p class="w90 mt10 c9">
                 <span>简介:</span>
-                第三方斯蒂芬斯蒂芬斯蒂芬
+                <span data-name="description">第三方斯蒂芬斯蒂芬斯蒂芬</span>
             </p>
         </section>
 
@@ -51,15 +52,32 @@
 
     <script src="src/lib/zepto.min.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="src/js/ajax.js"></script>
 
     <script>
         $(function(){
 
             var movieHeight = $('#movie').height()+75;
 
-            console.log(movieHeight)
+            $('.container').css('top',movieHeight+'px');
 
-            $('.container').css('top',movieHeight+'px')
+
+            app.ajax('get',app.url('getMovieDetail.php'),{id:2},function(data){
+
+                var obj = data;
+
+                $('#video').attr('src','video/'+obj.moviePath);
+
+                $("[data-name]").each(function(index,val){
+
+                    var valObj = $(val);
+
+                    var name = valObj.attr('data-name');
+
+                    valObj.text(obj[name]);
+                })
+            })
+
 
         })
     </script>
