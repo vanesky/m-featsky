@@ -1,12 +1,18 @@
 if(!window.com){window.com = {}};
 
-com.renderArticle = function(){
+com.renderArticle = function(id){
 
-    app.ajax('get',app.url('getArticleDetail.php'),{id:5},function(data){
+    app.ajax('get',app.url('getArticleDetail.php'),{id:id},function(data){
 
         var obj = data;
 
-        console.log(obj)
+        if(!obj){
+
+            $('#art-main').text('数据加载失败..');
+
+            return;
+
+        }
 
         var dataNameList = $('#art-item').find("[data-name]");
 

@@ -10,21 +10,24 @@
   top: 0;
   left: 0;
   z-index: 11;
+  -webkit-transform: translateX(30%);
+          transform: translateX(30%);
 }
-#art-item {
-  position: relative;
+#art-main {
+  padding-top: 50px;
   overflow: auto;
   background-color: #fff;
+  min-height: 100%;
 }
-#art-item #content {
+#art-main #art-item #content {
   margin-top: 1.5rem;
   letter-spacing: 1px;
   color: #333;
 }
-#art-item #content p {
+#art-main #art-item #content p {
   margin-top: 1rem;
 }
-#art-item #content img {
+#art-main #art-item #content img {
   max-width: 100%;
   display: block;
   margin: 1rem auto;

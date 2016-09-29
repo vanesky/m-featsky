@@ -3,7 +3,7 @@ window.app = {};
 
 (function(){
 
-    this.ajax = function(type,url,data,sucCallback,errCallback,bef){
+    this.ajax = function(type,url,data,sucCallback,errCallback){
 
         $.ajax({
 
@@ -33,11 +33,13 @@ window.app = {};
 
             beforeSend:function(){
 
-                if(bef){
+                com.load();
 
-                    bef()
+            },
 
-                }
+            complete:function(){
+
+                $('#load').css('display','none');
 
             }
 

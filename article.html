@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/art.css">
+    <link rel="stylesheet" href="component/load/load.css">
+    <link rel="stylesheet" href="src/css/art_detail.css">
 
 </head>
 <body>
@@ -42,17 +44,42 @@
     </nav>
 
     <div class="container">
-        <!--<div class="article-item">
-            <div class="list-bg">
-                <div class="list-tit">
+        <!--列表模板填充-->
+    </div>
 
+    <!--列表落地详情**************************************************-->
+    <div class="com-art-toggle">
+        <header>
+            <!--<img id="logo" src="img/logo.png" alt="">-->
+            <!--<ul class="nav-list fx-col-b">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>-->
+            <h4 class="titles">文章详情</h4>
+        </header>
+
+        <section id="art-main">
+            <div id="art-item" class="pd15">
+                <h3 data-name="title" class="fw">宇宙最诡异时空 人类所有定律竟全部失效！</h3>
+                <div class="mt7 c6">
+                    <span data-name="author">Featsky</span>
+                    <span data-name="time">2015.02.16</span>
+                </div>
+
+                <div id="content">
+                    <p>1.众所周知</p>
+                    <p>2.f放水电费水电费</p>
+                    <img src="img/1.jpg" alt="">
+                    <p>法师打发第三方</p>
+                    <p>冯绍峰的所得税法</p>
                 </div>
             </div>
-            <h5 class="tc mt10">关于houdini龙卷风用法</h5>
-            <p class="pdl30 pdr30 c6 mt10">在考虑就偶是减肥iOS就迪欧放暑假都费劲死飞机哦is就</p>
-            <p class="tr mr15 mt20 fr10 c6">05/15</p>
-        </div>-->
+        </section>
+
+
     </div>
+    <!--********************************************************************-->
 
     <!--列表模板-->
     <div id="model-1" class="hide">
@@ -65,10 +92,11 @@
         </div>
     </div>
 
-    <script src="src/lib/zepto.min.js"></script>
+    <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-
+    <script src="component/load/load.js"></script>
+    <script src="component/articleDetail/art_detail.js"></script>
     <script>
         $(function(){
 
@@ -121,6 +149,23 @@
                     return pageResult = pageResult + pageCount;
                 })
             }
+
+            //=================================================================
+            //详情落地页面高度
+            var w = $(window).height();
+
+            $('#art-main').css('height',w-50 + 'px');
+
+            //列表事件
+            $('.container').on('tap','.article-item',function(){
+
+                var id = $(this).attr('data-id');
+
+                com.renderArticle(100);
+
+            })
+
+
 
 
         })

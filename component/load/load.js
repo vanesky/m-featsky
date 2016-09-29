@@ -8,6 +8,18 @@ com.load = function(){
         '<div class="animate-list"></div>' +
         '</div><span class="animate-text">正在加载 . .</span></div></div>';
 
-    $('.container').append(str);
+    var box = $('#load').css('display');
+
+    if(typeof box == 'undefined'){
+
+        $('.container').append(str);
+
+    }else if(box == 'none'){
+
+
+        $('#load').css('display','block');
+
+
+    }else{return;}
 
 }

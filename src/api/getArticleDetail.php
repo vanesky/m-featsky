@@ -14,9 +14,16 @@
 
     $artResult = mysql_query("SELECT * FROM article where id = $id");
 
-    $resultObj = mysql_fetch_object($artResult);
+    if(!$artResult){
 
-    echo json_encode($resultObj);
+        echo '';
 
+    }else{
+
+        $resultObj = mysql_fetch_object($artResult);
+
+        echo json_encode($resultObj);
+
+    }
 
 ?>
