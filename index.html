@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/main.css">
-
 </head>
 <body>
 
@@ -180,6 +179,10 @@
     <script>
 
         $(function(){
+
+            var w = JSON.parse(localStorage.getItem('device'));
+
+            $('#art-item').css('height', w.h + 'px');
 
             //RENDER***********************************************************
             app.ajax('get',app.url('getIndexData.php'),{},function(data){

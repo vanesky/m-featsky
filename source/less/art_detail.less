@@ -12,7 +12,21 @@
   }
 
 
-  //内容
+.com-art-toggle{
+  background-color: @cf;
+  position: fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:11;
+  //transform: translateX(50%);
+}
+
+//内容
+#art-item{
+  position: relative;
+  overflow:auto;
+  background-color: @cf;
   #content{
     margin-top: 1.5rem;
     letter-spacing: 1px;
@@ -20,3 +34,4 @@
     p{margin-top:1rem;}
     img{max-width: 100%;display:block;margin:1rem auto;}
   }
+}

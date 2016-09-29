@@ -1,4 +1,4 @@
-window.com = {};
+if(!window.com){window.com = {}};
 
 com.load = function(){
 
