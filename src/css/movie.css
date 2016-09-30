@@ -2,12 +2,15 @@
 .container {
   background-color: #f2f2f2;
 }
+#movie-item {
+  padding-top: 1rem;
+}
 #movie-item .movie-list {
   position: relative;
   margin: 0 auto;
   margin-bottom: .8rem;
   width: 100%;
-  height: 18rem;
+  height: 18.5rem;
   overflow: hidden;
 }
 #movie-item .movie-list .movie-content {
@@ -45,10 +48,21 @@
   white-space: nowrap;
 }
 #movie-item .movie-list .movie-box {
-  height: 3rem;
+  height: 3.5rem;
   background-color: #fff;
-  line-height: 3rem;
+  line-height: 3.5rem;
 }
 #movie-item .movie-list .movie-box .box-text {
   margin-left: 1.5rem;
+}
+.com-movie-detail {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(60%);
+          transform: translateX(60%);
+  background-color: #fff;
+  z-index: 10;
 }

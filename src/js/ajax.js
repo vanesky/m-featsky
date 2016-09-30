@@ -3,7 +3,7 @@ window.app = {};
 
 (function(){
 
-    this.ajax = function(type,url,data,sucCallback,errCallback){
+    this.ajax = function(type,url,obj,sucCallback,bef,loadObj,errCallback){
 
         $.ajax({
 
@@ -11,7 +11,7 @@ window.app = {};
 
             url:url,
 
-            data:data,
+            data:obj,
 
             success:function(data,status){
 
@@ -29,11 +29,11 @@ window.app = {};
 
             },
 
-            //timeout:5000,
+            timeout:4000,
 
             beforeSend:function(){
 
-                com.load();
+                if(window.com&&com.load){ com.load(loadObj) }
 
             },
 

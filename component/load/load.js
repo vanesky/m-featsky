@@ -1,6 +1,10 @@
 if(!window.com){window.com = {}};
 
-com.load = function(){
+com.load = function(loadObj){
+
+    if(!loadObj){return false}
+
+    console.log(loadObj)
 
     var str = '<div id="load"><div class="load-main"><div class="animate">' +
         '<div class="animate-list"></div>' +
@@ -8,11 +12,11 @@ com.load = function(){
         '<div class="animate-list"></div>' +
         '</div><span class="animate-text">正在加载 . .</span></div></div>';
 
-    var box = $('#load').css('display');
+    var box = loadObj.find('#load').css('display');
 
     if(typeof box == 'undefined'){
 
-        $('.container').append(str);
+        loadObj.append(str);
 
     }else if(box == 'none'){
 

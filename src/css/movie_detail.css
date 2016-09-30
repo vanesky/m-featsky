@@ -1,14 +1,14 @@
 @charset "utf-8";
-.container {
-  padding-top: 1rem;
-}
 #movie {
-  position: fixed;
+  position: relative;
   width: 100%;
   top: 50px;
 }
 #movie video {
   width: 100%;
+}
+#movie-main {
+  margin-top: 1rem;
 }
 #movie-main .source-img,
 #movie-main .source-span {

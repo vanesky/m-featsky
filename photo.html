@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/photo.css">
+    <link rel="stylesheet" href="src/css/m2-banner.css">
 </head>
 <body>
 
@@ -63,7 +64,17 @@
 
     </div>
 
-    <!--最近模板-->
+    <!--banner图片-->
+    <section class="banner-img">
+        <ul class="banner-img-main">
+            <li class="banner-list"><img src="img/2.jpg" alt=""></li>
+            <li class="banner-list"><img src="img/3.jpg" alt=""></li>
+            <li class="banner-list"><img src="img/4.jpg" alt=""></li>
+        </ul>
+    </section>
+
+
+    <!--最近模板*****************-->
     <div id="model-1" class="hide">
         <h3 data-name="time" class="date-tit"></h3>
         <ul data-name="imgPath" class="list-item clearfix">
@@ -75,13 +86,13 @@
     <div id="model-1-a" class="hide">
         <li class="img-list"></li>
     </div>
-
+    <!--**************************-->
     <!--全部模板-->
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-
+    <script src="src/js/m2-banner.js"></script>
     <script>
 
         $(function(){
@@ -92,12 +103,6 @@
 
             //图片间隔宽度
             imgListWidth(2);
-
-            $(window).click(function(){
-
-                renderImg()
-
-            })
 
             //图片渲染
             function renderImg(){
@@ -156,9 +161,20 @@
                 })
             }
 
+            //图片组件==========================================================
+
+            var w = $(window).width();
+
+            var bannerListObj = $('.banner-list');
+
+            $('.banner-img-main').css('width',bannerListObj.length*w + 'px')
+
+            $('.banner-list').css('width',w + 'px');
 
 
 
+
+            //==================================================================
 
 
             //图片大小和边距

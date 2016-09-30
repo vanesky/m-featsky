@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/movie.css">
+   <!-- <link rel="stylesheet" href="component/load/load.css">-->
+    <link rel="stylesheet" href="src/css/movie_detail.css">
 </head>
 <body>
 
@@ -26,31 +28,52 @@
     <div class="container">
 
         <ul id="movie-item">
-            <!--<li class="movie-list">
-                &lt;!&ndash;<img src="img/0.jpg" alt="">&ndash;&gt;
-                <div class="movie-content"></div>
-                <div class="movie-mask">
-                    &lt;!&ndash;<ul class="summary fx-row-b">
-                        <li class="detail ml15">
-                            <p class="detail-text">在那屋反倒是发送到发送到发送到发送到</p>
-                        </li>
-                        <li class="mr15 fr10">02-15</li>
-                    </ul>&ndash;&gt;
-                    <div class="summary fx-row-b">
-                        <p class="detail-text">在那屋反倒是发送到发送到发送到发送到第三方士大夫</p>
-                        <span class="mr15 fr10">02-15</span>
-                    </div>
-                </div>
-                <div class="movie-box">
-                    <h5 class="box-text">关于火力控制</h5>
-                </div>
-            </li>-->
+            <!--模版列表-->
         </ul>
 
     </div>
 
+    <!--列表详情页面=================================================-->
+    <div class="com-movie-detail">
+        <header>
+            <!--<img id="logo" src="img/logo.png" alt="">-->
+            <!--<ul class="nav-list fx-col-b">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>-->
+            <h4 class="titles">视频详情</h4>
+        </header>
 
-    <!--列表模板-->
+        <section id="movie">
+            <video id="video" src="video/justin.mp4" controls="controls">
+                您的浏览器不支持 video 标签。
+            </video>
+
+            <div id="movie-main">
+                <ul class="w90 fx-row-b c9">
+                    <li>
+                        <h5 data-name="title" class="c10">关于防守打法</h5>
+                        <!--<div class="mt5">
+                            <img class="source-span" src="img/earth.png" alt="">
+                            <span class="source-img">featsky</span>
+                        </div>-->
+                    </li>
+                    <li data-name="time">2016-02-15</li>
+                </ul>
+                <p class="w90 mt10 c6">
+                    <span>简介:</span>
+                    <span data-name="description">第三方斯蒂芬斯蒂芬斯蒂芬</span>
+                </p>
+            </div>
+        </section>
+
+        <div class="container"></div>
+    </div>
+    <!--================================================================-->
+
+
+    <!--列表模板*******************************************-->
     <div id="model-1" class="hide">
         <li class="movie-list">
             <div data-name="imgPath" class="movie-content"></div>
@@ -65,13 +88,17 @@
             </div>
         </li>
     </div>
-
+    <!--****************************************************-->
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
+    <script src="component/load/load.js"></script>
+    <script src="component/movieDetail/movie_detail.js"></script>
 
     <script>
+
+
     $(function(){
 
         var pageResult = 0,pageCount = 2;
@@ -112,18 +139,34 @@
 
                 if(str == ''){
 
-                    alert('没了')
+                    console.log('没了')
 
                 }else{
 
                     $('#movie-item').append(str);
 
                 }
-
                 return pageResult = pageResult + pageCount;
-            })
 
+            },false,$('body'));
         }
+
+
+        $('.titles').click(function(){
+
+            renderData();
+
+        })
+
+        //列表事件
+        $('#movie-item').on('tap','li',function(){
+            //alert('ss');
+            var id = $(this).attr('data-id');
+
+            com.renderMovie(id);
+
+
+        })
 
 
 

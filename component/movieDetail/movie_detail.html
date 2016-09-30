@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="src/css/base.css">
-    <link rel="stylesheet" href="src/css/movie_detail.css">
+    <link rel="stylesheet" href="../../src/css/base.css">
+    <link rel="stylesheet" href="../../src/css/movie_detail.css">
 </head>
 <body>
 
@@ -24,17 +24,14 @@
     </header>
 
     <section id="movie">
-        <video id="video" src="video/justin.mp4" controls="controls">
+        <video id="video" src="" controls="controls">
             您的浏览器不支持 video 标签。
         </video>
-    </section>
 
-    <div class="container">
-
-        <section id="movie-main">
+        <div id="movie-main">
             <ul class="w90 fx-row-b c9">
                 <li>
-                    <h4 data-name="title" class="c3">关于防守打法</h4>
+                    <h5 data-name="title" class="c10">关于防守打法</h5>
                     <!--<div class="mt5">
                         <img class="source-span" src="img/earth.png" alt="">
                         <span class="source-img">featsky</span>
@@ -42,31 +39,25 @@
                 </li>
                 <li data-name="time">2016-02-15</li>
             </ul>
-            <p class="w90 mt10 c9">
+            <p class="w90 mt10 c6">
                 <span>简介:</span>
                 <span data-name="description">第三方斯蒂芬斯蒂芬斯蒂芬</span>
             </p>
-        </section>
+        </div>
+    </section>
 
-    </div>
-
-    <script src="src/lib/zepto.min.js"></script>
-    <script src="src/js/common.js"></script>
-    <script src="src/js/ajax.js"></script>
-
+    <script src="../../src/lib/zepto.min.js"></script>
+    <script src="../../src/js/common.js"></script>
+    <script src="../../src/js/ajax.js"></script>
+    <script src="../load/load.js"></script>
     <script>
         $(function(){
-
-            var movieHeight = $('#movie').height()+75;
-
-            $('.container').css('top',movieHeight+'px');
-
 
             app.ajax('get',app.url('getMovieDetail.php'),{id:2},function(data){
 
                 var obj = data;
 
-                $('#video').attr('src','video/'+obj.moviePath);
+                $('#video').attr('src','../../video/'+obj.moviePath);
 
                 $("[data-name]").each(function(index,val){
 
@@ -76,7 +67,7 @@
 
                     valObj.text(obj[name]);
                 })
-            })
+            },false,$('body'))
 
 
         })

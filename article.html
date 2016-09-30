@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/art.css">
-    <link rel="stylesheet" href="component/load/load.css">
     <link rel="stylesheet" href="src/css/art_detail.css">
 
 </head>
@@ -47,7 +46,7 @@
         <!--列表模板填充-->
     </div>
 
-    <!--列表落地详情**************************************************-->
+    <!--列表落地详情================================================-->
     <div class="com-art-toggle">
         <header>
             <!--<img id="logo" src="img/logo.png" alt="">-->
@@ -79,9 +78,10 @@
 
 
     </div>
-    <!--********************************************************************-->
+    <!--===============================================================-->
 
-    <!--列表模板-->
+
+    <!--列表模板*********************************************************-->
     <div id="model-1" class="hide">
         <div class="article-item">
             <div data-name="imgPath" class="list-bg"></div>
@@ -91,6 +91,7 @@
             <p data-name="text" class="pdl30 pdr30 c6"></p>
         </div>
     </div>
+    <!--*****************************************************************-->
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -147,7 +148,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-                })
+                },false,$('body'))
             }
 
             //=================================================================
@@ -161,7 +162,7 @@
 
                 var id = $(this).attr('data-id');
 
-                com.renderArticle(100);
+                com.renderArticle(id);
 
             })
 
