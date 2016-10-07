@@ -14,8 +14,8 @@
 <body>
 
     <header>
-        <img id="logo" src="img/logo.png" alt="">
-        <ul class="nav-list fx-col-b">
+        <img id="logo" src="img/fixed/logo.png" alt="">
+        <ul class="menu-list fx-col-b">
             <li></li>
             <li></li>
             <li></li>
@@ -47,14 +47,16 @@
         <section id="leaving">
             <ul class="fx-row-a leaving-main">
                 <li class="leaving-mes fx-row-a">
-                    <img class="img-edit ml10" src="img/clock.png" alt="">
+                    <img class="img-edit ml10" src="img/fixed/clock.png" alt="">
                     <a href="message.html" target="_self">
                         <span class="fr10 fw c6 mr30">Leaving a message</span>
                     </a>
                 </li>
-                <li class="call tc">
-                    <a href="tel:18092828092">M</a>
+                <a href="tel:18092828092" class="cf">
+                <li class="call">
+                    M
                 </li>
+                </a>
             </ul>
         </section>
 
@@ -145,27 +147,27 @@
         <div class="nav-head"></div>
         <ul class="nav-item">
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/home.png" alt="">
                 <span>主页</span>
             </li>
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/say-white.png" alt="">
                 <span>说说</span>
             </li>
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/article-white.png" alt="">
                 <span>文章</span>
             </li>
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/movie-white.png" alt="">
                 <span>影视</span>
             </li>
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/photo-white.png" alt="">
                 <span>照片</span>
             </li>
             <li class="nav-list">
-                <img src="img/edit.png" alt="">
+                <img src="img/fixed/message-white.png" alt="">
                 <span>留言</span>
             </li>
         </ul>
@@ -176,6 +178,7 @@
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
 
+    <script src="component/menu/menu.js"></script>
     <script>
 
         $(function(){
@@ -257,6 +260,7 @@
 
 
             })
+
 
 
 

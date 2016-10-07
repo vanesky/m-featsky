@@ -314,7 +314,7 @@ sub {
 @c6:#666;@c9:#999;@c10:#101010;
 @a:#49A0DB;
 @ba:#49A0DB;
-
+@c:#FCFBF9;
 .c-a{
   color:#49A0DB;
 }
@@ -340,7 +340,7 @@ header{
   height:50px;
   background-color:#101010;
   background-color:rgba(16,16,16,1);
-  z-index: 10;
+  z-index: 12;
 
   //说明中间
   .titles{
@@ -358,7 +358,7 @@ header{
     margin-left:3%;
   }
 
-  .nav-list{
+  .menu-list{
     width:18px;
     height:18px;
     margin-top:16px;
@@ -419,7 +419,7 @@ a,a:hover{
   border-bottom:1px solid #ebebeb;
 }
 //按钮圆角
-.br5{border-radius: 0.5rem;}
+.br5{border-radius: 0.5px;}
 //透明背景
 .bg-fill{
   background-repeat: no-repeat;
@@ -440,13 +440,14 @@ a,a:hover{
 
 div#nav{
   position: fixed;
-  width:45%;
+  width:12rem;
   height:100%;
   top:0;
   left:100%;
-  //transform:translateX(-100%);
-  background-color:#FCFBF9;
-  z-index:90;
+  background-color:@c10;
+  //box-shadow:-2px 0px 25px 1px @c3;
+  z-index:11;
+  transition: transform .4s;
 
   //预留头部
 
@@ -456,18 +457,18 @@ div#nav{
     margin-top:6rem;
     //列表
     .nav-list{
-      color:@c6;
+      color:@cc;
       font-size:1.4rem;
       margin-top:3rem;
       padding:0 2rem;
       //图标
       &>img{
-        width:2rem;
+        width:1.8rem;
         vertical-align: middle;
       }
       span{
         vertical-align: middle;
-        margin-left:1.5rem;
+        margin-left:1rem;
       }
       //文字
     }
