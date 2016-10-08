@@ -13,14 +13,14 @@
 
                 obj.css({
 
-                    'width': obj.children().length*banner_w + 'px',
+                    //'width': obj.children().length*banner_w + 'px',
 
                     'transition':'transform '+sel.speed/1000+'s'
 
 
                 });
 
-                obj.children().css('width',banner_w + 'px');
+                //obj.children().css('width',banner_w + 'px');
 
             }
 

@@ -109,12 +109,23 @@
 
     <!--查看图片组件-->
     <section class="banner-img">
+        <div id="header-bg">
+            <img id="logo" class="back" src="img/fixed/arrow.png" alt="">
+            <p id="header-title"><span>1</span>/3</p>
+        </div>
+
         <ul class="banner-img-main">
-            <li class="banner-list fx-col-c"><img src="img/2.jpg" alt=""></li>
+            <li class="banner-list fx-col-c"><img src="img/21.jpg" alt=""></li>
             <li class="banner-list fx-col-c"><img src="img/3.jpg" alt=""></li>
             <li class="banner-list fx-col-c"><img src="img/4.jpg" alt=""></li>
         </ul>
     </section>
+    <!--***********图片组件子列表模板*************-->
+    <div id="model-2" class="hide">
+        <li class="banner-list fx-col-c"><img src="" alt=""></li>
+    </div>
+    <!--*****************************************-->
+
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -126,7 +137,7 @@
 
         $(function(){
 
-            var pageResult = 0,pageCount = 1;
+            var pageResult = 0,pageCount = 1,w = $(window).width();
 
             renderImg();
 
@@ -197,7 +208,7 @@
             //图片大小和边距
             function imgListWidth(param){
 
-                var w = JSON.parse(localStorage.getItem('device')).w
+                //var w = JSON.parse(localStorage.getItem('device')).w
 
                 var liw = (w-param*2)/3 - 0.1;
 
@@ -252,10 +263,13 @@
              }*/
 
 
+            $('.back').click(function(){
 
+                renderImg()
+
+            })
 
             //调用图片放大组件
-
             $('.banner-img-main').bannerMove({
 
                 speed:400,
@@ -265,7 +279,69 @@
             });
 
 
+            //相册图片事件
+
+            $('.banner-list').css('width',w+'px');
+
+            $('#channel-latest').on('tap','.img-list',function(){
+
+                var str = '',imgs = [],imgId = '',_this = this;
+
+                var pageImgObj = $('#channel-latest').find('.img-list');
+
+                    pageImgObj.each(function(index,obj){
+
+                        if(obj == _this){imgId = index}
+
+                        var imgpath = obj.style.backgroundImage;
+
+                            imgpath = imgpath.match(/\/(.+g)/)[1];
+
+                            imgs.push(imgpath);
+
+                    })
+
+                var imgModel = $('#model-2').clone();
+
+                    $(imgs).each(function(index,obj){
+
+                        imgModel.find('img').attr('src',"img/" + obj);
+
+                        str += imgModel.html()
+
+                    })
+                //*********************************************************
+
+                var bimObj = $('.banner-img-main')
+
+                    bimObj.html(str).css({
+
+                        'transition':'',
+
+                        'transform':'translateX('+-(imgId*w)+'px)',
+
+                        'width':pageImgObj.length*w + 'px'
+
+                    })
+
+                    setTimeout(function(){
+
+                        bimObj.css('transition',"transform  0.4s");
+
+                    },100)
+
+                $('.banner-img').css('display','block').animate({
+
+                    opacity:1
+
+                },200);
+
+
+            })
+
+
         })
+
     </script>
 
 </body>

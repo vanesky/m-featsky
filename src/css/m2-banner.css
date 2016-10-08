@@ -3,18 +3,19 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  left: 0;
+  left: 0px;
   top: 0;
   overflow: hidden;
-  z-index: 10;
+  z-index: 13;
   background-color: #101010;
+  display: none;
+  opacity: 0;
 }
 .banner-img .banner-img-main {
   height: 100%;
   position: relative;
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
-  background-color: pink;
 }
 .banner-img .banner-img-main .banner-list {
   height: 100%;
@@ -34,4 +35,25 @@
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
+}
+.banner-img #header-bg {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  z-index: 12;
+  background-color: rgba(16, 16, 16, 0.8);
+}
+.banner-img #header-bg .back {
+  height: 25px;
+  margin-top: 13px;
+  margin-left: 15px;
+  float: left;
+}
+.banner-img #header-bg #header-title {
+  line-height: 50px;
+  width: 20%;
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: 1px;
+  color: #dbdbdb;
 }
