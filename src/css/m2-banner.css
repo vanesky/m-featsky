@@ -42,12 +42,12 @@
   height: 50px;
   z-index: 12;
   background-color: rgba(16, 16, 16, 0.8);
-}
-.banner-img #header-bg .back {
-  height: 25px;
-  margin-top: 13px;
-  margin-left: 15px;
-  float: left;
+  /*.back{
+      height:25px;
+      margin-top: 13px;
+      margin-left: 15px;
+      float: left;
+    }*/
 }
 .banner-img #header-bg #header-title {
   line-height: 50px;

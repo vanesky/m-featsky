@@ -630,6 +630,12 @@ a:hover {
   background-size: cover;
   background-position: center center;
 }
+.back {
+  height: 25px;
+  margin-top: 13px;
+  margin-left: 15px;
+  float: left;
+}
 .img-edit {
   height: 1.8rem;
 }

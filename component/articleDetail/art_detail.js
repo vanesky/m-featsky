@@ -27,4 +27,6 @@ com.renderArticle = function(id){
         $('#art-item').find('#content').html(obj.text);
 
     },false,$('.com-art-toggle'))
+
+
 }

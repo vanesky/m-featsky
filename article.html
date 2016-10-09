@@ -79,12 +79,7 @@
     <!--列表落地详情================================================-->
     <div class="com-art-toggle">
         <header>
-            <!--<img id="logo" src="img/logo.png" alt="">-->
-            <!--<ul class="nav-list fx-col-b">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>-->
+            <img class="back" src="img/fixed/arrow.png" alt="">
             <h4 class="titles">文章详情</h4>
         </header>
 
@@ -105,7 +100,6 @@
                 </div>
             </div>
         </section>
-
 
     </div>
     <!--===============================================================-->
@@ -197,6 +191,11 @@
 
             })
 
+            $('.back').on('tap',function(){
+
+                $('.com-art-toggle').css('transform','translateX(100%)');
+
+            })
 
 
 
