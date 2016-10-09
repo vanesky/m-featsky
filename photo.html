@@ -111,7 +111,7 @@
     <section class="banner-img">
         <div id="header-bg">
             <img class="back" src="img/fixed/arrow.png" alt="">
-            <p id="header-title"><span>1</span>/3</p>
+            <p id="header-title"><span id="title-grade"></span>/<span id="title-grades"></span></p>
         </div>
 
         <ul class="banner-img-main">
@@ -263,6 +263,11 @@
              }*/
 
 
+            $('.titles').click(function(){
+
+                renderImg();
+
+            })
 
             //调用图片放大组件
 
@@ -272,23 +277,9 @@
 
                 speed:400,
 
-                second:0
+                second:1
 
             });
-
-            //相册图片事件
-            $('.back').on('tap',function(){
-
-                $('.banner-img').animate({
-
-                    opacity:0,
-
-                },function(){
-
-                    $(this).css('display','none');
-
-                })
-            })
 
 
             $('.banner-list').css('width',w+'px');
@@ -296,6 +287,14 @@
             $('#channel-latest').on('tap','.img-list',function(){
 
                 var str = '',imgs = [],imgId = '',_this = this;
+
+                $(document).on('touchmove',function(e){
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                })
 
                 //当前页面所有的图片列表
                 var pageImgObj = $('#channel-latest').find('.img-list');
@@ -321,8 +320,26 @@
                         str += imgModel.html()
 
                     })
+
                 //*********************************************************
 
+                bimObj.bannerMove({
+
+                    speed:400,
+
+                    grade:imgId,
+
+                    grades:pageImgObj.length,
+
+                    second:0
+
+                });
+
+                bimObj.html(str);
+
+                /*$('#title-grade').text(imgId+1);
+
+                $('#title-grades').text(pageImgObj.length);
 
                 bimObj.html(str).css({
 
@@ -330,7 +347,7 @@
 
                     'width':pageImgObj.length*w + 'px'
 
-                })
+                })*/
 
                 $('.banner-img').css('display','block').animate({
 

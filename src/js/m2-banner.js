@@ -13,13 +13,17 @@
 
                 obj.css({
 
-                    //'width': obj.children().length*banner_w + 'px',
+                    'width': sel.grades*banner_w + 'px',
 
-                    'transition':'transform '+sel.speed/1000+'s'
+                    'transition':'transform '+sel.speed/1000+'s',
+
+                    'transform':'translateX('+-(sel.grade*banner_w)+'px)'
 
                 });
 
-                //obj.children().css('width',banner_w + 'px');
+                $('.banner-img').find('#title-grade').text(sel.grade+1);
+
+                $('.banner-img').find('#title-grades').text(sel.grades);
 
             }
 
@@ -47,6 +51,14 @@
 
                 }
 
+                var gradeObj = $('.banner-img').find('#title-grade');
+
+                var isAdd = direction == 'left'? 1 : -1;
+
+                    gradeObj.text(Number(gradeObj.text())+isAdd);
+
+
+
                 obj.css('transform','translateX('+(xIng-banner_)+'px)');
 
             }
@@ -72,9 +84,9 @@
 
                         }else if(e.targetTouches.length ==1){
 
-                            lateX = e.targetTouches[0].pageX;
+                            lateX = e.targetTouches[0].clientX;
 
-                            lateY = e.targetTouches[0].pageY;
+                            lateY = e.targetTouches[0].clientY;
 
                         }
                     }
@@ -181,9 +193,9 @@
                             var nw = (_this.width()-$(window).width())/2;
 
                             //当前手指移动的距离(正负)
-                            var x = e.targetTouches[0].pageX - lateX;
+                            var x = e.targetTouches[0].clientX - lateX;
 
-                            var y = e.targetTouches[0].pageY - lateY;
+                            var y = e.targetTouches[0].clientY - lateY;
 
                             //当前图片的偏移距离
                             var x_ = _this.css('left');
@@ -235,6 +247,23 @@
                     })
                 }
 
+
+                //返回事件
+                $('.banner-img').find('.back').on('tap',function(){
+
+                    $('.banner-img').animate({
+
+                        opacity:0,
+
+                    },function(){
+
+                        $(this).css('display','none');
+
+                    })
+
+                    $(document).off('touchmove');
+                })
+
             }
 
         }).apply(banner,[_this])
@@ -255,6 +284,16 @@
             //$(window).resize(function(){ banner.slide();})
 
         }
+
+
+        if(sel.grade || sel.grades){
+
+            banner.init();
+
+            return ;
+
+        }
+
         runResize();
 
 
