@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/m2-banner.css">
 </head>
 <body>
 
@@ -47,9 +48,9 @@
         <section id="leaving">
             <ul class="fx-row-a leaving-main">
                 <li class="leaving-mes fx-row-a">
-                    <img class="img-edit ml10" src="img/fixed/clock.png" alt="">
-                    <a href="message.html" target="_self">
-                        <span class="fr10 fw c6 mr30">Leaving a message</span>
+                    <a href="message.html" target="_self" class="mr20">
+                    <img class="img-edit va-c" src="img/fixed/edit.png" alt="">
+                    <span class="fr10 fw c6 ml20">Leaving a message</span>
                     </a>
                 </li>
                 <a href="tel:18092828092" class="cf">
@@ -81,7 +82,7 @@
                 </a>
             </li>
             <li class="fx-g">
-                <a href="photo.html" target="_self">
+                <a href="say.html" target="_self">
                 <h3 data-name="sayCount">0</h3>
                 <p>History</p>
                 </a>
@@ -130,7 +131,7 @@
                         <div></div>
                     </li>
                     </a>
-                    <li class="checked">查看</li>
+                    <li data-name="id" class="checked">查看</li>
                 </ul>
             </div>
         </section>
@@ -174,11 +175,32 @@
     </div>
 
 
+    <!--查看图片组件-->
+    <section class="banner-img">
+        <div id="header-bg">
+            <img class="back" src="img/fixed/arrow.png" alt="">
+            <p id="header-title"><span id="title-grade"></span>/<span id="title-grades"></span></p>
+        </div>
+
+        <ul class="banner-img-main">
+            <!--<li class="banner-list fx-col-c"><img src="img/21.jpg" alt=""></li>
+            <li class="banner-list fx-col-c"><img src="img/3.jpg" alt=""></li>
+            <li class="banner-list fx-col-c"><img src="img/4.jpg" alt=""></li>-->
+        </ul>
+    </section>
+    <!--***********图片组件子列表模板*************-->
+    <div id="model-2" class="hide">
+        <li class="banner-list fx-col-c"><img src="" alt=""></li>
+    </div>
+    <!--*****************************************-->
+
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-
     <script src="component/menu/menu.js"></script>
+    <!--图片组件-->
+    <script src="component/album/m2-banner.js"></script>
+    <script src="component/album/album_render.js"></script>
     <script>
 
         $(function(){
@@ -192,7 +214,7 @@
 
                 var obj = data;
 
-                console.log(obj)
+                //console.log(obj)
 
                 //banner数据
                 $("[data-name='bannerPath']").prop('src','img/'+obj.bannerPath);
@@ -235,33 +257,46 @@
 
                 //artObj.find("[data-name='imgPath']").prop('src','img/'+obj.articleObj.imgPath);
 
+                artObj.find(".checked").attr('data-id',obj.articleObj.id);
+
                 artObj.find("[data-name='imgPath']").css('background-image','url('+obj.articleObj.imgPath+')');
 
                 artObj.find("[data-name='title']").text(obj.articleObj.title);
 
-                artObj.find("[data-name='text']").text(obj.articleObj.text);
+                artObj.find("[data-name='text']").text(obj.articleObj.text);  artObj.find("[data-name='text']").text(obj.articleObj.text);
 
             },false,function(){alert('网络错误')})
 
-            //OVER***********************************************************
-
-            //相册事件
-            $('#latest').on('tap','.list-box',function(){
-
-                var id = $(this).attr('data-id');
-
-                console.log(id);
-
-            })
+            //OVER**********************************************************************
 
             //文章查看
             $('.checked').on('tap',function(){
 
-
+                open('article_detail.html?'+$(this).attr('data-id'),'_self');
 
             })
 
+            //==========================================================
 
+            //调用图片组件
+            var bimObj =  $('.banner-img-main');
+
+            bimObj.bannerMove({
+
+                speed:400,
+
+                second:1
+
+            });
+
+            //页面图片列表事件
+            $('.latest-item').on('tap','.list-box',function(){
+                //最近|全部
+                var pageImgObj = $('.latest-item').find('.list-box');
+
+                com.pageImageEvent(pageImgObj,this,bimObj,$('.banner-img'));
+
+            })
 
 
         })

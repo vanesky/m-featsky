@@ -35,13 +35,9 @@
             </div>
 
             <div id="content">
-                <p>1.众所周知，超大质量黑洞是宇宙中的恐怖天体，有句话说在我们生活在光锥之内，光锥之外的宇宙我们是无法得知的。那么黑洞内部的时空就有可</p>
-                <p>2.f放水电费水电费</p>
+                <!--<p></p>
                 <img src="img/1.jpg" alt="">
-                <p>法师打发第三方</p>
-                <p>冯绍峰的所得税法</p>
-                <p>法师打发第三方</p>
-                <p>冯绍峰的所得税法</p>
+                <p></p>-->
             </div>
         </section>
 
@@ -51,11 +47,15 @@
     <script src="src/lib/zepto.min.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-    <script src="component/articleDetail/render_article_detail.js"></script>
+    <script src="component/articleDetail/art_detail.js"></script>
     <script>
         $(function(){
 
-            com.renderArticle();
+            var id = location.href;
+
+                id = id.split('?')[1];
+
+                com.renderArticle(id);
 
         })
     </script>

@@ -115,9 +115,9 @@
         </div>
 
         <ul class="banner-img-main">
-            <li class="banner-list fx-col-c"><img src="img/21.jpg" alt=""></li>
+            <!--<li class="banner-list fx-col-c"><img src="img/21.jpg" alt=""></li>
             <li class="banner-list fx-col-c"><img src="img/3.jpg" alt=""></li>
-            <li class="banner-list fx-col-c"><img src="img/4.jpg" alt=""></li>
+            <li class="banner-list fx-col-c"><img src="img/4.jpg" alt=""></li>-->
         </ul>
     </section>
     <!--***********图片组件子列表模板*************-->
@@ -126,13 +126,13 @@
     </div>
     <!--*****************************************-->
 
-
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="component/menu/menu.js"></script>
 
-    <script src="src/js/m2-banner.js"></script>
+    <script src="component/album/m2-banner.js"></script>
+    <script src="component/album/album_render.js"></script>
     <script>
 
         $(function(){
@@ -201,9 +201,7 @@
                 })
             }
 
-
             //==================================================================
-
 
             //图片大小和边距
             function imgListWidth(param){
@@ -231,37 +229,7 @@
                 }
             }
 
-
-            /*for(var i=0;i<obj.length;i++){
-
-             var imgStr = '';
-
-             if(obj[i].statusCode == 404){continue;}
-
-             //列表id
-             //model.find('.list-item').attr('data-id',obj[i].id);
-
-             //时间
-             model.find("[data-name='time']").text(obj[i].time);
-
-             //========================================================
-             for(var j=0;j<obj[i].imgPath.length;j++){
-
-             imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].imgPath[j]+")").attr('data-id',j);
-
-             imgStr += imgListModel.html();
-
-             }
-             //向内存中的dom模板插入图片数列表 && 顺带添加id
-             model.find('.list-item').html(imgStr).attr('data-id',obj[i].id);
-
-             imgListLeft(model.find('.img-list'),2);
-
-             //=============================================================
-             //保存对象列表字符串到变量
-             str +=  model.html();
-             }*/
-
+            //==================================================================
 
             $('.titles').click(function(){
 
@@ -269,8 +237,7 @@
 
             })
 
-            //调用图片放大组件
-
+            //调用图片组件
             var bimObj =  $('.banner-img-main');
 
             bimObj.bannerMove({
@@ -281,80 +248,12 @@
 
             });
 
-
-            $('.banner-list').css('width',w+'px');
-
+            //页面图片列表事件
             $('#channel-latest').on('tap','.img-list',function(){
-
-                var str = '',imgs = [],imgId = '',_this = this;
-
-                $(document).on('touchmove',function(e){
-
-                    e.preventDefault();
-
-                    e.stopPropagation();
-
-                })
-
-                //当前页面所有的图片列表
+                //最近|全部
                 var pageImgObj = $('#channel-latest').find('.img-list');
 
-                    pageImgObj.each(function(index,obj){
-
-                        if(obj == _this){imgId = index}
-
-                        var imgpath = obj.style.backgroundImage;
-
-                            imgpath = imgpath.match(/\/([\w]+\.(jpg|png))/)[1];
-
-                            imgs.push(imgpath);
-
-                    })
-
-                var imgModel = $('#model-2').clone();
-
-                    $(imgs).each(function(index,obj){
-
-                        imgModel.find('img').attr('src',"img/"+ obj);
-
-                        str += imgModel.html()
-
-                    })
-
-                //*********************************************************
-
-                bimObj.bannerMove({
-
-                    speed:400,
-
-                    grade:imgId,
-
-                    grades:pageImgObj.length,
-
-                    second:0
-
-                });
-
-                bimObj.html(str);
-
-                /*$('#title-grade').text(imgId+1);
-
-                $('#title-grades').text(pageImgObj.length);
-
-                bimObj.html(str).css({
-
-                    'transform':'translateX('+-(imgId*w)+'px)',
-
-                    'width':pageImgObj.length*w + 'px'
-
-                })*/
-
-                $('.banner-img').css('display','block').animate({
-
-                    opacity:1
-
-                },200);
-
+                com.pageImageEvent(pageImgObj,this,bimObj,$('.banner-img'))
 
             })
 

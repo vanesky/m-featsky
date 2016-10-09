@@ -15,11 +15,17 @@
 
                     'width': sel.grades*banner_w + 'px',
 
-                    'transition':'transform '+sel.speed/1000+'s',
+                    'transition':'',
 
                     'transform':'translateX('+-(sel.grade*banner_w)+'px)'
 
                 });
+
+                setTimeout(function(){
+
+                    obj.css('transition','transform '+sel.speed/1000+'s');
+
+                },50)
 
                 $('.banner-img').find('#title-grade').text(sel.grade+1);
 
@@ -272,6 +278,8 @@
         function runResize(){
 
             //banner.slide('left');
+
+            $('.banner-list').css('width',banner_w+'px');
 
             banner.init();
 
