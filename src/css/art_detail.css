@@ -10,8 +10,12 @@
   top: 0;
   left: 0;
   z-index: 13;
-  -webkit-transform: translateX(10%);
-          transform: translateX(10%);
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
 }
 #art-main {
   padding-top: 50px;

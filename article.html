@@ -185,19 +185,30 @@
             //列表事件
             $('.container').on('tap','.article-item',function(){
 
+                /*$(document).on('touchmove',function(e){
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                })*/
+
                 var id = $(this).attr('data-id');
 
                 com.renderArticle(id);
 
+                $('.com-art-toggle').css('transform','translateX(0%)');
+
             })
 
+            //返回事件
             $('.back').on('tap',function(){
+
+                //$(document).off('touchmove');
 
                 $('.com-art-toggle').css('transform','translateX(100%)');
 
             })
-
-
 
         })
     </script>
