@@ -18,10 +18,17 @@
   transition: transform 0.4s, -webkit-transform 0.4s;
 }
 #art-main {
+  position: relative;
   padding-top: 50px;
   overflow: auto;
   background-color: #fff;
   min-height: 100%;
+}
+#art-item {
+  position: relative;
+  top: 0px;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
 }
 #art-item #content {
   margin-top: 1.5rem;
