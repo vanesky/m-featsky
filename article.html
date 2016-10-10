@@ -136,7 +136,7 @@
 
                     var obj = data,str = '';
 
-                    console.log(obj);
+                    //console.log(obj);
 
                     var model = $('#model-1').clone();
 
@@ -173,6 +173,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
+
                 },false,$('body'))
             }
 
@@ -189,6 +190,8 @@
 
                 com.renderArticle(id);
 
+                $('.com-art-toggle').css('transform','translateX(0)');
+
             })
 
             $('.back').on('tap',function(){
@@ -198,6 +201,37 @@
             })
 
 
+            //页面滚动
+            var page_y = '';
+
+            var artItemObj = $('#art-item');
+
+            var artMainObj = $('#art-main');
+
+            artMainObj.on('touchstart',function(e){
+
+                    page_y = e.touches[0].clientY;
+
+            })
+
+            artMainObj.on('touchmove',function(e){
+
+                var num = e.touches[0].clientY - page_y;
+
+                var stop = artMainObj.scrollTop();
+
+                if(artItemObj.height()<artMainObj.height()){
+
+                    e.preventDefault();
+
+                }
+
+                if(stop>=artItemObj.height()-artMainObj.height()&&num<0){
+
+                    e.preventDefault();
+
+                }
+            })
 
         })
     </script>

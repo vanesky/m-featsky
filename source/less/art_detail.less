@@ -19,17 +19,22 @@
   top:0;
   left:0;
   z-index:13;
-  transform: translateX(10%);
+  transform: translateX(100%);
+  transition:transform 0.4s;
 }
 
 //内容
 #art-main{
+  position: relative;
   padding-top:50px;
   overflow:auto;
   background-color: @cf;
   min-height: 100%;
 }
   #art-item{
+    position: relative;
+    top:0px;
+    transform: translateY(0px);
     #content{
       margin-top: 1.5rem;
       letter-spacing: 1px;
