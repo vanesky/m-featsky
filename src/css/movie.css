@@ -59,10 +59,14 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  top: 0;
+  top: 0px;
   left: 0;
+  background-color: #fff;
+  z-index: 12;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
-  background-color: #fff;
-  z-index: 10;
 }

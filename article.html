@@ -120,7 +120,7 @@
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-    <script src="component/menu/menu.js"></script>
+
     <script src="component/load/load.js"></script>
     <script src="component/articleDetail/art_detail.js"></script>
     <script>
@@ -194,11 +194,7 @@
 
             })
 
-            $('.back').on('tap',function(){
-
-                $('.com-art-toggle').css('transform','translateX(100%)');
-
-            })
+            bom.moveDetail($('.com-art-toggle'));
 
 
             //页面滚动

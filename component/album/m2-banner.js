@@ -253,23 +253,6 @@
                     })
                 }
 
-
-                //返回事件
-                $('.banner-img').find('.back').on('tap',function(){
-
-                    $('.banner-img').animate({
-
-                        opacity:0,
-
-                    },function(){
-
-                        $(this).css('display','none');
-
-                    })
-
-                    $(document).off('touchmove');
-                })
-
             }
 
         }).apply(banner,[_this])

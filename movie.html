@@ -66,12 +66,7 @@
     <!--列表详情页面=================================================-->
     <div class="com-movie-detail">
         <header>
-            <!--<img id="logo" src="img/logo.png" alt="">-->
-            <!--<ul class="nav-list fx-col-b">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>-->
+            <img class="back" src="img/fixed/arrow.png" alt="">
             <h4 class="titles">视频详情</h4>
         </header>
 
@@ -123,7 +118,6 @@
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
-    <script src="component/menu/menu.js"></script>
 
     <script src="component/load/load.js"></script>
     <script src="component/movieDetail/movie_detail.js"></script>
@@ -184,6 +178,10 @@
         }
 
 
+        //事件
+
+        bom.moveDetail($('.com-movie-detail'));
+
         $('.titles').click(function(){
 
             renderData();
@@ -192,10 +190,16 @@
 
         //列表事件
         $('#movie-item').on('tap','li',function(){
-            //alert('ss');
+
             var id = $(this).attr('data-id');
 
             com.renderMovie(id);
+
+            $('.com-movie-detail').css('transform','translateX(0%)').on('touchmove',function(e){
+
+                e.preventDefault();
+
+            })
 
 
         })

@@ -651,7 +651,7 @@ div#nav {
   top: 0;
   left: 100%;
   background-color: #101010;
-  z-index: 11;
+  z-index: 10;
   -webkit-transition: -webkit-transform .4s;
   transition: -webkit-transform .4s;
   transition: transform .4s;

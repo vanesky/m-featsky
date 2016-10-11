@@ -6,7 +6,7 @@
 
     (function(){
 
-        this.device = function(){                          //种植设备信息
+        this.device = function(){
 
             //if(window.localStorage.device){return false}
 
@@ -48,7 +48,7 @@
 
         };
 
-        this.supportCss3 = function(attr){                          //是否支持Css3
+        this.supportCss3 = function(attr){
 
             var box = ['-webkit-','-os-','-ms-','-moz-'];
 
@@ -81,14 +81,54 @@
 
             $('.container').append(foot);
 
+        };
+
+        this.moveDetail = function(obj){
+
+            $('.back').on('tap',function(){
+
+                obj.css('transform','translateX(100%)');
+
+            })
+        }
+
+        this.navEffect = function(){
+
+            $('.menu-list').on('touchstart',function(){
+
+                var a = $('#nav')[0];
+
+                var box = window.getComputedStyle(a,false)['transform'];
+
+                box = box.split(',');
+
+                if(box == 'none'||0 == $.trim(box[4])){
+
+                    $('#nav').css('transform','translateX(-12rem)');
+
+                }else{
+
+                    $('#nav').css('transform','translateX(0rem)');
+
+                }
+            })
+
         }
 
 
     }).apply(bom);
 
-    bom.device();
+    $(function(){
 
-    bom.page();
+        bom.device();
+
+        bom.page();
+
+        bom.navEffect();
+
+    })
+
+
 
 
 }(window);
