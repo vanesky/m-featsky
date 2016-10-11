@@ -2,6 +2,14 @@ if(!window.com){window.com = {}};
 
 com.renderArticle = function(id){
 
+    var dataNameList = $('#art-item').find("[data-name]");
+
+        dataNameList.text('');
+
+    var contentObj =  $('#art-main').find('#content');
+
+        contentObj.html('');
+
     app.ajax('get',app.url('getArticleDetail.php'),{id:id},function(data){
 
         var obj = data;
@@ -14,7 +22,6 @@ com.renderArticle = function(id){
 
         }
 
-        var dataNameList = $('#art-item').find("[data-name]");
 
         for(var i=0;i<dataNameList.length;i++){
 
@@ -24,7 +31,7 @@ com.renderArticle = function(id){
 
         }
 
-        $('#art-item').find('#content').html(obj.text);
+        contentObj.html(obj.text);
 
     },false,$('.com-art-toggle'))
 

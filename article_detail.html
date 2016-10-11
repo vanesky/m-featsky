@@ -14,7 +14,7 @@
 <body>
 
     <header>
-        <!--<img id="logo" src="img/logo.png" alt="">-->
+        <img class="back" src="img/fixed/arrow.png" alt="">
         <!--<ul class="nav-list fx-col-b">
             <li></li>
             <li></li>
@@ -44,7 +44,7 @@
     </div>
 
 
-    <script src="src/lib/zepto.min.js"></script>
+    <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="component/articleDetail/art_detail.js"></script>
@@ -56,6 +56,12 @@
                 id = id.split('?')[1];
 
                 com.renderArticle(id);
+
+            $('.back').on('tap',function(){
+
+                window.history.back();
+
+            })
 
         })
     </script>

@@ -1,6 +1,6 @@
 if(!window.com){window.com = {}};
 
-com.pageImageEvent = function(obj,_this,liItemObj,ComponentObj){
+com.pageImageEvent = function(obj,_this,liItemObj){
 
     var str = '',imgs = [],imgId = '';
 
@@ -13,11 +13,29 @@ com.pageImageEvent = function(obj,_this,liItemObj,ComponentObj){
 
     })
 
-    ComponentObj.css('display','block').animate({
+    var bannerImgObj = $('.banner-img');
+
+    bannerImgObj.css('display','block').animate({
 
         opacity:1
 
     },200);
+
+    //返回事件
+    bannerImgObj.find('.back').on('tap',function(){
+
+        $('.banner-img').animate({
+
+            opacity:0,
+
+        },function(){
+
+            $(this).css('display','none');
+
+        })
+
+        $(document).off('touchmove');
+    })
     //============================================
 
     //获取页面图片路径渲染到组件模板
