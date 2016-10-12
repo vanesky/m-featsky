@@ -34,7 +34,9 @@
 
             $allImgResult = mysql_query("SELECT * FROM img where time ='$firstResult' order by id desc");
 
-            for($j=0;$j<mysql_num_rows($allImgResult);$j++){
+            $nums = mysql_num_rows($allImgResult);
+
+            for($j=0;$j<$nums;$j++){
 
                 $allResult = mysql_fetch_object($allImgResult);
 
@@ -42,7 +44,7 @@
 
             }
 
-            $counts += mysql_num_rows($allImgResult);
+            $counts += $nums;
 
             $arr[$i]['page'] = $counts;
 

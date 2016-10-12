@@ -6,7 +6,7 @@ com.renderArticle = function(id){
 
         dataNameList.text('');
 
-    var contentObj =  $('#art-main').find('#content');
+    var contentObj =  $('#art-item').find('#content');
 
         contentObj.html('');
 
