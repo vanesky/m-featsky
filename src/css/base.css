@@ -654,10 +654,15 @@ div#nav {
   left: 100%;
   background-color: #101010;
   z-index: 9;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
   -webkit-transition: -webkit-transform .4s;
   transition: -webkit-transform .4s;
   transition: transform .4s;
   transition: transform .4s, -webkit-transform .4s;
+}
+div#nav a {
+  color: #f2f2f2;
 }
 div#nav .nav-item {
   width: 100%;

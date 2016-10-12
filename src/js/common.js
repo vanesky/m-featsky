@@ -99,7 +99,7 @@
 
                 var a = $('#nav')[0];
 
-                var box = window.getComputedStyle(a,false)['transform'];
+                var box = window.getComputedStyle(a,null)['webkitTransform'];
 
                 box = box.split(',');
 
@@ -112,6 +112,14 @@
                     $('#nav').css('transform','translateX(0rem)');
 
                 }
+            })
+
+            $('#nav').find('.nav-list').on('tap',function(){
+
+                var name = $(this).attr('data-name');
+
+                window.open(name+".html","_self");
+
             })
 
         }
