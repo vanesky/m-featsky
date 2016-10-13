@@ -17,13 +17,13 @@
 
                     'transition':'',
 
-                    'transform':'translateX('+-(sel.grade*banner_w)+'px)'
+                    '-webkit-transform':'translateX('+-(sel.grade*banner_w)+'px)'
 
                 });
 
                 setTimeout(function(){
 
-                    obj.css('transition','transform '+sel.speed/1000+'s');
+                    obj.css('transition','-webkit-transform '+sel.speed/1000+'s');
 
                 },50)
 
@@ -47,7 +47,7 @@
 
                 var banner_ = direction == 'left'? banner_w : -banner_w;
 
-                var xIng = window.getComputedStyle(obj[0],null)['transform'].split(', ')[4];
+                var xIng = window.getComputedStyle(obj[0],null)['webkitTransform'].split(', ')[4];
 
                 if(Math.abs(xIng)%banner_w !=0){return}
 
@@ -65,7 +65,7 @@
 
 
 
-                obj.css('transform','translateX('+(xIng-banner_)+'px)');
+                obj.css('-webkit-transform','translateX('+(xIng-banner_)+'px)');
 
             }
 
@@ -169,7 +169,7 @@
                     obj.on('touchmove','img',function(e){
 
                         //获取当前缩放值
-                        var scale = window.getComputedStyle(this,null)['transform'].split(', ')[3];
+                        var scale = window.getComputedStyle(this,null)['webkitTransform'].split(', ')[3];
 
                         var _this = $(this);
 
@@ -185,7 +185,7 @@
 
                             if(isMax < xy) {dir = -dir}
 
-                            _this.css('transform','scale('+ (Number(scale)+dir) +')');
+                            _this.css('-webkit-transform','scale('+ (Number(scale)+dir) +')');
 
                             xy = isMax;
 

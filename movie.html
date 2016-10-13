@@ -26,11 +26,10 @@
     </header>
 
     <div class="container">
-
         <ul id="movie-item">
             <!--模版列表-->
         </ul>
-
+        <div class="load-button">加载更多</div>
     </div>
 
     <div id="nav">
@@ -137,8 +136,6 @@
 
                 var obj = data,str = '';
 
-                console.log(obj);
-
                 var model = $('#model-1').clone();
 
                 for(var i=0;i<obj.length;i++){
@@ -165,7 +162,7 @@
 
                 if(str == ''){
 
-                    console.log('没了')
+                    alert('没了')
 
                 }else{
 
@@ -174,15 +171,14 @@
                 }
                 return pageResult = pageResult + pageCount;
 
-            },false,$('body'));
+            });
         }
 
 
-        //事件
-
+        //详情页返回事件
         bom.moveDetail($('.com-movie-detail'));
-
-        $('.titles').click(function(){
+        //加载更多
+        $('.load-button').on('tap',function(){
 
             renderData();
 
@@ -195,7 +191,7 @@
 
             com.renderMovie(id);
 
-            $('.com-movie-detail').css('transform','translateX(-100%)').on('touchmove',function(e){
+            $('.com-movie-detail').css('-webkit-transform','translateX(-100%)').on('touchmove',function(e){
 
                 e.preventDefault();
 

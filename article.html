@@ -74,7 +74,10 @@
 
     <div class="container">
         <!--列表模板填充-->
+        <div class="load-button">加载更多</div>
     </div>
+
+
 
     <!--列表落地详情================================================-->
     <div class="com-art-toggle">
@@ -148,8 +151,11 @@
                         model.find('.article-item').attr('data-id',obj[i].id);
 
                         //列表背景
-                        model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
+                        if(obj[i].imgPath){
 
+                            model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
+
+                        }else{model.find("[data-name='imgPath']").css('display',"none");}
                         //标题
                         model.find("[data-name='title']").text(obj[i].title);
 
@@ -168,13 +174,13 @@
 
                     }else{
 
-                        $('footer').before(str);
+                        $('.load-button').before(str);
 
                     }
 
                     return pageResult = pageResult + pageCount;
 
-                },false,$('body'))
+                })
             }
 
             //=================================================================
@@ -183,6 +189,13 @@
 
             $('#art-main').css('height',w-50 + 'px');
 
+            //加载更多
+            $('.load-button').on('tap',function(){
+
+                renderData();
+
+            })
+
             //列表事件
             $('.container').on('tap','.article-item',function(){
 
@@ -190,7 +203,7 @@
 
                 com.renderArticle(id);
 
-                $('.com-art-toggle').css('transform','translateX(-100%)');
+                $('.com-art-toggle').css('-webkit-transform','translateX(-100%)');
 
             })
 

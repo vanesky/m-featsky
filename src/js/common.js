@@ -87,7 +87,7 @@
 
             $('.back').on('tap',function(){
 
-                obj.css('transform','translateX(0%)');
+                obj.css('-webkit-transform','translateX(0%)');
 
             })
 
@@ -105,11 +105,11 @@
 
                 if(box == 'none'||0 == $.trim(box[4])){
 
-                    $('#nav').css('transform','translateX(-12rem)');
+                    $('#nav').css('-webkit-transform','translateX(-12rem)');
 
                 }else{
 
-                    $('#nav').css('transform','translateX(0rem)');
+                    $('#nav').css('-webkit-transform','translateX(0rem)');
 
                 }
             })

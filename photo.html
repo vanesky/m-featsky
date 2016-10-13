@@ -31,7 +31,7 @@
                 <div class="list-line c-ba"></div>
             </li>
             <li class="item-list fr">
-                <p class="list-tit">全部</p>
+                <p class="list-tit">图册</p>
                 <div class="list-line c-ba hide"></div>
             </li>
             <!--<li class="item-list fx-col-e">
@@ -47,12 +47,12 @@
             <!--模板填充-->
         </div>
 
-        <div id="channel-all" class="pdb10">
+        <div id="channel-all">
             <ul data-name="imgPath" class="clearfix">
                 <!--模板填充-->
             </ul>
         </div>
-
+        <div class="load-button mt40">加载更多</div>
     </div>
 
 
@@ -129,7 +129,9 @@
 
         $(function(){
 
-            var pageResult = 0,pageCount = 1,w = $(window).width();
+            var pageResult = 0,pageCount = 2,w = $(window).width();
+
+            var latestObj = $('#channel-latest'),allObj = $('#channel-all');
 
             //$('.channel-item').css('width',w*2 + 'px');
 
@@ -193,7 +195,7 @@
                     }else{
 
                         //将变量字符串插入真实dom
-                        $('#channel-latest').append(str);
+                        latestObj.append(str);
 
                     }
 
@@ -232,18 +234,15 @@
             //初始化页面
             function initPage(n){
 
-                pageResult = pagesResult = 0,pageCount = 1,pagesCount = 9;
+                pageCount = 2,pageResult = 0;
 
-                n == 0 ?  $('#channel-latest').html('') : $('#channel-all').children("[data-name='imgPath']").html('');
+                pagesCount = 9,pagesResult = 0;
+
+                n == 0 ?  latestObj.html('') : allObj.children("[data-name='imgPath']").html('');
 
             }
 
             //二级页面===========================================================
-            $('.titles').click(function(){
-
-                renderImg();
-
-            })
 
             //调用图片组件
             var bimObj =  $('.banner-img-main');
@@ -257,7 +256,6 @@
             });
 
             //页面图片列表事件
-
             function pageEventTap(obj){
 
                 obj.on('tap','.img-list',function(){
@@ -271,9 +269,9 @@
 
             }
 
-            pageEventTap($('#channel-latest'));
+            pageEventTap(latestObj);
 
-            pageEventTap($('#channel-all'));
+            pageEventTap(allObj);
 
 
             //全部模块********************************************************
@@ -313,11 +311,11 @@
                     }else{
 
                         //将变量字符串插入真实dom
-                        $('#channel-all').children("[data-name='imgPath']").html(imgStr);
+                        allObj.children("[data-name='imgPath']").append(imgStr);
 
                     }
 
-                    pagesCount += 4;
+                    pagesResult += 9;
                 });
 
             }
@@ -331,34 +329,45 @@
 
                 lineObj.addClass('hide');
 
+                allObj.css('opacity',0).addClass('hide');
 
-                $('#channel-all,#channel-latest').css('opacity',0).addClass('hide');
+                latestObj.css('opacity',0).addClass('hide');
+                //$('#channel-all,#channel-latest').css('opacity',0).addClass('hide');
 
-                    if(index == 0 ){
+                if(index == 0 ){
 
-                        initPage(0);
+                    initPage(0);
 
-                        renderImg();
+                    renderImg();
 
-                        $('#channel-latest').removeClass('hide').animate({'opacity':1})
+                    latestObj.removeClass('hide').animate({'opacity':1})
 
-                        lineObj.eq(0).removeClass('hide');
+                    lineObj.eq(0).removeClass('hide');
 
-                    }else{
+                }else{
 
-                        initPage(1);
+                    initPage(1);
 
-                        renderAllImg();
+                    renderAllImg();
 
-                        $('#channel-all').removeClass('hide').animate({'opacity':1});
+                    allObj.removeClass('hide').animate({'opacity':1});
 
-                        lineObj.eq(1).removeClass('hide');
+                    lineObj.eq(1).removeClass('hide');
 
-                    }
+                }
 
             })
 
+            //加载更多
+            $('.load-button').on('tap',function(){
 
+                if(latestObj.css('display') == 'none'){
+
+                    renderAllImg()
+
+                }else{ renderImg(); }
+
+            })
 
 
         })

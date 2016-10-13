@@ -33,7 +33,7 @@ com.renderArticle = function(id){
 
         contentObj.html(obj.text);
 
-    },false,$('.com-art-toggle'))
+    })
 
 
 }

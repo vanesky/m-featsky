@@ -42,7 +42,12 @@
 
         //图片第一个
         preg_match('/<img.+\"(.+\.(jpg|png)).+>/U',$artObj->{'text'},$matches);
-        $resultObj[$i]['imgPath'] = $matches[1];
+
+        if($matches){
+
+            $resultObj[$i]['imgPath'] = $matches[1];
+
+        }
 
         //文章第一段
         preg_match('/(<.+>.+<\/.+>)/U',$artObj->text,$matches);

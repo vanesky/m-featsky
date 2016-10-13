@@ -2,9 +2,6 @@
 .container {
   background-color: #f2f2f2;
 }
-#movie-item {
-  padding-top: 1rem;
-}
 #movie-item .movie-list {
   position: relative;
   margin: 0 auto;

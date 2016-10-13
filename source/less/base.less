@@ -412,6 +412,17 @@ a,a:hover{
   color:@c10;
 }
 //常用按钮
+.load-button{
+  margin:2rem auto 2rem;
+  width:100%;
+  height:3rem;
+  border-top:1px solid @cf2;
+  border-bottom:1px solid @cf2;
+  background-color: @c;
+  line-height:3rem;
+  text-align: center;
+  color:@c6;
+}
 //1px边框
 .bt-eb{
   border-top:1px solid #ebebeb;
@@ -716,7 +727,7 @@ footer{
 /*======component-load======*/
 
 #load{
-  position: absolute;
+  position: fixed;
   width:100%;
   height:100%;
   top:0;
@@ -769,19 +780,19 @@ footer{
       animation: animate-list 1s infinite ease-in-out;
     }
     .animate  > div:nth-child(2) {
-      animation: animate-list 1s 0.4s infinite ease-in-out;
+      animation: animate-list 1s 0.5s infinite ease-in-out;
     }
     .animate  > div:nth-child(3) {
       animation: animate-list 1s 0.2s infinite ease-in-out;
     }
     .animate  > div:nth-child(4) {
-      animation: animate-list 1s 0.6s infinite ease-in-out;
+      animation: animate-list 1s 0.8s infinite ease-in-out;
     }
 
     //==================//
     .animate-text{
       position: absolute;
-      top:14px;
+      top:16px;
       left:38px;
       font-size: 13px;
     }

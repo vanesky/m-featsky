@@ -618,6 +618,17 @@ a,
 a:hover {
   color: #101010;
 }
+.load-button {
+  margin: 2rem auto 2rem;
+  width: 100%;
+  height: 3rem;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #FCFBF9;
+  line-height: 3rem;
+  text-align: center;
+  color: #666;
+}
 .bt-eb {
   border-top: 1px solid #ebebeb;
 }
@@ -900,7 +911,7 @@ footer {
 }
 /*======component-load======*/
 #load {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
@@ -964,20 +975,20 @@ footer {
           animation: animate-list 1s infinite ease-in-out;
 }
 #load .load-main .animate > div:nth-child(2) {
-  -webkit-animation: animate-list 1s 0.4s infinite ease-in-out;
-          animation: animate-list 1s 0.4s infinite ease-in-out;
+  -webkit-animation: animate-list 1s 0.5s infinite ease-in-out;
+          animation: animate-list 1s 0.5s infinite ease-in-out;
 }
 #load .load-main .animate > div:nth-child(3) {
   -webkit-animation: animate-list 1s 0.2s infinite ease-in-out;
           animation: animate-list 1s 0.2s infinite ease-in-out;
 }
 #load .load-main .animate > div:nth-child(4) {
-  -webkit-animation: animate-list 1s 0.6s infinite ease-in-out;
-          animation: animate-list 1s 0.6s infinite ease-in-out;
+  -webkit-animation: animate-list 1s 0.8s infinite ease-in-out;
+          animation: animate-list 1s 0.8s infinite ease-in-out;
 }
 #load .load-main .animate-text {
   position: absolute;
-  top: 14px;
+  top: 16px;
   left: 38px;
   font-size: 13px;
 }

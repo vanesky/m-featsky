@@ -41,6 +41,7 @@
             </div>
 
         </section>
+        <div class="load-button">查看更多</div>
     </div>
 
     <!--导航组件-->
@@ -157,9 +158,11 @@
     <script>
         $(function(){
 
-            var pageResult = 0,pageCount = 2;
+            var pageResult = 0,pageCount = 4;
 
-            $(window).click(function(){
+            renderInfo();
+
+            function renderInfo(){
 
                 app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
 
@@ -205,6 +208,12 @@
                     return pageResult = pageResult + pageCount;
 
                 })
+            }
+
+            $('.load-button').on('tap',function(){
+
+                renderInfo();
+
             })
 
             /*==================================================*/
