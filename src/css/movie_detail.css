@@ -8,7 +8,7 @@
   width: 100%;
 }
 #movie-main {
-  margin-top: 1rem;
+  padding: 1rem 0;
 }
 #movie-main .source-img,
 #movie-main .source-span {

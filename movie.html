@@ -77,22 +77,22 @@
             <div id="movie-main">
                 <ul class="w90 fx-row-b c9">
                     <li>
-                        <h5 data-name="title" class="c10">关于防守打法</h5>
+                        <h5 data-name="title" class="c10">标题</h5>
                         <!--<div class="mt5">
                             <img class="source-span" src="img/earth.png" alt="">
                             <span class="source-img">featsky</span>
                         </div>-->
                     </li>
-                    <li data-name="time">2016-02-15</li>
+                    <li data-name="time">2001-00-00</li>
                 </ul>
                 <p class="w90 mt10 c6">
                     <span>简介:</span>
-                    <span data-name="description">第三方斯蒂芬斯蒂芬斯蒂芬</span>
+                    <span data-name="description">暂无描述</span>
                 </p>
             </div>
         </section>
 
-        <div class="container"></div>
+        <div class="container mt30"></div>
     </div>
     <!--================================================================-->
 
@@ -176,7 +176,11 @@
 
 
         //详情页返回事件
-        bom.moveDetail($('.com-movie-detail'));
+        bom.moveDetail($('.com-movie-detail'),function(){
+
+            $('#video')[0].pause();
+
+        });
         //加载更多
         $('.load-button').on('tap',function(){
 
@@ -187,6 +191,18 @@
         //列表事件
         $('#movie-item').on('tap','li',function(){
 
+            //初始化视频详情
+            $('#video').prop('src','');
+
+            var movieMainObj = $('.movie-main');
+
+            movieMainObj.find("[data-name='title']").text('');
+
+            movieMainObj.find("[data-name='time']").text('');
+
+            movieMainObj.find("[data-name='description']").text('');
+
+
             var id = $(this).attr('data-id');
 
             com.renderMovie(id);
@@ -196,8 +212,6 @@
                 e.preventDefault();
 
             })
-
-
         })
 
 

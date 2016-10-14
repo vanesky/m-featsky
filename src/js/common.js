@@ -83,11 +83,13 @@
 
         };
 
-        this.moveDetail = function(obj){
+        this.moveDetail = function(obj,fun){
 
             $('.back').on('tap',function(){
 
                 obj.css('-webkit-transform','translateX(0%)');
+
+                if(fun){fun()}
 
             })
 
