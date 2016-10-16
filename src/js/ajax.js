@@ -59,7 +59,7 @@ window.app = {};
 
         if(path == 'develop'){
 
-            base = "http://192.168.100.118/m-featsky/src/api/";
+            base = "http://192.168.0.102/m-featsky/src/api/";
 
         }else if(path == 'test'){
 
