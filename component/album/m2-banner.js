@@ -4,11 +4,10 @@
 
         var _this = this,banner = {};
 
-        //时间所需宽
         var banner_w = $(window).width();
 
         (function(obj){
-
+            //初始化
             this.init = function(){
 
                 obj.css({
@@ -32,7 +31,7 @@
                 $('.banner-img').find('#title-grades').text(sel.grades);
 
             }
-
+            //滑动
             this.slide = function(direction){
 
                 obj.find('img').css({
@@ -68,7 +67,7 @@
                 obj.css('-webkit-transform','translateX('+(xIng-banner_)+'px)');
 
             }
-
+            //事件
             this.evtSlide = function(){
 
                 var startTime = '',movex = '',movexIng = '';

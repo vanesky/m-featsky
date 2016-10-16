@@ -3,34 +3,39 @@
 @cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
 @cdb:#dbdbdb;@cc:#ccc;@c3:#333;
 @c6:#666;@c9:#999;@c10:#101010;
+@cf9:#f9f9f9;
 @a:#49A0DB;
 @ba:#49A0DB;
 
 body{
-
+  background-color:@cf2;
 }
 .container{
   background-color:@cf2;
+  top:100px;
 }
   //点击留言
   #mes-input{
-    height:3.5rem;
+    position: fixed;
+    width:100%;
+    top:50px;
+    height:45px;
     background-color: @cf;
     border-bottom: 1px solid @ceb;
-    line-height: 3.5rem;
+    line-height: 45px;
     color:@cc;
     padding:0 1rem;
+    z-index:8;
   }
 
   //列表容器
   .item-list{
     position: relative;
     height:15rem;
-    margin-top: 1rem;
+    margin-bottom: .5rem;
     border-bottom: 1px solid @ceb;
     padding:1rem;
     background-color:@cf;
-
     .item-text{
       position: absolute;
       top:50%;
@@ -45,24 +50,25 @@ body{
 
 #writing{
   position:fixed;
-  z-index: 10;
+  z-index: 12;
   top:0px;
-  left:0%;
+  left:100%;
   width:100%;
   height:100%;
   background-color:#FCFBF9;
-  background-color:@cf;
+  background-color: @cf9;
+  //background-color:@cf;
   ///display: none;
-  transform: translateX(100%);
-  transition:transform .4s ease-out;
+  transform: translateX(0%);
+  transition:transform .3s;
 
   //标题内容
   .writ-context{
-    height:40%;
+    height:20rem;
     background-color:#9B9CB3;
 
     ::-webkit-input-placeholder{color:@cf2;font-size: 1rem}
-    input[name="writ-tit"]{
+    input[name="writTit"]{
       height:18%;
       width:100%;
       border: none;
@@ -73,6 +79,7 @@ body{
     }
     //内容父级
     .pr-text{
+      position: relative;
       height:75%;
       padding:0 2rem;
       overflow: hidden;
@@ -80,11 +87,21 @@ body{
       letter-spacing: 1px;
       //内容
       .writ-text{
+        position: relative;
         text-align: center;
-        max-width: 70%;
-        //border: 1px solid red;
-        padding:3rem 3rem;
+        max-width: 75%;
+        padding:3rem 6rem;
         color:@cf2;
+        z-index: 2;
+        line-height: 2rem;
+      }
+      .writ-prompt{
+        position: absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        color:@cf2;
+        z-index: 1;
       }
     }
 
@@ -132,8 +149,9 @@ body{
 
   //头像选择
   .sub-cancel{
-    width: 85%;
-    margin:0.5rem auto;
+    width: 100%;
+    //margin:0.5rem auto;
+    margin-bottom:1rem;
     height:3rem;
     background-color:@cf;
     color:@c6;

@@ -1,4 +1,4 @@
-window.validateMethod = {
+window.validateRule = {
 
     require:function(val){
 
@@ -8,7 +8,13 @@ window.validateMethod = {
 
     nameRule:function(val){
 
-        return /^[\u4e00-\u9fa5|\d|\w]*$/.test(val);
+        return /^[\u4e00-\u9fa5\d\w]{4,6}$/.test(val);
+
+    },
+
+    textRule:function(val){
+
+        return /^[\u4e00-\u9fa5]+$/.test(val);
 
     },
 

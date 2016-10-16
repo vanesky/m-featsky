@@ -20,16 +20,15 @@
             <li></li>
             <li></li>
         </ul>
-        <h4 class="titles">留言记录</h4>
+        <h4 class="titles">留言</h4>
     </header>
 
+    <div id="mes-input">
+        <img class="img-edit va-c" src="img/fixed/edit.png" alt="">
+        <span class="ml5 va-c">留言一番 . .</span>
+    </div>
+
     <div class="container">
-
-        <div id="mes-input">
-            <img class="img-edit va-c" src="img/fixed/edit.png" alt="">
-            <span class="ml5 va-c">留言一番 . .</span>
-        </div>
-
         <section id="mes-item">
             <div class="item-list hide">
                 <div class="img-head bs-b dp-ib va-c"></div>
@@ -93,26 +92,20 @@
     <section id="writing">
 
         <header style="position:relative;">
-            <!--<img id="logo" src="img/logo.png" alt="">-->
-            <!--<ul class="nav-list fx-col-b">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>-->
-            <h4 class="titles">留言</h4>
+            <img class="back" src="img/fixed/arrow.png" alt="">
+            <h4 class="titles">留言填写</h4>
         </header>
 
         <div class="writ-context">
-            <input type="text" name="writ-tit" placeholder="您的称呼" class="ls1">
+            <input type="text" name="writTit" placeholder="您的称呼" class="ls1">
             <div class="fx-col-c pr-text">
-              <!--  <textarea class="writ-text fx-col-c" placeholder="哈哈哈">
-                </textarea>-->
-                <div class="writ-text" contenteditable="true">说点什么吧..</div>
+                <div class="writ-prompt">说点什么吧..</div>
+                <div name="writText" class="writ-text" contenteditable="true"></div>
             </div>
         </div>
 
         <div class="sub-cancel fx-row-b">
-            <span>^_^ 选择模样</span>
+            <img src="img/fixed/up.png" alt="" class="img-edit ml10">
         </div>
 
         <div class="sel-img fx-row-b">
@@ -147,13 +140,14 @@
                 </div>
             </div>
         </div>
-
-        <div class="w85 tc pdt10 pdb10 c-ba cf br5 mt40">发表</div>
-        <div class="w85 tc pdt10 pdb10 bc-db cf br5 mt7">取消</div>
+        <input name="imgSrc" type="hidden" val="img/1.jpg">
+        <div id="sub" class="w85 tc pdt10 pdb10 c-ba cf br5 mt40">发表</div>
+        <div id="cancel" class="w85 tc pdt10 pdb10 bc-db cf br5 mt7">取消</div>
     </section>
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
+    <script src="src/js/validate.js"></script>
 
     <script>
         $(function(){
@@ -217,20 +211,121 @@
             })
 
             /*==================================================*/
+            var writingObj = $('#writing');
 
-            //留言事件
+            bom.moveDetail(writingObj);
 
-            var writObj = $('#writing').find('.writ-text');
+            writingObj.on('touchmove',function(e){
 
-                writObj.on('keydown',function(){
+                e.preventDefault();
 
-                    if($.trim(writObj.text()) == '说点什么吧..'){
+            })
 
-                        writObj.text('');
+            var writObj = writingObj.find('.writ-text');
 
-                    }
+                writObj.on('focus',function(){
+
+                    $('.writ-prompt').hide();
 
                 })
+
+            //点击留言事件
+            $('#mes-input').on('tap',function(){
+                //留言初始化
+                $("[name='writTit']").val('');
+
+                $("[name='imgSrc']").val('img/1.jpg');
+
+                writObj.text('');
+
+                $('.writ-prompt').show();
+
+                $('.select-img').hide();
+
+                $('.select-img').eq(1).show();
+
+
+                writingObj.css('-webkit-transform','translateX(-100%)')
+
+            })
+
+            //选择头像
+            $('.list-img').on('tap',function(){
+
+                var _this = $(this);
+
+                $('.select-img').hide();
+
+                _this.find('.select-img').show();
+
+                $("input[name='imgSrc']").val(_this.find('img').prop('src'));
+
+            })
+
+            //提交
+            $('#sub').on('tap',function(){
+
+                if(!validateMethod(validate)){return}
+
+            })
+            //取消
+            $('#cancel').on('tap',function(){
+
+                writingObj.css('-webkit-transform','translateX(0%)')
+
+            })
+
+
+            var validate = {
+
+                rules:{
+
+                    writTit:{require:true,nameRule:true},
+
+                    writText:{require:true,textRule:true}
+
+                },
+
+                prompt:{
+
+                    writTit:{require:'请填写您的称呼',nameRule:'称呼需是4-6位的字母、数字、文字'},
+
+                    writText:{require:'没有什么要说的吗',textRule:'您只能说汉字哦'}
+
+                }
+            }
+
+            function validateMethod(validate){
+
+                var str = '';
+
+                $.each(validate.rules,function(attrName,attrObj){
+
+                    var value = $("[name='"+attrName+"']").val();
+
+                    if(!value){  value = $("[name='"+attrName+"']").text() }
+
+                    $.each(attrObj,function(ruleName,ruleParam){
+
+                        if(!window.validateRule[ruleName](value)){
+
+                            str = validate.prompt[attrName][ruleName];
+
+                            return false;
+
+                        }
+
+                    })
+
+                    if(str){
+
+                        alert(str);
+
+                        return false;
+
+                    }else{ return true }
+                })
+            }
 
 
         })
