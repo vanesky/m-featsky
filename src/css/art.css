@@ -1,4 +1,7 @@
 @charset "utf-8";
+body {
+  background-color: #f2f2f2;
+}
 .container {
   top: 100px;
   background-color: #f2f2f2;
@@ -51,4 +54,33 @@
   background-position: center center;
   background-size: cover;
   overflow: hidden;
+}
+#search-model {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  z-index: 8;
+  box-shadow: 0 1px 1px 0px #f2f2f2;
+  /*.search{
+      width:85%;
+      height:35px;
+      margin:0px auto 0px;
+      border-radius: 6px;
+      background-color: @cf2;
+    }*/
+}
+#search-model ::-webkit-input-placeholder {
+  line-height: 24px;
+}
+#search-model input {
+  height: 30px;
+  width: 70%;
+  border: none;
+  margin-left: 15px;
+}
+#search-model .search-img {
+  height: 25px;
+  margin-left: 20px;
 }

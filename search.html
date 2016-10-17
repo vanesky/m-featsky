@@ -16,36 +16,18 @@
 <body>
 
     <header>
-        <!--<img id="logo" src="img/logo.png" alt="">-->
-        <ul class="menu-list fx-col-b">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <h4 class="titles">文章</h4>
+        <img class="back" src="img/fixed/arrow.png" alt="">
+        <h4 class="titles">搜索结果</h4>
     </header>
 
-    <!--<nav class="nav-tit clearfix">
-        <ul class="nav-item">
-            <li class="item-list">
-                <p>推荐</p>
-                <div class="list-line c-ba"></div>
-            </li>
-            <li class="item-list">
-                <p>教程</p>
-                <div class="list-line"></div>
-            </li>
-            <li class="item-list">
-                <p>散文</p>
-                <div class="list-line"></div>
-            </li>
-        </ul>
-    </nav>-->
-
-    <section id="search-model" class="fx-row-s">
+    <!--<section id="search-model" class="fx-row-s">
         <img class="search-img va-c" src="img/fixed/search.png" alt="">
-        <input name="search" type="text" placeholder="搜索/标题..">
-    </section>
+        <input name="search" type="text" placeholder="搜索..">
+    </section>-->
+
+    <div class="container" style="top:50px;">
+        <!--列表模板填充-->
+    </div>
 
     <div id="nav">
         <div class="nav-head"></div>
@@ -77,13 +59,6 @@
         </ul>
     </div>
 
-    <div class="container">
-        <!--列表模板填充-->
-        <div class="load-button">加载更多</div>
-    </div>
-
-
-
     <!--列表落地详情================================================-->
     <div class="com-art-toggle">
         <header>
@@ -111,6 +86,7 @@
 
     </div>
     <!--===============================================================-->
+
 
     <!--列表模板*********************************************************-->
     <div id="model-1" class="hide">
@@ -146,17 +122,19 @@
     <script>
         $(function(){
 
-            var pageResult = 0,pageCount = 2;
+            var searchResult = localStorage.getItem('search');
 
-            renderData();
+            if(searchResult){
+
+                renderData();
+
+            }
 
             function renderData(){
 
-                app.ajax('get',app.url('getArticleList.php'),{page:pageCount,pageStart:pageResult},function(data){
+                app.ajax('get',app.url('getSearchList.php'),{str:searchResult},function(data){
 
                     var obj = data,str = '';
-
-                    //console.log(obj);
 
                     var model = $('#model-1').clone();
 
@@ -168,11 +146,8 @@
                         model.find('.article-item').attr('data-id',obj[i].id);
 
                         //列表背景
-                        if(obj[i].imgPath){
+                        model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
 
-                            model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
-
-                        }else{model.find("[data-name='imgPath']").css('display',"none");}
                         //标题
                         model.find("[data-name='title']").text(obj[i].title);
 
@@ -187,15 +162,15 @@
 
                     if(str == ''){
 
-                        alert('没了')
+                        com.prompt(0,'未搜索到结果!')
 
                     }else{
 
-                        $('.load-button').before(str);
+                        $('footer').before(str);
 
                     }
 
-                    return pageResult = pageResult + pageCount;
+                    //return pageResult = pageResult + pageCount;
 
                 })
             }
@@ -206,12 +181,6 @@
 
             $('#art-main').css('height',w-50 + 'px');
 
-            //加载更多
-            $('.load-button').on('tap',function(){
-
-                renderData();
-
-            })
 
             //列表事件
             $('.container').on('tap','.article-item',function(){
@@ -225,7 +194,7 @@
             })
 
             bom.moveDetail($('.com-art-toggle'));
-            
+
 
             //页面滚动
             var page_y = '';
@@ -236,7 +205,7 @@
 
             artMainObj.on('touchstart',function(e){
 
-                    page_y = e.touches[0].clientY;
+                page_y = e.touches[0].clientY;
 
             })
 
@@ -259,22 +228,11 @@
                 }
             })
 
-            //搜索
-            $('.search-img').on('tap',function(){
+            //返回
+            $('.back').on('tap',function(){
 
-                var str = $("input[name='search']").val();
+                window.history.back();
 
-                if(str.length>=1){
-
-                    localStorage.setItem('search',str);
-
-                    window.open('search.html','_self');
-
-                }else{
-
-                    com.prompt(0,'请填写搜索内容!')
-
-                }
             })
 
         })

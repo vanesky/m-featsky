@@ -6,6 +6,9 @@
 @a:#49A0DB;
 @ba:#49A0DB;
 
+body{
+  background-color: @cf2;
+}
 .container{
   top:100px;
   background-color: @cf2;
@@ -64,6 +67,38 @@
       background-size: cover;
       overflow: hidden;
     }
+  }
+
+  //搜索
+  #search-model{
+    position: fixed;
+    top:50px;
+    width:100%;
+    height:40px;
+    background-color: @cf;
+    z-index:8;
+    box-shadow: 0 1px 1px 0px @cf2;
+    /*.search{
+      width:85%;
+      height:35px;
+      margin:0px auto 0px;
+      border-radius: 6px;
+      background-color: @cf2;
+    }*/
+    ::-webkit-input-placeholder{
+      line-height: 24px;
+    }
+    input{
+      height:30px;
+      width:70%;
+      border: none;
+      margin-left: 15px;
+    }
+    .search-img{
+      height:25px;
+      margin-left: 20px;
+    }
+
   }
 
 
