@@ -105,7 +105,9 @@
         </div>
 
         <div class="sub-cancel fx-row-b">
-            <img src="img/fixed/up.png" alt="" class="img-edit ml10">
+            <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml10">
+            <input name="upFile" type="file" accept="image/*">
+
         </div>
 
         <div class="sel-img fx-row-b">
@@ -156,60 +158,12 @@
 
             renderInfo();
 
-            function renderInfo(){
-
-                app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
-
-                    var obj = data,str = '';
-
-                    console.log(obj);
-
-                    var model = $('#model-1').clone();
-
-                    for(var i=0;i<obj.length;i++){
-
-                        if(obj[i].statusCode == 404){continue;}
-
-                        //列表id
-                        model.find("[data-name='id']").attr('data-id',obj[i].id);
-
-                        //列表背景
-                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
-
-                        //标题
-                        model.find("[data-name='name']").text(obj[i].name);
-
-                        //时间
-                        model.find("[data-name='time']").text(obj[i].time);
-
-                        //内容
-                        model.find("[data-name='text']").text(obj[i].text);
-
-                        str +=  model.html();
-                    }
-
-                    if(str == ''){
-
-                        alert('没了')
-
-                    }else{
-
-                        $('#mes-item').append(str);
-
-                    }
-
-
-                    return pageResult = pageResult + pageCount;
-
-                })
-            }
-
+            //加载更多
             $('.load-button').on('tap',function(){
 
                 renderInfo();
 
             })
-
             /*==================================================*/
             var writingObj = $('#writing');
 
@@ -249,6 +203,14 @@
 
             })
 
+            //**********************************************************
+
+            $('#upImg').on('tap',function(){
+
+                $("input[name='upFile']").trigger('click')
+
+            })
+
             //选择头像
             $('.list-img').on('tap',function(){
 
@@ -275,7 +237,7 @@
 
             })
 
-
+            //==============================================================
             var validate = {
 
                 rules:{
@@ -324,6 +286,55 @@
                         return false;
 
                     }else{ return true }
+                })
+            }
+
+
+            function renderInfo(){
+
+                app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
+
+                    var obj = data,str = '';
+
+                    console.log(obj);
+
+                    var model = $('#model-1').clone();
+
+                    for(var i=0;i<obj.length;i++){
+
+                        if(obj[i].statusCode == 404){continue;}
+
+                        //列表id
+                        model.find("[data-name='id']").attr('data-id',obj[i].id);
+
+                        //列表背景
+                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
+
+                        //标题
+                        model.find("[data-name='name']").text(obj[i].name);
+
+                        //时间
+                        model.find("[data-name='time']").text(obj[i].time);
+
+                        //内容
+                        model.find("[data-name='text']").text(obj[i].text);
+
+                        str +=  model.html();
+                    }
+
+                    if(str == ''){
+
+                        alert('没了')
+
+                    }else{
+
+                        $('#mes-item').append(str);
+
+                    }
+
+
+                    return pageResult = pageResult + pageCount;
+
                 })
             }
 
