@@ -85,7 +85,7 @@
 
         this.moveDetail = function(obj,fun){
 
-            $('.back').on('tap',function(){
+            obj.find('.back').on('tap',function(){
 
                 obj.css('-webkit-transform','translateX(0%)');
 

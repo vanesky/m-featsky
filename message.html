@@ -146,6 +146,16 @@
         <div id="sub" class="w85 tc pdt10 pdb10 c-ba cf br5 mt40">发表</div>
         <div id="cancel" class="w85 tc pdt10 pdb10 bc-db cf br5 mt7">取消</div>
     </section>
+
+    <section id="clip-img">
+        <header style="position:relative;">
+            <img class="back" src="img/fixed/arrow.png" alt="">
+            <h4 class="titles">图片裁剪</h4>
+        </header>
+        <img src="img/21.jpg" alt="">
+        <div class="clip-main"></div>
+    </section>
+
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
@@ -205,9 +215,25 @@
 
             //**********************************************************
 
+            var clipImgObj =  $('#clip-img');
+
+            //上传图片按钮
             $('#upImg').on('tap',function(){
 
                 $("input[name='upFile']").trigger('click')
+
+            })
+            //图片剪裁弹出
+
+            bom.moveDetail(clipImgObj,function(){
+
+                clipImgObj.css('display','none');
+
+            });
+
+            clipImgObj.on('touchmove',function(e){
+
+                e.preventDefault();
 
             })
 
