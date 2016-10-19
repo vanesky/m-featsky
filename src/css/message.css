@@ -142,6 +142,7 @@ body {
 }
 /*==============图片剪裁模块===================*/
 #clip-img {
+  display: none;
   position: fixed;
   z-index: 12;
   top: 0px;
@@ -159,6 +160,13 @@ body {
           transform: translate(-50%, -50%);
   width: 20rem;
   height: 20rem;
-  border: 20rem solid #333;
   opacity: 0.8;
+}
+#clip-img .clip-head {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }

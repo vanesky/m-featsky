@@ -106,7 +106,7 @@
 
         <div class="sub-cancel fx-row-b">
             <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml10">
-            <input name="upFile" type="file" accept="image/*">
+            <input id="file" name="upFile" type="file" accept="image/*">
 
         </div>
 
@@ -152,7 +152,9 @@
             <img class="back" src="img/fixed/arrow.png" alt="">
             <h4 class="titles">图片裁剪</h4>
         </header>
-        <img src="img/21.jpg" alt="">
+
+        <img class="clip-head" src="" alt="">
+
         <div class="clip-main"></div>
     </section>
 
@@ -214,17 +216,65 @@
             })
 
             //**********************************************************
-
+            //弹出截取层对象
             var clipImgObj =  $('#clip-img');
+            //文件对象
+            var fileObj = $("#file");
 
             //上传图片按钮
             $('#upImg').on('tap',function(){
 
-                $("input[name='upFile']").trigger('click')
+                fileObj.trigger('click');
 
             })
+
+            fileObj.on('change',function(){
+
+                clipImgObj.css('display','block')
+
+                readeFileContent()
+
+            })
+
+            function readeFileContent() {
+
+                var file = document.getElementById("file").files[0];
+
+                var reader = new FileReader();
+
+                reader.readAsDataURL(file);
+
+                reader.onload = function () {
+
+                    var imgUrl = this.result;
+
+                    var img = new Image();
+
+                        img.src = imgUrl;
+
+                        img.onload = function(){
+
+                            var clipw = $('.clip-main').css('width');
+
+                            if(img.width - img.height > 0){
+
+                                $('.clip-head').prop('src',imgUrl).css('height',clipw);
+
+                            }else{
+
+                                $('.clip-head').prop('src',imgUrl).css('width',clipw);
+
+                            }
+                            console.log($('.clip-head').offset())
+                            console.log($('.clip-main').offset().client)
+                        }
+                    //$('#clip-head').prop('src',imgUrl);
+                }
+            }
+
             //图片剪裁弹出
 
+            //返回
             bom.moveDetail(clipImgObj,function(){
 
                 clipImgObj.css('display','none');
