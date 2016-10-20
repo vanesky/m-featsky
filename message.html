@@ -210,7 +210,6 @@
 
                 $('.select-img').eq(1).show();
 
-
                 writingObj.css('-webkit-transform','translateX(-100%)')
 
             })
@@ -220,6 +219,40 @@
             var clipImgObj =  $('#clip-img');
             //文件对象
             var fileObj = $("#file");
+
+            var selx = sely = imgx = imgy = '';
+
+            var m_sx = m_sy = '';
+
+            //拖动事件
+            $('.clip-main').on('touchstart',function(e){
+
+                m_sx = e.touches[0].clientX;
+
+                m_sy = e.touches[0].clientY;
+
+            })
+
+            var clipHeadObj = $('.clip-head');
+
+            $('.clip-main').on('touchmove',function(e){
+
+                var tranx = window.getComputedStyle(clipHeadObj[0],null)['transform'].split(', ')[4];
+
+                var trany = window.getComputedStyle(clipHeadObj[0],null)['transform'].split(', ')[5];
+
+                    trany = trany.match(/(.+)\)$/)[1];
+
+
+                var sx = e.clientX - m_sx;
+
+                var sy = e.clientY - m_sy;
+
+                obj.
+                console.log(tranx + ' ' + trany)
+
+            })
+
 
             //上传图片按钮
             $('#upImg').on('tap',function(){
@@ -265,14 +298,21 @@
                                 $('.clip-head').prop('src',imgUrl).css('width',clipw);
 
                             }
-                            console.log($('.clip-head').offset())
-                            console.log($('.clip-main').offset().client)
+
+                            selx = 300 - Math.abs($('.clip-main').offset().left);
+
+                            sely = 300 - Math.abs($('.clip-main').offset().top);
+
+                            imgx = $('.clip-head').offset().left;
+
+                            imgy = $('.clip-head').offset().top;
+                            console.log(imgx+ " "+ imgy)
+
+                            console.log(selx + ' ' + sely)
                         }
                     //$('#clip-head').prop('src',imgUrl);
                 }
             }
-
-            //图片剪裁弹出
 
             //返回
             bom.moveDetail(clipImgObj,function(){

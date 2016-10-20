@@ -160,6 +160,7 @@ body {
           transform: translate(-50%, -50%);
   width: 20rem;
   height: 20rem;
+  border: 300px solid #333;
   opacity: 0.8;
 }
 #clip-img .clip-head {
