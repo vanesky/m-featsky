@@ -107,7 +107,6 @@
         <div class="sub-cancel fx-row-b">
             <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml10">
             <input id="file" name="upFile" type="file" accept="image/*">
-
         </div>
 
         <div class="sel-img fx-row-b">
@@ -152,10 +151,11 @@
             <img class="back" src="img/fixed/arrow.png" alt="">
             <h4 class="titles">图片裁剪</h4>
         </header>
-
         <img class="clip-head" src="" alt="">
-
         <div class="clip-main"></div>
+        <div class="clip-sub">
+            <div class="clip-button">确定</div>
+        </div>
     </section>
 
     <script src="src/lib/zepto.js"></script>
@@ -217,42 +217,122 @@
             //**********************************************************
             //弹出截取层对象
             var clipImgObj =  $('#clip-img');
-            //文件对象
-            var fileObj = $("#file");
-
-            var selx = sely = imgx = imgy = '';
-
-            var m_sx = m_sy = '';
-
-            //拖动事件
-            $('.clip-main').on('touchstart',function(e){
-
-                m_sx = e.touches[0].clientX;
-
-                m_sy = e.touches[0].clientY;
-
-            })
 
             var clipHeadObj = $('.clip-head');
 
-            $('.clip-main').on('touchmove',function(e){
+            var clipMainObj = $('.clip-main');
 
-                var tranx = window.getComputedStyle(clipHeadObj[0],null)['transform'].split(', ')[4];
+            //文件对象
+            var fileObj = $("#file");
 
-                var trany = window.getComputedStyle(clipHeadObj[0],null)['transform'].split(', ')[5];
+            //图片坐标剪裁坐标
+            var selx = sely = imgx = imgy = '';
+            //拖动手指坐标
+            var m_sx = m_sy = '';
+            //两根手指间距
+            var initxy = '';
 
-                    trany = trany.match(/(.+)\)$/)[1];
+            //拖动事件
+            clipMainObj.on('touchstart',function(e){
+
+                if(e.targetTouches.length>=2){
+
+                    initxy = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
+
+                }else{
+
+                    initxy = '';
+
+                    m_sx = e.touches[0].clientX;
+
+                    m_sy = e.touches[0].clientY;
+
+                }
+            })
+
+            //拖动和放大事件
+            clipMainObj.on('touchmove',function(e){
+
+                if(e.targetTouches.length<=1){
+
+                    if(initxy){return}
+
+                    var tranx = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[4];
+
+                    var trany = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[5];
+
+                        trany = trany.match(/(.+)\)$/)[1];
 
 
-                var sx = e.clientX - m_sx;
+                    var sx = e.touches[0].clientX - m_sx;
 
-                var sy = e.clientY - m_sy;
+                    var sy = e.touches[0].clientY - m_sy;
 
-                obj.
-                console.log(tranx + ' ' + trany)
+                    clipHeadObj.css('-webkit-transform','translate('+Math.round(Number(tranx)+sx)+'px,'+Math.round(Number(trany)+sy)+'px)');
+
+                    //console.log(tranx + ' ' + trany  +"  ")
+
+                    m_sx = e.touches[0].clientX;
+
+                    m_sy = e.touches[0].clientY;
+
+                }else if(e.targetTouches.length>=2){
+
+                    var isMax = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
+
+                    //动画运行||缩放距离不够 则阻止
+                    //if((Math.abs(isMax - initXY)<60)){return}
+                    var w = isMax - initxy;
+
+                        var sw = clipHeadObj.width();
+
+                        var sh = clipHeadObj.height();
+
+                        //根据比例调整大小
+                        if(sw - sh >0){
+
+                            clipHeadObj.css('height',(sh + w) + 'px');
+
+                        }else{
+
+                            clipHeadObj.css('width',(sw + w) + 'px');
+
+                        }
+
+                    initxy = isMax;
+                }
+
+                //图片坐标
+                imgx = clipHeadObj.offset().left;
+
+                imgy = clipHeadObj.offset().top;
+
+                console.log(imgx+" "+imgy)
 
             })
 
+            //提交剪裁参数
+            function clipParam(){
+
+                //return clipMainObj[0].clientWidth/clipHeadObj.width()
+
+                var paramObj = {
+
+                    x:selx - imgx,
+
+                    y:sely - imgy,
+
+                    w:clipMainObj[0].clientWidth/clipHeadObj.width()
+                }
+
+                return paramObj;
+            }
+
+            $('header').on('click',function(){
+
+                alert('左边距：' + clipParam().x + '  ' + '上边距：' + clipParam().y + '宽度百分比：' + clipParam().w)
+
+            })
 
             //上传图片按钮
             $('#upImg').on('tap',function(){
@@ -263,9 +343,9 @@
 
             fileObj.on('change',function(){
 
-                clipImgObj.css('display','block')
+                readeFileContent();
 
-                readeFileContent()
+                clipImgObj.css('display','block');
 
             })
 
@@ -287,30 +367,27 @@
 
                         img.onload = function(){
 
-                            var clipw = $('.clip-main').css('width');
+                            var clipw = clipMainObj.css('width');
 
                             if(img.width - img.height > 0){
 
-                                $('.clip-head').prop('src',imgUrl).css('height',clipw);
+                                clipHeadObj.prop('src',imgUrl).css('height',clipw);
 
                             }else{
 
-                                $('.clip-head').prop('src',imgUrl).css('width',clipw);
+                                clipHeadObj.prop('src',imgUrl).css('width',clipw);
 
                             }
 
-                            selx = 300 - Math.abs($('.clip-main').offset().left);
+                            selx = 300 - Math.abs(clipMainObj.offset().left);
 
-                            sely = 300 - Math.abs($('.clip-main').offset().top);
+                            sely = 300 - Math.abs(clipMainObj.offset().top);
 
-                            imgx = $('.clip-head').offset().left;
+                            imgx = clipHeadObj.offset().left;
 
-                            imgy = $('.clip-head').offset().top;
-                            console.log(imgx+ " "+ imgy)
+                            imgy = clipHeadObj.offset().top;
 
-                            console.log(selx + ' ' + sely)
                         }
-                    //$('#clip-head').prop('src',imgUrl);
                 }
             }
 
@@ -319,6 +396,16 @@
 
                 clipImgObj.css('display','none');
 
+                //初始化
+                clipHeadObj.css({
+
+                    'width':'',
+
+                    'height':'',
+
+                    '-webkit-transform':'translate(-50%,-50%)'
+
+                }).prop('src','');
             });
 
             clipImgObj.on('touchmove',function(e){

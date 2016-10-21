@@ -5,8 +5,7 @@
 @c6:#666;@c9:#999;@c10:#101010;
 @cf9:#f9f9f9;
 @a:#49A0DB;
-@ba:#49A0DB;
-
+@b:#46F1F1;
 body{
   background-color:@cf2;
 }
@@ -129,7 +128,7 @@ body{
         height:16px;
         border-radius:16px;
         border: 2px solid @cf;
-        background-color:@ba;
+        background-color:@a;
         z-index: 2;
         margin:-1px 0 0 -1px;
         //内部对勾
@@ -181,7 +180,7 @@ body{
     width:20rem;
     height:20rem;
     border:300px solid @c3;
-    opacity: 0.8;
+    opacity: 0.9;
   }
   //图片
   .clip-head{
@@ -190,6 +189,28 @@ body{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
+  }
+  //提交
+  .clip-sub{
+    position: absolute;
+    height:4rem;
+    width:100%;
+    top:100%;
+    transform: translateY(-100%);
+    text-align: center;
+    z-index:20;
+    background-color: @c10;
+    .clip-button{
+      height:2.5rem;
+      width:6rem;
+      line-height: 2.5rem;
+      background-color: @a;
+      color: @cf;
+      border-radius: 5px;
+      float: right;
+      margin-top:.8rem ;
+      margin-right: 0.5rem;
+    }
   }
 }
 
