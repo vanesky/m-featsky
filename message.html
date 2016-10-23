@@ -335,10 +335,19 @@
             })
 
             //上传图片按钮
-            $('#upImg').on('tap',function(){
+            /*$('#upImg').on('tap',function(){
 
                 fileObj.trigger('click');
 
+            })*/
+
+
+            $('#upImg').on('tap',function(){
+
+                app.ajax('post',app.url('postImg.php'),{},function(data){
+
+                    alert(data)
+                })
             })
 
             fileObj.on('change',function(){
