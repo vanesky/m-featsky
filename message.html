@@ -104,12 +104,13 @@
             </div>
         </div>
 
-        <div class="sub-cancel fx-row-b">
-            <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml10">
-            <input id="file" name="upFile" type="file" accept="image/*">
+        <div class="sub-cancel">
+            <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml15 mt7">
+            <input id="file" name="upFile" type="file" accept="image/*" class="hide">
+            <span id="filePath"></span>
         </div>
 
-        <div class="sel-img fx-row-b">
+        <!--<div class="sel-img fx-row-b">
             <div class="list-img">
                 <img src="img/1.jpg" alt="">
                 <div class="select-img">
@@ -140,12 +141,14 @@
                     <div class="select-yes"></div>
                 </div>
             </div>
-        </div>
+        </div>-->
+
         <input name="imgSrc" type="hidden" val="img/1.jpg">
-        <div id="sub" class="w85 tc pdt10 pdb10 c-ba cf br5 mt40">发表</div>
-        <div id="cancel" class="w85 tc pdt10 pdb10 bc-db cf br5 mt7">取消</div>
+        <div id="sub" class="w85 tc pdt10 pdb10 c-ba cf br5 mt30">发表</div>
+        <div id="cancel" class="w85 tc pdt10 pdb10 bc-db cf br5 mt10">取消</div>
     </section>
 
+    <!--图片剪裁-->
     <section id="clip-img">
         <header style="position:relative;">
             <img class="back" src="img/fixed/arrow.png" alt="">
@@ -156,6 +159,12 @@
         <div class="clip-sub">
             <div class="clip-button">确定</div>
         </div>
+    </section>
+
+    <!--进度-->
+    <section id="pro-main">
+        <progress class="pro-val" value="0" max="100"></progress>
+        <p class="pro-info">0%</p>
     </section>
 
     <script src="src/lib/zepto.js"></script>
@@ -207,8 +216,6 @@
                 $('.writ-prompt').show();
 
                 $('.select-img').hide();
-
-                $('.select-img').eq(1).show();
 
                 writingObj.css('-webkit-transform','translateX(-100%)')
 
@@ -335,60 +342,73 @@
             })
 
             //上传图片按钮
-            /*$('#upImg').on('tap',function(){
+            $('#upImg').on('tap',function(){
 
                 fileObj.trigger('click');
 
-            })*/
+            })
 
-            $('#upImg').on('tap',function(){
+            /*$('#upImg').on('tap',function(){
 
-                /*app.ajax('post',app.url('postImg.php'),{},function(data){
+                /!*app.ajax('post',app.url('postImg.php'),{},function(data){
 
                     //alert(data)
-                })*/
+                })*!/
+
+                uploadFile();
+
+            })*/
+
+            //上传图片
+            function uploadFile(){
+
+                var xhr = new XMLHttpRequest();
 
                 var file = document.getElementById('file').files[0];
 
                 var fd = new FormData();
 
-                    fd.append("author", "vane");
+                fd.append("author", "vane");
 
-                    fd.append("name", "like");
+                fd.append("name", "like");
 
-                    fd.append("fileToUpload", document.getElementById('file').files[0]);
+                fd.append("fileToUpload", document.getElementById('file').files[0]);
 
+                xhr.open("POST",app.url('postImg.php'));
 
-                var xhr = new XMLHttpRequest();
-
-                    xhr.open("POST",app.url('postImg.php'));
-
-                    //xhr.upload.addEventListener("progress", uploadProgress, false);
-
-                    //xhr.addEventListener("load", uploadComplete, false);
-
-                    //xhr.addEventListener("error", uploadFailed, false);
-
-                    //xhr.addEventListener("abort", uploadCanceled, false);
-
-                    /* Be sure to change the url below to the url of your upload server side script */
-
-                    xhr.send(fd);
-
-            })
-
-            function uploadFile() {
-                var xhr = new XMLHttpRequest();
-                var fd = document.getElementById('form1').getFormData();
-
-                /* event listners */
                 xhr.upload.addEventListener("progress", uploadProgress, false);
+
                 xhr.addEventListener("load", uploadComplete, false);
-                xhr.addEventListener("error", uploadFailed, false);
-                xhr.addEventListener("abort", uploadCanceled, false);
+
+                //xhr.addEventListener("error", uploadFailed, false);
+
+                //xhr.addEventListener("abort", uploadCanceled, false);
+
                 /* Be sure to change the url below to the url of your upload server side script */
-                xhr.open("POST", "upload.php");
+
                 xhr.send(fd);
+            }
+
+            function uploadProgress(event){
+
+                if(event.lengthComputable) {
+
+                    $('#pro-main').show();
+
+                    var percentComplete = Math.round(event.loaded*100 / event.total);
+
+                    $('.pro-info').text(percentComplete + '%');
+
+                    $('.pro-val').val(percentComplete);
+
+                }
+
+            }
+
+            function uploadComplete(event){
+
+                $('#pro-main').hide();
+
             }
 
 
@@ -396,13 +416,15 @@
 
                 readeFileContent();
 
-                clipImgObj.css('display','block');
+                clipImgObj.show();
 
             })
 
             function readeFileContent() {
 
                 var file = document.getElementById("file").files[0];
+
+                $('#filePath').text(file.name);
 
                 var reader = new FileReader();
 

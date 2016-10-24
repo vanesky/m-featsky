@@ -154,6 +154,15 @@ body{
     height:3rem;
     background-color:@cf;
     color:@c6;
+    #filePath{
+      position: relative;
+      top:-.4rem;
+      width:60%;
+      margin-left: 0.5rem;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
   }
 
 }
@@ -214,8 +223,29 @@ body{
   }
 }
 
+/*==============进度===================*/
 
-
+#pro-main{
+  display: none;
+  position:fixed;
+  z-index: 13;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 6px;
+  width:15rem;
+  height:4rem;
+  background-color: rgba(0,0,0,0.6);
+  text-align: center;
+  progress{
+    width:80%;
+    margin-top: 0.8rem;
+  }
+  .pro-info{
+    margin-top: .2rem;
+    color:@cf;
+  }
+}
 
 
 
