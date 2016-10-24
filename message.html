@@ -330,7 +330,7 @@
 
             $('header').on('click',function(){
 
-                alert('左边距：' + clipParam().x + '  ' + '上边距：' + clipParam().y + '宽度百分比：' + clipParam().w)
+                //alert('左边距：' + clipParam().x + '  ' + '上边距：' + clipParam().y + '宽度百分比：' + clipParam().w)
 
             })
 
@@ -341,14 +341,56 @@
 
             })*/
 
-
             $('#upImg').on('tap',function(){
 
-                app.ajax('post',app.url('postImg.php'),{},function(data){
+                /*app.ajax('post',app.url('postImg.php'),{},function(data){
 
-                    alert(data)
-                })
+                    //alert(data)
+                })*/
+
+                var file = document.getElementById('file').files[0];
+
+                var fd = new FormData();
+
+                    fd.append("author", "vane");
+
+                    fd.append("name", "like");
+
+                    fd.append("fileToUpload", document.getElementById('file').files[0]);
+
+
+                var xhr = new XMLHttpRequest();
+
+                    xhr.open("POST",app.url('postImg.php'));
+
+                    //xhr.upload.addEventListener("progress", uploadProgress, false);
+
+                    //xhr.addEventListener("load", uploadComplete, false);
+
+                    //xhr.addEventListener("error", uploadFailed, false);
+
+                    //xhr.addEventListener("abort", uploadCanceled, false);
+
+                    /* Be sure to change the url below to the url of your upload server side script */
+
+                    xhr.send(fd);
+
             })
+
+            function uploadFile() {
+                var xhr = new XMLHttpRequest();
+                var fd = document.getElementById('form1').getFormData();
+
+                /* event listners */
+                xhr.upload.addEventListener("progress", uploadProgress, false);
+                xhr.addEventListener("load", uploadComplete, false);
+                xhr.addEventListener("error", uploadFailed, false);
+                xhr.addEventListener("abort", uploadCanceled, false);
+                /* Be sure to change the url below to the url of your upload server side script */
+                xhr.open("POST", "upload.php");
+                xhr.send(fd);
+            }
+
 
             fileObj.on('change',function(){
 

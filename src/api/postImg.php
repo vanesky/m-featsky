@@ -9,9 +9,15 @@
     mysql_query("set names utf8", $con);
     mysql_select_db("featsky", $con);
 
-    $file = $_FILES;
+    $file = $_FILES['fileToUpload'];
 
-    print_r($file);
+    // 中文编码
+    $c_name = iconv("UTF-8", "GB2312",$file["name"]);
+
+    move_uploaded_file($file["tmp_name"],"../../img/user/" . $c_name);
+
+    $filename = "../../img/user/" . $c_name;
+
     /*============================================================*/
 
     function thumb($filename,$width=200,$height=200){
@@ -31,19 +37,38 @@
 
         //将原图缩放到这个新创建的图片资源中
         $image_p = imagecreatetruecolor($width, $height);
+
+        preg_match('/.+\.((png)|(jpg))$/',$filename,$matches);
+
         //获取原图的图像资源
-        $image = imagecreatefromjpeg($filename);
+        if($matches[1] == 'jpg'){
+
+            $image = imagecreatefromjpeg($filename);
+
+        }else if($matches[1] == 'png'){
+
+            $image = imagecreatefrompng($filename);
+
+        }
 
         //使用imagecopyresampled()函数进行缩放设置
         imagecopyresampled($image_p,$image,0,0,0,0,$width,$height,$width_orig,$height_orig);
 
         //将缩放后的图片$image_p保存，100(质量最佳，文件最大)
-        imagejpeg($image_p,$filename);
+        //imagejpeg($image_p,$filename);
+        if($matches[1] == 'jpg'){
+
+            imagejpeg($image_p,$filename);
+
+        }else if($matches[1] == 'png'){
+
+            imagepng($image_p,$filename);
+        }
 
         imagedestroy($image_p);
         imagedestroy($image);
     }
 
-     //thumb("brophp.jpg",100,100);
+     thumb($filename,100,100);
 
 ?>
