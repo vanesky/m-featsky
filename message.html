@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/message.css">
+    <link rel="stylesheet" href="src/css/com-prompt.css">
 </head>
 <body>
 
@@ -167,11 +168,23 @@
         <p class="pro-info">0%</p>
     </section>
 
+    <!--提示框组件-->
+    <div id="com-prompt">
+        <div class="prompt-main">
+            <h5 class="prompt-tit">提示</h5>
+            <div class="prompt-text">0</div>
+            <ul class="prompt-item fx-row-a">
+                <li class="prompt-button bc-db c6">取消</li>
+                <li class="prompt-button c-ba cf">确定</li>
+            </ul>
+        </div>
+    </div>
+
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="src/js/validate.js"></script>
-
+    <script src="component/prompt/com_prompt.js"></script>
     <script>
         $(function(){
 
@@ -229,200 +242,37 @@
 
             var clipMainObj = $('.clip-main');
 
-            //文件对象
-            var fileObj = $("#file");
 
-            //图片坐标剪裁坐标
-            var selx = sely = imgx = imgy = '';
-            //拖动手指坐标
-            var m_sx = m_sy = '';
-            //两根手指间距
-            var initxy = '';
-
-            //拖动事件
-            clipMainObj.on('touchstart',function(e){
-
-                if(e.targetTouches.length>=2){
-
-                    initxy = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
-
-                }else{
-
-                    initxy = '';
-
-                    m_sx = e.touches[0].clientX;
-
-                    m_sy = e.touches[0].clientY;
-
-                }
-            })
-
-            //拖动和放大事件
-            clipMainObj.on('touchmove',function(e){
-
-                if(e.targetTouches.length<=1){
-
-                    if(initxy){return}
-
-                    var tranx = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[4];
-
-                    var trany = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[5];
-
-                        trany = trany.match(/(.+)\)$/)[1];
-
-
-                    var sx = e.touches[0].clientX - m_sx;
-
-                    var sy = e.touches[0].clientY - m_sy;
-
-                    clipHeadObj.css('-webkit-transform','translate('+Math.round(Number(tranx)+sx)+'px,'+Math.round(Number(trany)+sy)+'px)');
-
-                    //console.log(tranx + ' ' + trany  +"  ")
-
-                    m_sx = e.touches[0].clientX;
-
-                    m_sy = e.touches[0].clientY;
-
-                }else if(e.targetTouches.length>=2){
-
-                    var isMax = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
-
-                    //动画运行||缩放距离不够 则阻止
-                    //if((Math.abs(isMax - initXY)<60)){return}
-                    var w = isMax - initxy;
-
-                        var sw = clipHeadObj.width();
-
-                        var sh = clipHeadObj.height();
-
-                        //根据比例调整大小
-                        if(sw - sh >0){
-
-                            clipHeadObj.css('height',(sh + w) + 'px');
-
-                        }else{
-
-                            clipHeadObj.css('width',(sw + w) + 'px');
-
-                        }
-
-                    initxy = isMax;
-                }
-
-                //图片坐标
-                imgx = clipHeadObj.offset().left;
-
-                imgy = clipHeadObj.offset().top;
-
-                console.log(imgx+" "+imgy)
-
-            })
-
-            //提交剪裁参数
-            function clipParam(){
-
-                //return clipMainObj[0].clientWidth/clipHeadObj.width()
-
-                var paramObj = {
-
-                    x:selx - imgx,
-
-                    y:sely - imgy,
-
-                    w:clipMainObj[0].clientWidth/clipHeadObj.width()
-                }
-
-                return paramObj;
-            }
-
-            $('header').on('click',function(){
-
-                //alert('左边距：' + clipParam().x + '  ' + '上边距：' + clipParam().y + '宽度百分比：' + clipParam().w)
-
-            })
-
-            //上传图片按钮
+            //选择图片
             $('#upImg').on('tap',function(){
 
-                fileObj.trigger('click');
+                $("#file").trigger('click');
 
             })
 
-            /*$('#upImg').on('tap',function(){
-
-                /!*app.ajax('post',app.url('postImg.php'),{},function(data){
-
-                    //alert(data)
-                })*!/
-
-                uploadFile();
-
-            })*/
-
-            //上传图片
-            function uploadFile(){
-
-                var xhr = new XMLHttpRequest();
-
-                var file = document.getElementById('file').files[0];
-
-                var fd = new FormData();
-
-                fd.append("author", "vane");
-
-                fd.append("name", "like");
-
-                fd.append("fileToUpload", document.getElementById('file').files[0]);
-
-                xhr.open("POST",app.url('postImg.php'));
-
-                xhr.upload.addEventListener("progress", uploadProgress, false);
-
-                xhr.addEventListener("load", uploadComplete, false);
-
-                //xhr.addEventListener("error", uploadFailed, false);
-
-                //xhr.addEventListener("abort", uploadCanceled, false);
-
-                /* Be sure to change the url below to the url of your upload server side script */
-
-                xhr.send(fd);
-            }
-
-            function uploadProgress(event){
-
-                if(event.lengthComputable) {
-
-                    $('#pro-main').show();
-
-                    var percentComplete = Math.round(event.loaded*100 / event.total);
-
-                    $('.pro-info').text(percentComplete + '%');
-
-                    $('.pro-val').val(percentComplete);
-
-                }
-
-            }
-
-            function uploadComplete(event){
-
-                $('#pro-main').hide();
-
-            }
-
-
-            fileObj.on('change',function(){
+            //选择照片更改后执行
+            $("#file").on('change',function(){
 
                 readeFileContent();
-
-                clipImgObj.show();
 
             })
 
             function readeFileContent() {
 
                 var file = document.getElementById("file").files[0];
+
+                    if((file.size/1000)>500){
+
+                        com.prompt(0,'图片过大请重选');
+
+                        return false;
+
+                    }else if(!/(jpeg)|(png)|(jpg)$/.test(file.type)){
+
+                        com.prompt(0,'请选正确的图片格式(JPG/PNG)');
+
+                        return false;
+                    }
 
                 $('#filePath').text(file.name);
 
@@ -462,9 +312,172 @@
 
                         }
                 }
+
+                clipImgObj.show();
             }
 
-            //返回
+            //********************************************************************
+
+            //图片坐标剪裁坐标
+            var selx = sely = imgx = imgy = '';
+            //拖动手指坐标
+            var m_sx = m_sy = '';
+            //两根手指间距
+            var initxy = '';
+
+            //拖动事件
+            clipMainObj.on('touchstart',function(e){
+
+                if(e.targetTouches.length>=2){
+
+                    initxy = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
+
+                }else{
+
+                    initxy = '';
+
+                    m_sx = e.touches[0].clientX;
+
+                    m_sy = e.touches[0].clientY;
+
+                }
+            })
+
+            //拖动和放大事件
+            clipMainObj.on('touchmove',function(e){
+
+                if(e.targetTouches.length<=1){
+
+                    if(initxy){return}
+
+                    var tranx = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[4];
+
+                    var trany = window.getComputedStyle(clipHeadObj[0],null)['webkitTransform'].split(', ')[5];
+
+                    trany = trany.match(/(.+)\)$/)[1];
+
+
+                    var sx = e.touches[0].clientX - m_sx;
+
+                    var sy = e.touches[0].clientY - m_sy;
+
+                    clipHeadObj.css('-webkit-transform','translate('+Math.round(Number(tranx)+sx)+'px,'+Math.round(Number(trany)+sy)+'px)');
+
+                    //console.log(tranx + ' ' + trany  +"  ")
+
+                    m_sx = e.touches[0].clientX;
+
+                    m_sy = e.touches[0].clientY;
+
+                }else if(e.targetTouches.length>=2){
+
+                    var isMax = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
+
+                    //动画运行||缩放距离不够 则阻止
+                    //if((Math.abs(isMax - initXY)<60)){return}
+                    var w = isMax - initxy;
+
+                    var sw = clipHeadObj.width();
+
+                    var sh = clipHeadObj.height();
+
+                    //根据比例调整大小
+                    if(sw - sh >0){
+
+                        clipHeadObj.css('height',(sh + w) + 'px');
+
+                    }else{
+
+                        clipHeadObj.css('width',(sw + w) + 'px');
+
+                    }
+
+                    initxy = isMax;
+                }
+
+                //图片坐标
+                imgx = clipHeadObj.offset().left;
+
+                imgy = clipHeadObj.offset().top;
+
+                console.log(imgx+" "+imgy)
+
+            })
+
+            //********************************************************************
+            //确定剪裁
+            $('.clip-button').on('tap',function(){
+
+                uploadFile();
+            })
+
+            //提交剪裁参数
+            function clipParam(){
+
+                return {
+
+                    x:selx - imgx,
+
+                    y:sely - imgy,
+
+                    s:clipMainObj[0].clientWidth/clipHeadObj.width(),
+
+                    w:clipHeadObj.width()
+                };
+            }
+
+            //上传图片
+            function uploadFile(){
+
+                var xhr = new XMLHttpRequest();
+
+                var file = document.getElementById('file').files[0];
+
+                var fd = new FormData();
+
+                fd.append("para",JSON.stringify(clipParam()));
+
+                fd.append("fileToUpload", document.getElementById('file').files[0]);
+
+                xhr.open("POST",app.url('postImg.php'));
+
+                xhr.upload.addEventListener("progress", uploadProgress, false);
+
+                xhr.addEventListener("load", uploadComplete, false);
+
+                //xhr.addEventListener("error", uploadFailed, false);
+
+                //xhr.addEventListener("abort", uploadCanceled, false);
+
+                /* Be sure to change the url below to the url of your upload server side script */
+
+                xhr.send(fd);
+            }
+            //上传图片中
+            function uploadProgress(event){
+
+                if(event.lengthComputable) {
+
+                    $('#pro-main').show();
+
+                    var percentComplete = Math.round(event.loaded*100 / event.total);
+
+                    $('.pro-info').text(percentComplete + '%');
+
+                    $('.pro-val').val(percentComplete);
+
+                }
+            }
+            //上传图片完毕
+            function uploadComplete(event){
+
+                $('#pro-main').hide();
+
+            }
+
+            //*****************************************************************
+
+            //图片剪裁返回按钮
             bom.moveDetail(clipImgObj,function(){
 
                 clipImgObj.css('display','none');
@@ -487,18 +500,6 @@
 
             })
 
-            //选择头像
-            $('.list-img').on('tap',function(){
-
-                var _this = $(this);
-
-                $('.select-img').hide();
-
-                _this.find('.select-img').show();
-
-                $("input[name='imgSrc']").val(_this.find('img').prop('src'));
-
-            })
 
             //提交
             $('#sub').on('tap',function(){
@@ -565,7 +566,6 @@
                 })
             }
 
-
             function renderInfo(){
 
                 app.ajax('get',app.url('getMesList.php'),{page:pageCount,pageStart:pageResult},function(data){
@@ -615,6 +615,18 @@
             }
 
 
+            //选择头像
+            /*$('.list-img').on('tap',function(){
+
+             var _this = $(this);
+
+             $('.select-img').hide();
+
+             _this.find('.select-img').show();
+
+             $("input[name='imgSrc']").val(_this.find('img').prop('src'));
+
+             })*/
         })
     </script>
 
