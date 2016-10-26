@@ -16,6 +16,15 @@ com.prompt = function(type,text,fun1,fun2){
 
         promptObj.find('.prompt-button').eq(0).hide();
 
+        if(fun1){
+
+            promptObj.find('.prompt-button').on('tap',function(){
+
+                fun1();
+
+            })
+        }
+
     }else if(type == 1 && fun1 && fun2){
 
         promptObj.find('.prompt-button').on('tap',function(){

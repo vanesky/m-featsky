@@ -15,28 +15,16 @@
     // 中文编码
     $c_name = iconv("UTF-8", "GB2312",$file["name"]);
 
-    //preg_match('/(.+)\..+/',$file['name'],$matches);
-
-    //$firstName = $matches[1];
-
-    //$firstName = iconv("UTF-8", "GB2312",$matches[1]);
-
-    //$firstName = $matches[1];
 
     move_uploaded_file($file["tmp_name"],"../../img/user/" . $c_name);
 
     $filename = "../../img/user/" . $c_name;
 
-    //rename("../../img/user/$c_name",'../../img/user/'.$firstName.'.jpg');
-
-    //$filename = "../../img/user/".$firstName.'.jpg';
-
-    //echo $filename;
-
     /*============================================================*/
 
     function thumb($filename,$gridObj,$width=200,$height=200){
 
+        $val = '';
         //获取原图像$filename的宽度$width_orig和高度$height_orig
         list($width_orig,$height_orig) = getimagesize($filename);
         //根据参数$width和$height值，换算出等比例缩放的高度和宽度
@@ -74,19 +62,19 @@
         //将缩放后的图片$image_p保存，100(质量最佳，文件最大)
         if($matches[1] == 'png'){
 
-            imagepng($image_p,$filename);
+            $val = imagepng($image_p,$filename);
 
         }else{
 
-            imagejpeg($image_p,$filename);
+            $val = imagejpeg($image_p,$filename);
         }
 
         imagedestroy($image_p);
         imagedestroy($image);
 
-        return 1;
+        return $val;
     }
 
-    thumb($filename,$grid);
+    echo thumb($filename,$grid);
 
 ?>

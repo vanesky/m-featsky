@@ -82,7 +82,7 @@
             <!--<img class="img-head va-c" src="img/1.jpg" alt="">-->
             <div class="dp-ib va-c ml3">
                 <h5 data-name="name"></h5>
-                <p data-name="time" class="fr10 c6 mt1"></p>
+                <p data-name="time" class="fr10 c9 mt1"></p>
             </div>
             <p data-name="text" class="item-text"></p>
         </div>
@@ -108,7 +108,8 @@
         <div class="sub-cancel">
             <img id="upImg" src="img/fixed/up.png" alt="" class="img-edit ml15 mt7">
             <input id="file" name="upFile" type="file" accept="image/*" class="hide">
-            <span id="filePath"></span>
+            <!--<span id="filePath">1</span>-->
+            <input id="filePath" type="text" readonly value="">
         </div>
 
         <!--<div class="sel-img fx-row-b">
@@ -222,7 +223,7 @@
                 //留言初始化
                 $("[name='writTit']").val('');
 
-                $("[name='imgSrc']").val('img/1.jpg');
+                //$("[name='imgSrc']").val('img/1.jpg');
 
                 writObj.text('');
 
@@ -274,7 +275,7 @@
                         return false;
                     }
 
-                $('#filePath').text(file.name);
+                $('#filePath').val(file.name);
 
                 var reader = new FileReader();
 
@@ -405,7 +406,7 @@
             })
 
             //********************************************************************
-            //确定剪裁
+            //确定剪裁上传
             $('.clip-button').on('tap',function(){
 
                 uploadFile();
@@ -429,15 +430,40 @@
             //上传图片
             function uploadFile(){
 
-                var xhr = new XMLHttpRequest();
-
-                var file = document.getElementById('file').files[0];
-
                 var fd = new FormData();
 
                 fd.append("para",JSON.stringify(clipParam()));
 
                 fd.append("fileToUpload", document.getElementById('file').files[0]);
+
+
+                var xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function(){
+
+                        if (xhr.readyState==4){
+
+                            if (xhr.status==200){
+
+                                if(xhr.responseText == 1){
+
+                                    com.prompt(0,'上传完毕',function(){
+
+                                        clipImgObj.hide();
+
+                                    });
+
+                                }else{
+
+                                    com.prompt(0,'服务器错误');
+                                }
+
+                            }else{
+
+                                com.prompt(0,'服务器错误');
+                            }
+                        }
+                    }
 
                 xhr.open("POST",app.url('postImg.php'));
 
@@ -445,14 +471,15 @@
 
                 xhr.addEventListener("load", uploadComplete, false);
 
+                xhr.send(fd);
+
                 //xhr.addEventListener("error", uploadFailed, false);
 
                 //xhr.addEventListener("abort", uploadCanceled, false);
 
                 /* Be sure to change the url below to the url of your upload server side script */
-
-                xhr.send(fd);
             }
+
             //上传图片中
             function uploadProgress(event){
 
@@ -492,6 +519,8 @@
                     '-webkit-transform':'translate(-50%,-50%)'
 
                 }).prop('src','');
+
+                $('#filePath').val('');
             });
 
             clipImgObj.on('touchmove',function(e){
@@ -504,13 +533,34 @@
             //提交
             $('#sub').on('tap',function(){
 
-                if(!validateMethod(validate)){return}
+                if(!validateMethod(validate)){
 
+                    return ;
+
+                }else{
+
+                    var data = {
+
+                        name:$("input[name='writTit']").val(),
+
+                        text:$(".writ-text").text(),
+
+                        imgPath:$("#filePath").val()
+
+                    }
+
+                    /*app.ajax('post',app.url('postMesData.php'),data,function(data){
+
+                        //console.log(data)
+
+                    })*/
+                }
             })
+
             //取消
             $('#cancel').on('tap',function(){
 
-                writingObj.css('-webkit-transform','translateX(0%)')
+                writingObj.css('-webkit-transform','translateX(0%)');
 
             })
 
@@ -527,7 +577,7 @@
 
                 prompt:{
 
-                    writTit:{require:'请填写您的称呼',nameRule:'称呼需是4-6位的字母、数字、文字'},
+                    writTit:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的字母、数字、文字'},
 
                     writText:{require:'没有什么要说的吗',textRule:'您只能说汉字哦'}
 
@@ -550,20 +600,18 @@
 
                             str = validate.prompt[attrName][ruleName];
 
+                            alert(str);
+
                             return false;
-
                         }
-
                     })
 
                     if(str){
 
-                        alert(str);
-
                         return false;
-
-                    }else{ return true }
+                    }
                 })
+
             }
 
             function renderInfo(){
@@ -572,7 +620,7 @@
 
                     var obj = data,str = '';
 
-                    console.log(obj);
+                    //console.log(obj);
 
                     var model = $('#model-1').clone();
 

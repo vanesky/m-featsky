@@ -8,7 +8,7 @@ window.validateRule = {
 
     nameRule:function(val){
 
-        return /^[\u4e00-\u9fa5\d\w]{4,6}$/.test(val);
+        return /^[\u4e00-\u9fa5\d\w]{2,6}$/.test(val);
 
     },
 
