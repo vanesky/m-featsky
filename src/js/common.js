@@ -93,7 +93,7 @@
 
             })
 
-        }
+        };
 
         this.navEffect = function(){
 
@@ -124,7 +124,7 @@
 
             })
 
-        }
+        };
 
     }).apply(bom);
 

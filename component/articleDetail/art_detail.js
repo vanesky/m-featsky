@@ -33,7 +33,6 @@ com.renderArticle = function(id){
 
         contentObj.html(obj.text);
 
-    })
+    });
 
-
-}
+};

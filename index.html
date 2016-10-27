@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="src/css/m2-banner.css">
+    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -230,15 +230,15 @@
 
                 listObj.css('height',listObj.css('width'));
 
-                for(var i=0;i<obj.imgArrPath.length;i++){
+                for(var j=0;j<obj.imgArrPath.length;j++){
 
-                    if(i==0){
+                    if(j==0){
 
-                        $('#latest').find("[data-name='time']").text(obj.imgArrPath[i].time);
+                        $('#latest').find("[data-name='time']").text(obj.imgArrPath[j].time);
 
                     }
 
-                    listObj.eq(i).css('background-image','url(img/'+obj.imgArrPath[i].imgPath+')').attr('data-id',obj.imgArrPath[i].id);
+                    listObj.eq(j).css('background-image','url(img/'+obj.imgArrPath[j].imgPath+')').attr('data-id',obj.imgArrPath[j].id);
 
                 }
 

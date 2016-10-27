@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../src/css/base.css">
+    <link rel="stylesheet" href="com-prompt.css">
+</head>
+    <body>
+
+    <button id="demo">惦记我</button>
+
+    <!--提示框组件-->
+    <!--<div id="com-prompt">
+        <div class="prompt-main">
+            <h5 class="prompt-tit">提示</h5>
+            <div class="prompt-text">0</div>
+            <ul class="prompt-item fx-row-a">
+                <li class="prompt-button bc-db c6">取消</li>
+                <li class="prompt-button c-ba cf">确定</li>
+            </ul>
+        </div>
+    </div>-->
+
+
+    <script src="../../src/lib/zepto.js"></script>
+    <script src="com_prompt.js"></script>
+    <script>
+        $("#demo").on('tap',function(){
+
+            com.prompt(0,'测试')
+
+        })
+    </script>
+    </body>
+</html>

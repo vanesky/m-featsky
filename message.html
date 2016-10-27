@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/message.css">
-    <link rel="stylesheet" href="src/css/com-prompt.css">
+    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -169,17 +169,6 @@
         <p class="pro-info">0%</p>
     </section>
 
-    <!--提示框组件-->
-    <div id="com-prompt">
-        <div class="prompt-main">
-            <h5 class="prompt-tit">提示</h5>
-            <div class="prompt-text">0</div>
-            <ul class="prompt-item fx-row-a">
-                <li class="prompt-button bc-db c6">取消</li>
-                <li class="prompt-button c-ba cf">确定</li>
-            </ul>
-        </div>
-    </div>
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -202,21 +191,23 @@
             /*==================================================*/
             var writingObj = $('#writing');
 
-            bom.moveDetail(writingObj);
+                //留言返回按钮
+                bom.moveDetail(writingObj);
 
-            writingObj.on('touchmove',function(e){
+                writingObj.on('touchmove',function(e){
 
-                e.preventDefault();
+                    e.preventDefault();
 
-            })
+                });
 
+            //提示
             var writObj = writingObj.find('.writ-text');
 
                 writObj.on('focus',function(){
 
                     $('.writ-prompt').hide();
 
-                })
+                });
 
             //点击留言事件
             $('#mes-input').on('tap',function(){
@@ -527,42 +518,47 @@
 
                 e.preventDefault();
 
-            })
+            });
 
 
             //提交
             $('#sub').on('tap',function(){
 
-                if(!validateMethod(validate)){
+                if(!validateMethod(validate)){ return }
 
-                    return ;
+                var data = {
 
-                }else{
+                    name:$("input[name='writTit']").val(),
 
-                    var data = {
+                    text:$(".writ-text").text(),
 
-                        name:$("input[name='writTit']").val(),
+                    imgPath:$("#filePath").val()
 
-                        text:$(".writ-text").text(),
+                };
 
-                        imgPath:$("#filePath").val()
+                app.ajax('post',app.url('postMesData.php'),data,function(data){
 
+                    if(data){
+
+                        com.prompt(0,'留言成功',function(){
+
+                            window.location.reload(true);
+
+                        });
+
+                    }else{
+
+                        com.prompt(0,'留言失败,错误:' + data);
                     }
-
-                    /*app.ajax('post',app.url('postMesData.php'),data,function(data){
-
-                        //console.log(data)
-
-                    })*/
-                }
-            })
+                })
+            });
 
             //取消
             $('#cancel').on('tap',function(){
 
                 writingObj.css('-webkit-transform','translateX(0%)');
 
-            })
+            });
 
             //==============================================================
             var validate = {
@@ -577,16 +573,16 @@
 
                 prompt:{
 
-                    writTit:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的字母、数字、文字'},
+                    writTit:{require:'请填写您的称呼',nameRule:'称呼需是2-6位的文字'},
 
-                    writText:{require:'没有什么要说的吗',textRule:'您只能说汉字哦'}
+                    writText:{require:'没有什么要说的吗?',textRule:'留言至少5个字符哦'}
 
                 }
-            }
+            };
 
             function validateMethod(validate){
 
-                var str = '';
+                var str = [];
 
                 $.each(validate.rules,function(attrName,attrObj){
 
@@ -598,20 +594,18 @@
 
                         if(!window.validateRule[ruleName](value)){
 
-                            str = validate.prompt[attrName][ruleName];
-
-                            alert(str);
-
-                            return false;
+                            str.push(validate.prompt[attrName][ruleName]);
                         }
                     })
+                });
 
-                    if(str){
+                if(str.length>0){
 
-                        return false;
-                    }
-                })
+                    com.prompt(0,str[0]);
 
+                    return false;
+                }
+                return true;
             }
 
             function renderInfo(){
@@ -632,7 +626,7 @@
                         model.find("[data-name='id']").attr('data-id',obj[i].id);
 
                         //列表背景
-                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
+                        model.find("[data-name='headPath']").css('background-image',"url(img/user/"+obj[i].headPath+")");
 
                         //标题
                         model.find("[data-name='name']").text(obj[i].name);
@@ -648,7 +642,7 @@
 
                     if(str == ''){
 
-                        alert('没了')
+                        com.prompt(0,'已没有更多留言');
 
                     }else{
 
@@ -656,13 +650,10 @@
 
                     }
 
-
                     return pageResult = pageResult + pageCount;
 
                 })
             }
-
-
             //选择头像
             /*$('.list-img').on('tap',function(){
 

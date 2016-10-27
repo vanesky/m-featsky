@@ -178,7 +178,7 @@
                             //获取当前移动中的距离
                             var isMax = Math.abs(e.targetTouches[0].clientY - e.targetTouches[1].clientY);
                             //动画运行||缩放距离不够 则阻止
-                            if((scale%scaleNum!=0)||(Math.abs(isMax - initXY)<60)){return}
+                            if((scale%scaleNum!=0)||(Math.abs(isMax - initXY)<40)){return}
 
                             var dir = scaleNum;
 

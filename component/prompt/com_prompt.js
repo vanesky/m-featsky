@@ -2,8 +2,21 @@ if(!window.com){window.com = {}};
 
 com.prompt = function(type,text,fun1,fun2){
 
+    var str = '<div id="com-prompt"><div class="prompt-main"><h5 class="prompt-tit">提示</h5><div class="prompt-text">0</div><ul class="prompt-item"> <li class="prompt-button bc-db c6">取消</li> <li class="prompt-button c-ba cf">确定</li> </ul> </div> </div>';
+
     var promptObj = $('#com-prompt');
 
+    if(!promptObj.css('display')){
+
+        $('body').append(str);
+
+        promptObj = $('#com-prompt');
+
+    }
+
+    //********************************
+
+    //********************************
     promptObj.find('.prompt-text').text(text);
 
     promptObj.css('display','block').animate({

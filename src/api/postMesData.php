@@ -18,10 +18,10 @@
 
     }
 
-    $d = date('m-d H:i');
+    $d = date('m-d H:i',time()+60*60*8);
 
     $sql = "INSERT INTO message (name,time,headPath,text) VALUES('$data[name]','$d','$data[imgPath]','$data[text]')";
 
-    mysql_query($sql);
+    echo mysql_query($sql);
 
 ?>

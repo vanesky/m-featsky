@@ -8,13 +8,13 @@ window.validateRule = {
 
     nameRule:function(val){
 
-        return /^[\u4e00-\u9fa5\d\w]{2,6}$/.test(val);
+        return /^[\u4e00-\u9fa5]{2,6}$/.test(val);
 
     },
 
     textRule:function(val){
 
-        return /^[\u4e00-\u9fa5]+$/.test(val);
+        return /^[\u4e00-\u9fa5A-z]{5,}$/.test(val);
 
     },
 

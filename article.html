@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/art.css">
     <link rel="stylesheet" href="src/css/art_detail.css">
-    <link rel="stylesheet" href="src/css/com-prompt.css">
+    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -82,8 +82,6 @@
         <div class="load-button">加载更多</div>
     </div>
 
-
-
     <!--列表落地详情================================================-->
     <div class="com-art-toggle">
         <header>
@@ -124,17 +122,6 @@
     </div>
     <!--*****************************************************************-->
 
-    <!--提示框组件-->
-    <div id="com-prompt">
-        <div class="prompt-main">
-            <h5 class="prompt-tit">提示</h5>
-            <div class="prompt-text">0</div>
-            <ul class="prompt-item fx-row-a">
-                <li class="prompt-button bc-db c6">取消</li>
-                <li class="prompt-button c-ba cf">确定</li>
-            </ul>
-        </div>
-    </div>
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
@@ -187,7 +174,7 @@
 
                     if(str == ''){
 
-                        alert('没了')
+                        com.prompt(0,'没有啦!');
 
                     }else{
 
@@ -196,7 +183,6 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-
                 })
             }
 
@@ -222,42 +208,60 @@
 
                 $('.com-art-toggle').css('-webkit-transform','translateX(-100%)');
 
-            })
-
+            });
+            //详情页返回事件
             bom.moveDetail($('.com-art-toggle'));
-            
 
-            //页面滚动
-            var page_y = '';
+            //页面滚动==============================================
+            var scrollStop = (function(){
 
-            var artItemObj = $('#art-item');
+                var page_y = '';
 
-            var artMainObj = $('#art-main');
+                this.start = function(obj1,obj2){
 
-            artMainObj.on('touchstart',function(e){
+                    obj2.on('touchstart',function(e){
 
-                    page_y = e.touches[0].clientY;
+                        page_y = e.touches[0].clientY;
 
-            })
+                    })
+                };
 
-            artMainObj.on('touchmove',function(e){
+                this.move = function(obj1,obj2){
 
-                var num = e.touches[0].clientY - page_y;
+                    obj2.on('touchmove',function(e){
 
-                var stop = artMainObj.scrollTop();
+                        var num = e.touches[0].clientY - page_y;
 
-                if(artItemObj.height()<artMainObj.height()){
+                        var stop = obj2.scrollTop();
 
-                    e.preventDefault();
+                        if(obj1.height()<obj2.height()){
 
+                            e.preventDefault();
+
+                        }
+
+                        if(stop>=obj1.height()-obj2.height()&&num<0){
+
+                            e.preventDefault();
+
+                        }
+                    })
+                };
+
+                return {
+
+                    start:start,
+
+                    move:move
                 }
 
-                if(stop>=artItemObj.height()-artMainObj.height()&&num<0){
+            })();
 
-                    e.preventDefault();
+            scrollStop.start($('#art-item'),$('#art-main'));
 
-                }
-            })
+            scrollStop.move($('#art-item'),$('#art-main'));
+
+            //=====================================================
 
             //搜索
             $('.search-img').on('tap',function(){
@@ -272,8 +276,7 @@
 
                 }else{
 
-                    com.prompt(0,'请填写搜索内容!')
-
+                    com.prompt(0,'请填写搜索内容!');
                 }
             })
 
