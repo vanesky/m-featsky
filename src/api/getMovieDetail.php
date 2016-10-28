@@ -16,6 +16,12 @@
 
     $resultObj = mysql_fetch_object($movieResult);
 
+    if(!$resultObj){
+
+        echo 'false';
+
+        return;
+    }
 
     $movieObj['title'] = $resultObj->{'title'};
 
@@ -26,5 +32,7 @@
     $movieObj['description'] = $resultObj->{'description'};
 
     echo json_encode($movieObj);
+
+
 
 ?>

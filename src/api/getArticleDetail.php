@@ -14,13 +14,13 @@
 
     $artResult = mysql_query("SELECT * FROM article where id = $id");
 
-    if(!$artResult){
+    $resultObj = mysql_fetch_object($artResult);
 
-        echo '';
+    if(!$resultObj){
+
+        echo 'false';
 
     }else{
-
-        $resultObj = mysql_fetch_object($artResult);
 
         echo json_encode($resultObj);
 

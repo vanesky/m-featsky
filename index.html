@@ -134,12 +134,6 @@
                 </ul>
             </div>
         </section>
-
-        <!--<footer>
-            <p>Copyright &copy;http://www.featsky.com</p>
-            <p>Email 641151096qq.com</p>
-        </footer>-->
-
     </div>
 
 
@@ -193,8 +187,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="component/prompt/com_prompt.js"></script>
     <script src="src/js/ajax.js"></script>
-
     <!--图片组件-->
     <script src="component/album/m2-banner.js"></script>
     <script src="component/album/album_render.js"></script>
@@ -210,8 +204,6 @@
             app.ajax('get',app.url('getIndexData.php'),{},function(data){
 
                 var obj = data;
-
-                //console.log(obj)
 
                 //banner数据
                 $("[data-name='bannerPath']").prop('src','img/'+obj.bannerPath);
@@ -262,7 +254,7 @@
 
                 artObj.find("[data-name='text']").text(obj.articleObj.text);  artObj.find("[data-name='text']").text(obj.articleObj.text);
 
-            },false,false,function(){alert('网络错误')})
+            },1);
 
             //OVER**********************************************************************
 

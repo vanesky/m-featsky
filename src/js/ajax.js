@@ -3,7 +3,7 @@ window.app = {};
 
 (function(){
 
-    this.ajax = function(type,url,obj,sucCallback,bef,loadObj,errCallback){
+    this.ajax = function(type,url,obj,sucCallback,errCallback,bef,loadObj){
 
         $.ajax({
 
@@ -23,10 +23,10 @@ window.app = {};
 
                 if(errCallback){
 
-                    errCallback(xhr,err,msg);
+                    //errCallback(xhr,err,msg);
 
+                    com.prompt(0,'网络错误');
                 }
-
             },
 
             timeout:4000,

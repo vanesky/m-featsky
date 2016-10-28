@@ -1,14 +1,14 @@
 if(!window.com){window.com = {}};
 
 com.renderArticle = function(id){
-
+    //初始化
     var dataNameList = $('#art-item').find("[data-name]");
 
-        dataNameList.text('');
+        //dataNameList.text('');
 
     var contentObj =  $('#art-item').find('#content');
 
-        contentObj.html('');
+        //contentObj.html('');
 
     app.ajax('get',app.url('getArticleDetail.php'),{id:id},function(data){
 
@@ -16,12 +16,10 @@ com.renderArticle = function(id){
 
         if(!obj){
 
-            $('#art-main').text('数据加载失败..');
+            com.prompt(0,'文章加载失败');
 
             return;
-
         }
-
 
         for(var i=0;i<dataNameList.length;i++){
 
@@ -33,6 +31,8 @@ com.renderArticle = function(id){
 
         contentObj.html(obj.text);
 
-    });
+        $('#art-main').removeClass('hide');
+
+    },1);
 
 };

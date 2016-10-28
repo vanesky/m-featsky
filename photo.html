@@ -122,8 +122,8 @@
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="component/load/load.js"></script>
-    <script src="src/js/ajax.js"></script>
     <script src="component/prompt/com_prompt.js"></script>
+    <script src="src/js/ajax.js"></script>
     <script src="component/album/m2-banner.js"></script>
     <script src="component/album/album_render.js"></script>
     <script>
@@ -133,10 +133,6 @@
             var pageResult = 0,pageCount = 2,w = $(window).width();
 
             var latestObj = $('#channel-latest'),allObj = $('#channel-all');
-
-            //$('.channel-item').css('width',w*2 + 'px');
-
-            //$('#channel-latest,#channel-all').css('width',w + 'px');
 
             //默认进入最近模块
             renderImg();
@@ -151,12 +147,9 @@
 
                     var obj = data,str = '',page = '';
 
-                    console.log(obj);
-
                     var model = $('#model-1').clone();
 
                     var imgListModel = $("#model-1-a").clone();
-
 
                     for(var i=0;i<obj.length;i++){
 
@@ -167,7 +160,7 @@
                         for(var j=0;j<obj[i].data.length;j++){
 
                             //时间
-                            model.find("[data-name='time']").text(obj[i].data[j].time)
+                            model.find("[data-name='time']").text(obj[i].data[j].time);
 
                             imgListModel.find('.img-list').css('background-image',"url(img/"+obj[i].data[j].imgPath+")").attr('data-id',obj[i].data[j].id);
 
@@ -191,25 +184,23 @@
 
                     if(str == ''){
 
-                        alert('没了')
+                        com.prompt(0,'最近只有这些哦!');
+
+                        return;
 
                     }else{
 
-                        //将变量字符串插入真实dom
                         latestObj.append(str);
-
                     }
 
                     return pageResult =  page;
-                })
+                },1)
             }
 
             //==================================================================
 
             //图片大小和边距
             function imgListWidth(param,num){
-
-                //var w = JSON.parse(localStorage.getItem('device')).w
 
                 var liw = (w-param*(num-1))/num - 0.1;
 
@@ -235,9 +226,13 @@
             //初始化页面
             function initPage(n){
 
-                pageCount = 2,pageResult = 0;
+                pageCount = 2;
 
-                pagesCount = 9,pagesResult = 0;
+                pageResult = 0;
+
+                pagesCount = 9;
+
+                pagesResult = 0;
 
                 n == 0 ?  latestObj.html('') : allObj.children("[data-name='imgPath']").html('');
 
@@ -286,8 +281,6 @@
 
                     var obj = data,imgStr='';
 
-                    console.log(obj)
-
                     var imgListModel = $("#model-1-a").clone();
 
                     for(var i=0;i<obj.length;i++){
@@ -306,7 +299,7 @@
 
                     if(imgStr == ''){
 
-                        alert('没了')
+                        com.prompt(0,'已没有更多内容!')
 
                     }else{
 
@@ -316,7 +309,7 @@
                     }
 
                     pagesResult += 9;
-                });
+                },1);
 
             }
 

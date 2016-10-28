@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="src/css/base.css">
     <link rel="stylesheet" href="src/css/say.css">
     <link rel="stylesheet" href="component/album/m2-banner.css">
+    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -82,7 +83,7 @@
 
     <!--列表图片(子模板)-->
     <div id="model-1-a" class="hide">
-        <li data-name="imgList" class="img-list bg-fill fl" background-image=""><!--<img src="" alt="">--></li>
+        <li data-name="imgList" class="img-list bg-fill fl"><!--<img src="" alt="">--></li>
     </div>
 
 
@@ -105,6 +106,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/load/load.js"></script>
     <script src="src/js/ajax.js"></script>
 
     <script src="component/album/m2-banner.js"></script>
@@ -135,40 +138,36 @@
                         //每一条说说的所有图片字符串
                         var imgStr = '';
 
+                        //******************************************
                         //设置相应的CSS属性
-                        if(obj[i].imgArrPath.length > 1){
+                        var lineNum = obj[i].imgArrPath.length;
 
-                            var lineNum = 2;
+                        var w = $('#model-1').find('.img-item').css('width');
 
-                            var w = $('#model-1').find('.img-item').css('width');
+                        w = w.substr(0,w.length-2);
 
-                                w = w.substr(0,w.length-2);
+                        var liw = liy = (w-2*(obj[i].imgArrPath.length-1))/lineNum;
 
-                            if(obj[i].imgArrPath.length>2){lineNum = 3};
+                        if(lineNum == 1){liy = liw/2};
 
-                            var liw = (w-2*(obj[i].imgArrPath.length-1))/lineNum;
+                        imgListModel.find('.img-list').css({
 
-                            imgListModel.find('.img-list').css({
+                            width:liw + 'px',
 
-                                width:liw + 'px',
-
-                                height:liw + 'px',
-
-                            });
-
-                        }
+                            height:liy + 'px',
+                        });
+                        //******************************************
 
                         //向内存中的子模板循环插入图片
                         for(var j=0;j<obj[i].imgArrPath.length;j++){
 
-                            //imgListModel.find('img').prop('src',"img/"+obj[i].imgArrPath[j])
+                            //imgListModel.find('img').prop('src',"img/"+obj[i].imgArrPath[j]);
 
                             imgListModel.find("[data-name='imgList']").css('background-image',"url(img/"+obj[i].imgArrPath[j]+")");
 
                             imgStr += imgListModel.html();
 
                         }
-
 
                         //列表id
                         model.find('.say').attr('data-id',obj[i].id);
@@ -188,7 +187,6 @@
                         //向内存中的dom模板插入图片数列表
                         model.find("[data-name='imgArrPath']").html(imgStr);
 
-
                         //============================================================================
 
                         //获取刚插入的图片列表根据数量设置间距
@@ -203,7 +201,6 @@
                                     obj.style.marginLeft = "2px";
 
                                 }
-
                             })
 
                             //根据图片比例填充
@@ -216,33 +213,35 @@
                                 }else{
 
                                     obj.style.height = "100%";
-
                                 }
                             })
 
                         }else{  liNum.find('img').css('max-width','100%'); }
 
                         str +=  model.html();
-
                     }
-
 
                     if(str == ''){
 
-                        alert('没了')
+                        com.prompt(0,'没有啦！')
 
                     }else{
 
                         $('.load-button').before(str);
-
                     }
 
                     return pageResult = pageResult + pageCount;
-                })
+                },1)
             }
 
-
             //**************************************************
+
+            $('.load-button').on('tap',function(){
+
+                renderImg();
+
+            });
+
             //调用图片组件
             var bimObj =  $('.banner-img-main');
 
@@ -255,14 +254,13 @@
             });
 
             //添加事件
-
             $('.container').on('tap','.img-list',function(){
 
                 var _this = $(this);
 
-                var pageImgObj = _this.parent('.img-item').find('.img-list')
+                var pageImgObj = _this.parent('.img-item').find('.img-list');
 
-                com.pageImageEvent(pageImgObj,this,bimObj)
+                com.pageImageEvent(pageImgObj,this,bimObj);
 
                 //pageImgObj:要显示图片总数对象集合
 

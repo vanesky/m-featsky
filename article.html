@@ -89,7 +89,7 @@
             <h4 class="titles">文章详情</h4>
         </header>
 
-        <section id="art-main">
+        <section id="art-main" class="hide">
             <div id="art-item" class="pd15">
                 <h3 data-name="title" class="fw">宇宙最诡异时空 人类所有定律竟全部失效！</h3>
                 <div class="mt7 c6">
@@ -183,14 +183,12 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-                })
+                },1)
             }
 
             //=================================================================
             //详情落地页面高度
-            var w = $(window).height();
-
-            $('#art-main').css('height',w-50 + 'px');
+            $('#art-main').css('height',$(window).height()-50 + 'px');
 
             //加载更多
             $('.load-button').on('tap',function(){
@@ -201,6 +199,9 @@
 
             //列表事件
             $('.container').on('tap','.article-item',function(){
+
+                //隐藏详情页
+                $('#art-main').addClass('hide');
 
                 var id = $(this).attr('data-id');
 

@@ -70,7 +70,7 @@
             <h4 class="titles">视频详情</h4>
         </header>
 
-        <section id="movie">
+        <section id="movie" class="hide">
             <video id="video" src="video/justin.mp4" controls="controls">
                 您的浏览器不支持 video 标签。
             </video>
@@ -93,7 +93,7 @@
             </div>
         </section>
 
-        <div class="container mt30"></div>
+        <div class="container mt30 hide"></div>
     </div>
     <!--================================================================-->
 
@@ -118,10 +118,10 @@
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
     <script src="component/load/load.js"></script>
-    <script src="src/js/ajax.js"></script>
-
-    <script src="component/movieDetail/movie_detail.js"></script>
     <script src="component/prompt/com_prompt.js"></script>
+    <script src="src/js/ajax.js"></script>
+    <script src="component/movieDetail/movie_detail.js"></script>
+
     <script>
 
 
@@ -163,7 +163,7 @@
 
                 if(str == ''){
 
-                    alert('没了')
+                    com.prompt(0,'已没有更多内容!')
 
                 }else{
 
@@ -172,7 +172,7 @@
                 }
                 return pageResult = pageResult + pageCount;
 
-            });
+            },1);
         }
 
 
@@ -193,17 +193,8 @@
         //列表事件
         $('#movie-item').on('tap','li',function(){
 
-            //初始化视频详情
-            $('#video').prop('src','');
-
-            var movieMainObj = $('.movie-main');
-
-            movieMainObj.find("[data-name='title']").text('');
-
-            movieMainObj.find("[data-name='time']").text('');
-
-            movieMainObj.find("[data-name='description']").text('');
-
+            //初始化视频隐藏
+            $('#movie').addClass('hide');
 
             var id = $(this).attr('data-id');
 

@@ -6,6 +6,13 @@ com.renderMovie = function(id){
 
         var obj = data;
 
+        if(!obj){
+
+            com.prompt(0,'视频不存在！');
+
+            return;
+        }
+
         $('#video').attr('src','video/'+obj.moviePath);
 
         $('.com-movie-detail').find("[data-name]").each(function(index,val){
@@ -15,7 +22,10 @@ com.renderMovie = function(id){
             var name = valObj.attr('data-name');
 
             valObj.text(obj[name]);
-        })
+        });
+
+        $('#movie').removeClass('hide');
+
     });
 
 }

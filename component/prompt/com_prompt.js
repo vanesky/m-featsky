@@ -23,7 +23,7 @@ com.prompt = function(type,text,fun1,fun2){
 
         opacity:1
 
-    },300);
+    },200);
 
     if(type == 0){
 
@@ -56,7 +56,7 @@ com.prompt = function(type,text,fun1,fun2){
 
             opacity:0
 
-        },300,function(){
+        },200,function(){
 
             promptObj.css('display','none')
 

@@ -169,12 +169,11 @@
         <p class="pro-info">0%</p>
     </section>
 
-
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
+    <script src="component/prompt/com_prompt.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="src/js/validate.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
     <script>
         $(function(){
 
@@ -186,8 +185,7 @@
             $('.load-button').on('tap',function(){
 
                 renderInfo();
-
-            })
+            });
             /*==================================================*/
             var writingObj = $('#writing');
 
@@ -214,17 +212,18 @@
                 //留言初始化
                 $("[name='writTit']").val('');
 
-                //$("[name='imgSrc']").val('img/1.jpg');
-
                 writObj.text('');
 
                 $('.writ-prompt').show();
 
-                $('.select-img').hide();
+                $('#filePath').val('');
+                //头像
+                //$("[name='imgSrc']").val('img/1.jpg');
+
+                //$('.select-img').hide();
 
                 writingObj.css('-webkit-transform','translateX(-100%)')
-
-            })
+            });
 
             //**********************************************************
             //弹出截取层对象
@@ -310,6 +309,7 @@
 
             //********************************************************************
 
+
             //图片坐标剪裁坐标
             var selx = sely = imgx = imgy = '';
             //拖动手指坐标
@@ -391,8 +391,6 @@
                 imgx = clipHeadObj.offset().left;
 
                 imgy = clipHeadObj.offset().top;
-
-                console.log(imgx+" "+imgy)
 
             })
 
@@ -651,8 +649,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-
-                })
+                },1)
             }
             //选择头像
             /*$('.list-img').on('tap',function(){
