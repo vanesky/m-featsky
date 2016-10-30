@@ -1,5 +1,7 @@
 <?php
 
+    //$con = mysql_connect("localhost","featsky1","123456");
+
     $con = mysql_connect("localhost","root","");
 
     if (!$con){

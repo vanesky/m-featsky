@@ -107,11 +107,11 @@
 
                 if(box == 'none'||0 == $.trim(box[4])){
 
-                    $('#nav').css('-webkit-transform','translateX(-12rem)');
+                    $('#nav').css('-webkit-transform','translateX(-100%)');
 
                 }else{
 
-                    $('#nav').css('-webkit-transform','translateX(0rem)');
+                    $('#nav').css('-webkit-transform','translateX(0%)');
 
                 }
             })

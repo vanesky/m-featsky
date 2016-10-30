@@ -49,7 +49,7 @@ window.app = {};
 
     this.url = function(url){
 
-        var path = 'develop';
+        var path = '';
 
         var workName = 'm-featsky';
 
@@ -59,13 +59,13 @@ window.app = {};
 
         if(path == 'develop'){
 
-            base = "http://192.168.100.59/m-featsky/src/api/";
+            base = "http://192.168.0.102/m-featsky/src/api/";
 
         }else if(path == 'test'){
 
-            base = "http://test.featsky.com/api/";
+            base = "http://test.featsky.com/src/api/";
 
-        }else{ base = "http://www.featsky.com/api/" }
+        }else{ base = "http://www.featsky.com/src/api/" }
 
         return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 

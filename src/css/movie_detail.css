@@ -1,1 +1,20 @@
-@charset "utf-8";#movie,#movie video{width:100%}#movie{position:relative;top:50px}#movie-main{padding:1rem 0}#movie-main .source-img,#movie-main .source-span{vertical-align:middle}#movie-main .source-span{height:1.1rem;opacity:.5}
+@charset "utf-8";
+#movie {
+  position: relative;
+  width: 100%;
+  top: 50px;
+}
+#movie video {
+  width: 100%;
+}
+#movie-main {
+  padding: 1rem 0;
+}
+#movie-main .source-img,
+#movie-main .source-span {
+  vertical-align: middle;
+}
+#movie-main .source-span {
+  height: 1.1rem;
+  opacity: 0.5;
+}
