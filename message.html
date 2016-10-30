@@ -484,6 +484,12 @@
 
                     $('.pro-val').val(percentComplete);
 
+                    if(percentComplete>=100){
+
+                        $('.pro-info').text('正在上传..');
+
+                    }
+
                 }
             }
             //上传图片完毕
