@@ -24,6 +24,14 @@
 
     $sql = "INSERT INTO message (name,time,headPath,text) VALUES('$data[name]','$d','$data[imgPath]','$data[text]')";
 
-    echo mysql_query($sql);
+    if(!$back = mysql_query($sql,$con)){
+
+        die('Error: ' . mysql_error());
+
+    };
+
+    echo $back;
+
+    mysql_close($con);
 
 ?>

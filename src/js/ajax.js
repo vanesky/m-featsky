@@ -49,7 +49,7 @@ window.app = {};
 
     this.url = function(url){
 
-        var path = '';
+        var path = 'develop';
 
         var workName = 'm-featsky';
 
@@ -65,7 +65,7 @@ window.app = {};
 
             base = "http://test.featsky.com/src/api/";
 
-        }else{ base = "http://www.featsky.com/src/api/" }
+        }else{ base = "http://www.featsky.com/m-featsky/src/api/" }
 
         return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 
