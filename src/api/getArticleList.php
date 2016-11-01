@@ -43,7 +43,7 @@
 
 
         //图片第一个
-        preg_match('/<img.+\"(.+\.(jpg|png)).+>/U',$artObj->{'text'},$matches);
+        preg_match('/<img.+\"(.+(jpg)|(png)).+>/U',$artObj->{'text'},$matches);
 
         if($matches){
 

@@ -65,7 +65,7 @@
     $indexObj['articleObj']['time'] = $articleObj->{'time'};
 
     //第一张图片
-    preg_match('/<img.+\/(.+\.(jpg|png)).+>/U',$articleObj->text,$matches);
+    preg_match('/<img.+\"(.+\.(jpg|png)).+>/U',$articleObj->text,$matches);
     $indexObj['articleObj']['imgPath'] = $matches[1];
 
     //第一句文章
