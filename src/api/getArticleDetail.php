@@ -1,15 +1,13 @@
 <?php
 
-    //$con = mysql_connect("localhost","featsky1","123456");
-
-    $con = mysql_connect("localhost","root","");
+    $con = mysql_connect("localhost","featsky1","123456");
 
     if (!$con){
 
         die('Could not connect: ' . mysql_error());
     }
     mysql_query("set names utf8", $con);
-    mysql_select_db("featsky", $con);
+    mysql_select_db("featsky1", $con);
     /*============================================================*/
 
     $id = $_GET['id'];

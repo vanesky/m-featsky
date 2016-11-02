@@ -263,7 +263,7 @@
 
             $('.banner-list').css('width',banner_w+'px');
 
-            banner.init();
+            //banner.init();
 
             banner.evtSlide();
 

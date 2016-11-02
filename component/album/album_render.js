@@ -46,7 +46,7 @@ com.pageImageEvent = function(obj,_this,liItemObj){
 
         var imgpath = obj.style.backgroundImage;
 
-        imgpath = imgpath.match(/\/([\w]+\.(jpg|png))/)[1];
+        imgpath = imgpath.match(/(img.+\.(jpg|png))/)[1];
 
         imgs.push(imgpath);
 
@@ -56,7 +56,7 @@ com.pageImageEvent = function(obj,_this,liItemObj){
 
     $(imgs).each(function(index,obj){
 
-        imgModel.find('img').attr('src',"img/"+ obj);
+        imgModel.find('img').attr('src',obj);
 
         str += imgModel.html()
 
