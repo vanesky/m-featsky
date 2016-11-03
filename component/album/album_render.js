@@ -46,7 +46,7 @@ com.pageImageEvent = function(obj,_this,liItemObj){
 
         var imgpath = obj.style.backgroundImage;
 
-        imgpath = imgpath.match(/(img.+\.(jpg|png))/)[1];
+        imgpath = imgpath.match(/(http.+\.(jpg|png))/)[1];
 
         imgs.push(imgpath);
 

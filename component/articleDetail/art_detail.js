@@ -13,7 +13,7 @@ com.renderArticle = function(id){
     app.ajax('get',app.url('getArticleDetail.php'),{id:id},function(data){
 
         var obj = data;
-
+        console.log(obj)
         if(!obj){
 
             com.prompt(0,'文章加载失败');
@@ -29,7 +29,9 @@ com.renderArticle = function(id){
 
         }
 
-        contentObj.html(obj.text);
+        var replaceStr = obj.text.replace(/"(.+)\./g,'"'+app.imgUrl('art/$1.'));
+
+        contentObj.html(replaceStr);
 
         $('#art-main').removeClass('hide');
 

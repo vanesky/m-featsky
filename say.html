@@ -163,7 +163,7 @@
 
                             //imgListModel.find('img').prop('src',"img/"+obj[i].imgArrPath[j]);
 
-                            imgListModel.find("[data-name='imgList']").css('background-image',"url(img/say/"+obj[i].imgArrPath[j]+")");
+                            imgListModel.find("[data-name='imgList']").css('background-image',"url("+app.imgUrl("say/"+obj[i].imgArrPath[j])+")");
 
                             imgStr += imgListModel.html();
 
@@ -179,7 +179,7 @@
                         model.find("[data-name='time']").text(obj[i].time);
 
                         //头像
-                        model.find("[data-name='headPath']").css('background-image',"url(img/"+obj[i].headPath+")");
+                        model.find("[data-name='headPath']").css('background-image',"url("+app.imgUrl(obj[i].headPath)+")");
 
                         //内容
                         model.find("[data-name='text']").text(obj[i].text);

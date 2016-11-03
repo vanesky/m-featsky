@@ -162,7 +162,7 @@
                             //时间
                             model.find("[data-name='time']").text(obj[i].data[j].time);
 
-                            imgListModel.find('.img-list').css('background-image',"url(img/photo/"+obj[i].data[j].imgPath+")").attr('data-id',obj[i].data[j].id);
+                            imgListModel.find('.img-list').css('background-image',"url("+app.imgUrl('photo/'+obj[i].data[j].imgPath)+")").attr('data-id',obj[i].data[j].id);
 
                             imgStr += imgListModel.html();
                         }
@@ -289,7 +289,7 @@
 
                         imgListModel.find('.img-list').css('margin-left','');
 
-                        imgListModel.find('.img-list').css('background-image',"url(img/photo/"+obj[i].imgPath+")").attr('data-id',obj[i].id);
+                        imgListModel.find('.img-list').css('background-image',"url("+app.imgUrl('photo/'+obj[i].imgPath)+")").attr('data-id',obj[i].id);
 
                         if(i%3!=0){ imgListModel.find('.img-list').css('margin-left',2 + 'px') }
 

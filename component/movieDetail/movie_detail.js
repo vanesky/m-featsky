@@ -13,7 +13,7 @@ com.renderMovie = function(id){
             return;
         }
 
-        $('#video').attr('src','video/'+obj.moviePath);
+        $('#video').attr('src',obj.moviePath);
 
         $('.com-movie-detail').find("[data-name]").each(function(index,val){
 

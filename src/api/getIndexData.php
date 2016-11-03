@@ -10,7 +10,6 @@
     mysql_select_db("featsky1", $con);
     /*============================================================*/
 
-
     //首页图片
     $indexImgResult = mysql_query("SELECT * FROM featsky where name='bannerPath'");
     $imgObj = mysql_fetch_array($indexImgResult);

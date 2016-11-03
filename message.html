@@ -632,7 +632,7 @@
                         model.find("[data-name='id']").attr('data-id',obj[i].id);
 
                         //列表背景
-                        model.find("[data-name='headPath']").css('background-image',"url(img/user/"+obj[i].headPath+")");
+                        model.find("[data-name='headPath']").css('background-image',"url("+app.imgUrl('user/'+obj[i].headPath)+")");
 
                         //标题
                         model.find("[data-name='name']").text(obj[i].name);

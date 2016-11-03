@@ -3,6 +3,14 @@ window.app = {};
 
 (function(){
 
+    var path = 'develop';
+
+    var workName = 'm-featsky';
+
+    var version = '0.0.1';
+
+    var base = '';
+
     this.ajax = function(type,url,obj,sucCallback,errCallback,bef,loadObj){
 
         $.ajax({
@@ -49,17 +57,9 @@ window.app = {};
 
     this.url = function(url){
 
-        var path = 'develop';
-
-        var workName = 'm-featsky';
-
-        var version = '0.0.1';
-
-        var base = '';
-
         if(path == 'develop'){
 
-            base = "http://192.168.0.102/m-featsky/src/api/";
+            base = "http://192.168.100.59/m-featsky/src/api/";
 
         }else if(path == 'test'){
 
@@ -69,6 +69,23 @@ window.app = {};
 
         return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 
+    },
+
+    this.imgUrl = function(url){
+
+        if(path == 'develop'){
+
+            base = "http://192.168.100.59/m-featsky/img/";
+
+        }else if(path == 'test'){
+
+            base = "http://test.featsky.com/img/";
+
+        }else{ base = "http://www.featsky.com/m-featsky/img/" }
+
+        return base + url;
+
+
     }
 
-}).apply(app)
+}).apply(app);

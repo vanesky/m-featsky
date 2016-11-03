@@ -147,7 +147,7 @@
                     model.find('.movie-list').attr('data-id',obj[i].id);
 
                     //列表背景
-                    model.find("[data-name='imgPath']").css('background-image',"url(img/movie/"+obj[i].imgPath+")");
+                    model.find("[data-name='imgPath']").css('background-image',"url("+app.imgUrl('movie/'+obj[i].imgPath)+")");
 
                     //标题
                     model.find("[data-name='title']").text(obj[i].title);
