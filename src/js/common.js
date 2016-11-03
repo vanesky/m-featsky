@@ -97,7 +97,7 @@
 
         this.navEffect = function(){
 
-            $('.menu-list').on('touchstart',function(){
+            $('.menu-list').on('tap',function(){
 
                 var a = $('#nav')[0];
 

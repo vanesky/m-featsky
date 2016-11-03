@@ -205,7 +205,7 @@
             app.ajax('get',app.url('getIndexData.php'),{},function(data){
 
                 var obj = data;
-
+                
                 //banner数据
                 $("[data-name='bannerPath']").prop('src',app.imgUrl(obj.bannerPath));
 
