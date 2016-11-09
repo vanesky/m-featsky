@@ -90,6 +90,10 @@
             </li>
         </ul>
 
+        <section id="app-down" class="fx-row-c">
+            <!--<h4 class="tc c6">FEATSKY-APP 1.0.5</h4>-->
+            <div class="down fw">FEATSKY-APP 1.0.5 - 下载</div>
+        </section>
         <!--最新图片-->
         <section id="latest">
             <!--图片头部-->
@@ -135,6 +139,7 @@
                 </ul>
             </div>
         </section>
+
     </div>
 
 
@@ -285,6 +290,17 @@
                 var pageImgObj = $('.latest-item').find('.list-box');
 
                 com.pageImageEvent(pageImgObj,this,bimObj,$('.banner-img'));
+
+            })
+
+            //下载
+            $('.down').on('tap',function(){
+
+                com.prompt(1,'确定下载?',function(){
+
+                    alert('去顶下载')
+
+                })
 
             })
 

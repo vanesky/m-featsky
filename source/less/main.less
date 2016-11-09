@@ -6,7 +6,7 @@
 @cf9:#F9F9F9;
 @a:#49A0DB;
 @ba:#49A0DB;
-
+@c:#FCFBF9;
 
 .container{ 
   background-color: @cf;
@@ -160,6 +160,23 @@
     }
   }
 
+  #app-down{
+    //background-color:#f9f9f9;
+    padding:0.5rem 0;
+    height:5rem;
+    .down{
+      width:70%;
+      height:3rem;
+      line-height: 3rem;
+      margin-left: 0.5rem;
+      border-radius: 5px;
+      color:@c6;
+      text-align: center;
+      //background: linear-gradient(to bottom, #fbfbfb, @cf2); /* 标准的语法 */
+      border: 1px solid @cf2;
+    }
+  }
+
   //首页文章
   #main-article{
     .art{
@@ -184,7 +201,7 @@
       .checked{
         height:2.5rem;
         width:8rem;
-        border-radius: 0.6rem;
+        border-radius: 5px;
         line-height: 2.5rem;
         margin:1.5rem auto 0;
         background-color: @ba;
