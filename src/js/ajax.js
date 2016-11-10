@@ -3,7 +3,7 @@ window.app = {};
 
 (function(){
 
-    var path = 'develop';
+    var path = '';
 
     var workName = 'm-featsky';
 
