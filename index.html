@@ -249,8 +249,8 @@
 
                 artObj.find(".checked").attr('data-id',obj.articleObj.id);
 
-                artObj.find("[data-name='imgPath']").css('background-image','url('+app.imgUrl('art/'+obj.articleObj.imgPath)+')');
-
+                //artObj.find("[data-name='imgPath']").css('background-image','url('+app.imgUrl('art/'+obj.articleObj.imgPath)+')');
+                artObj.find("[data-name='imgPath']").css('background-image','url('+obj.articleObj.imgPath+')');
                 artObj.find("[data-name='title']").text(obj.articleObj.title);
 
                 artObj.find("[data-name='text']").text(obj.articleObj.text);  artObj.find("[data-name='text']").text(obj.articleObj.text);

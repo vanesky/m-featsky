@@ -29,8 +29,8 @@ com.renderArticle = function(id){
 
         }
 
-        var replaceStr = obj.text.replace(/"(.+)\./g,'"'+app.imgUrl('art/$1.'));
-
+        //var replaceStr = obj.text.replace(/"(.+)\./g,'"'+app.imgUrl('art/$1.'));
+        var replaceStr = obj.text.replace(/"(.+)\./g,'"'+'$1.');
         contentObj.html(replaceStr);
 
         $('#art-main').removeClass('hide');

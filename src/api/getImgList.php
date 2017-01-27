@@ -1,13 +1,13 @@
 <?php
 
-    $con = mysql_connect("localhost","featsky1","123456");
+    $con = mysql_connect("localhost","sq_featsky","123456");
 
     if (!$con){
 
         die('Could not connect: ' . mysql_error());
     }
     mysql_query("set names utf8", $con);
-    mysql_select_db("featsky1", $con);
+    mysql_select_db("sq_featsky", $con);
     /*============================================================*/
 
     $num = $_GET['page'];
