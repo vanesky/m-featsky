@@ -1,6 +1,6 @@
 <?php
 
-    $con = mysql_connect("localhost","sq_featsky","123456");
+    $con = mysql_connect("59.188.255.115","sq_featsky","123456");
 
     if (!$con){
 

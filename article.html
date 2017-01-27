@@ -157,7 +157,7 @@
                         //列表背景
                         if(obj[i].imgPath){
 
-                            model.find("[data-name='imgPath']").css('background-image',"url("+obj[i].imgPath+")");
+                            model.find("[data-name='imgPath']").css('background-image',"url("+app.imgUrl("art/"+obj[i].imgPath)+")");
 
                         }else{model.find("[data-name='imgPath']").css('display',"none");}
                         //标题
