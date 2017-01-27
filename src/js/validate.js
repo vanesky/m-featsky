@@ -14,7 +14,7 @@ window.validateRule = {
 
     textRule:function(val){
 
-        return /^[\u4e00-\u9fa5A-z]{5,}$/.test(val);
+        return /^.{5,}$/.test(val);
 
     },
 

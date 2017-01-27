@@ -90,6 +90,11 @@
             </li>
         </ul>
 
+        <section id="app-down" class="fx-row-c">
+            <!--<h4 class="tc c6">FEATSKY-APP 1.0.5</h4>-->
+            <a href="" name="app"></a>
+            <div class="down fw">FEATSKY-APP 1.0.7 - 下载</div>
+        </section>
         <!--最新图片-->
         <section id="latest">
             <!--图片头部-->
@@ -135,6 +140,7 @@
                 </ul>
             </div>
         </section>
+
     </div>
 
 
@@ -288,6 +294,16 @@
 
             })
 
+            //下载
+            $('.down').on('tap',function(){
+
+                com.prompt(1,'将要下载app?',function(){
+
+                    window.location = 'http://www.featsky.com/app/featsky.apk';
+
+                })
+
+            })
 
         })
     </script>
