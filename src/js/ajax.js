@@ -59,13 +59,13 @@ window.app = {};
 
         if(path == 'develop'){
 
-            base = "http://192.168.0.102/m-featsky/src/api/";
+            base = "http://192.168.0.102/m-featsky/api/";
 
         }else if(path == 'test'){
 
-            base = "http://test.featsky.com/src/api/";
+            base = "http://test.featsky.com/api/";
 
-        }else{ base = "http://www.featsky.com/m-featsky/src/api/" }
+        }else{ base = "http://www.featsky.com/m-featsky/api/" }
 
         return base + url + "?workName=" + workName + "&date=" + new Date().getTime();
 
