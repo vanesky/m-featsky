@@ -8,7 +8,16 @@ com.renderMovie = function(id){
 
         if(!obj){
 
-            com.prompt(0,'视频不存在！');
+            $.comMessage({
+
+                type:'warning',
+
+                text:'视频不存在！',
+
+                time:3000,
+
+                animateTop:'80px'
+            })
 
             return;
         }

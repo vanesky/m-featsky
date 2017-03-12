@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="src/css/art.css">
     <link rel="stylesheet" href="src/css/art_detail.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -103,9 +102,9 @@
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
 
-    <script src="component/load/load.js"></script>
+    <script src="component/load/com-load.js"></script>
     <script src="component/articleDetail/art_detail.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/message/com-message.js"></script>
     <script>
         $(function(){
 
@@ -149,7 +148,16 @@
 
                     if(str == ''){
 
-                        com.prompt(0,'未搜索到结果!')
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'未搜索到结果!',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                     }else{
 
@@ -180,7 +188,7 @@
 
             })
 
-            bom.moveDetail($('.com-art-toggle'));
+            com.moveDetail($('.com-art-toggle'));
 
 
             //页面滚动

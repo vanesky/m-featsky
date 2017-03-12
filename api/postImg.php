@@ -1,13 +1,8 @@
 <?php
 
-    $con = mysql_connect("59.188.255.115","sq_featsky","123456");
+    require('header.php');
 
-    if (!$con){
-
-        die('Could not connect: ' . mysql_error());
-    }
-    mysql_query("set names utf8", $con);
-    mysql_select_db("sq_featsky", $con);
+    /*============================================================*/
 
     $file = $_FILES['fileToUpload'];
 
@@ -20,7 +15,6 @@
 
     $filename = "../../img/user/" . $c_name;
 
-    /*============================================================*/
 
     function thumb($filename,$gridObj,$width=200,$height=200){
 

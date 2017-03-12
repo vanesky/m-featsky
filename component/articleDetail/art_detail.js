@@ -13,10 +13,19 @@ com.renderArticle = function(id){
     app.ajax('get',app.url('getArticleDetail.php'),{id:id},function(data){
 
         var obj = data;
-        console.log(obj)
+
         if(!obj){
 
-            com.prompt(0,'文章加载失败');
+            $.comMessage({
+
+                type:'warning',
+
+                text:'文章加载失败!',
+
+                time:3000,
+
+                animateTop:'80px'
+            })
 
             return;
         }
@@ -35,6 +44,6 @@ com.renderArticle = function(id){
 
         $('#art-main').removeClass('hide');
 
-    },1);
+    });
 
 };

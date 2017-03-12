@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" href="src/css/message.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
-    <link rel="stylesheet" href="component/load/load.css">
 </head>
 <body>
 
@@ -171,8 +169,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
-    <script src="component/load/load.js"></script>
+    <script src="component/message/com-message.js"></script>
+    <script src="component/load/com-load.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="src/js/validate.js"></script>
     <script>
@@ -191,7 +189,7 @@
             var writingObj = $('#writing');
 
                 //留言返回按钮
-                bom.moveDetail(writingObj);
+                com.moveDetail(writingObj);
 
                 writingObj.on('touchmove',function(e){
 
@@ -255,13 +253,31 @@
 
                     if((file.size/1000)>500){
 
-                        com.prompt(0,'图片过大请重选');
+                        $.comMessage({
+
+                            type:'warning',
+
+                            text:'图片过大请重选',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                         return false;
 
                     }else if(!/(jpeg)|(png)|(jpg)$/.test(file.type)){
 
-                        com.prompt(0,'请选正确的图片格式(JPG/PNG)');
+                        $.comMessage({
+
+                            type:'warning',
+
+                            text:'请选正确的图片格式(JPG/PNG)',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                         return false;
                     }
@@ -437,20 +453,51 @@
 
                                 if(xhr.responseText == 1){
 
-                                    com.prompt(0,'上传完毕',function(){
+                                    $.comMessage({
 
-                                        clipImgObj.hide();
+                                        type:'success',
 
-                                    });
+                                        text:'上传完毕',
+
+                                        time:2000,
+
+                                        animateTop:'80px',
+
+                                        back:function(){
+
+                                            clipImgObj.hide();
+                                        }
+
+                                    })
+
 
                                 }else{
 
-                                    com.prompt(0,'服务器错误');
+                                    $.comMessage({
+
+                                        type:'warning',
+
+                                        text:'服务器错误',
+
+                                        time:3000,
+
+                                        animateTop:'80px'
+                                    })
+
                                 }
 
                             }else{
 
-                                com.prompt(0,'服务器错误');
+                                $.comMessage({
+
+                                    type:'warning',
+
+                                    text:'服务器错误',
+
+                                    time:3000,
+
+                                    animateTop:'80px'
+                                })
                             }
                         }
                     }
@@ -501,7 +548,7 @@
             //*****************************************************************
 
             //图片剪裁返回按钮
-            bom.moveDetail(clipImgObj,function(){
+            com.moveDetail(clipImgObj,function(){
 
                 clipImgObj.css('display','none');
 
@@ -545,15 +592,35 @@
 
                     if(data){
 
-                        com.prompt(0,'留言成功',function(){
+                        $.comMessage({
 
-                            window.location.reload(true);
+                            type:'success',
 
-                        });
+                            text:'留言成功',
+
+                            time:3000,
+
+                            animateTop:'80px',
+
+                            back:function(){
+
+                                window.location.reload(true);
+                            }
+                        })
 
                     }else{
 
-                        com.prompt(0,'留言失败,错误:' + data);
+                        $.comMessage({
+
+                            type:'warning',
+
+                            text:'留言失败,错误:' + data,
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
+
                     }
                 })
             });
@@ -606,7 +673,16 @@
 
                 if(str.length>0){
 
-                    com.prompt(0,str[0]);
+                    $.comMessage({
+
+                        type:'warning',
+
+                        text:str[0],
+
+                        time:3000,
+
+                        animateTop:'80px'
+                    })
 
                     return false;
                 }
@@ -647,7 +723,16 @@
 
                     if(str == ''){
 
-                        com.prompt(0,'已没有更多留言');
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'已没有更多留言',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                     }else{
 
@@ -656,7 +741,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-                },1)
+                })
             }
             //选择头像
             /*$('.list-img').on('tap',function(){

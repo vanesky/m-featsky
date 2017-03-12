@@ -8,9 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="src/css/art.css">
     <link rel="stylesheet" href="src/css/art_detail.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
+    <link rel="stylesheet" href="src/css/art.css">
 </head>
 <body>
 
@@ -90,18 +89,14 @@
 
         <section id="art-main" class="hide">
             <div id="art-item" class="pd15 pdb30">
-                <h3 data-name="title" class="fw">宇宙最诡异时空 人类所有定律竟全部失效！</h3>
+                <h3 data-name="title" class="fw"></h3>
                 <div class="mt7 c6">
-                    <span data-name="author">Featsky</span>
-                    <span data-name="time">2015.02.16</span>
+                    <span data-name="author"></span>
+                    <span data-name="time"></span>
                 </div>
 
                 <div id="content">
-                    <p>1.众所周知</p>
-                    <p>2.f放水电费水电费</p>
-                    <img src="img/1.jpg" alt="">
-                    <p>法师打发第三方</p>
-                    <p>冯绍峰的所得税法</p>
+
                 </div>
             </div>
         </section>
@@ -126,9 +121,10 @@
     <script src="src/js/common.js"></script>
     <script src="src/js/ajax.js"></script>
 
-    <script src="component/load/load.js"></script>
+    <script src="component/load/com-load.js"></script>
     <script src="component/articleDetail/art_detail.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/message/com-message.js"></script>
+
     <script>
         $(function(){
 
@@ -173,7 +169,16 @@
 
                     if(str == ''){
 
-                        com.prompt(0,'没有啦!');
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'没有啦！',
+
+                            time:4000,
+
+                            animateTop:'80px'
+                        })
 
                     }else{
 
@@ -182,7 +187,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-                },1)
+                })
             }
 
             //=================================================================
@@ -210,7 +215,7 @@
 
             });
             //详情页返回事件
-            bom.moveDetail($('.com-art-toggle'));
+            com.moveDetail($('.com-art-toggle'));
 
             //页面滚动==============================================
             var scrollStop = (function(){
@@ -276,7 +281,16 @@
 
                 }else{
 
-                    com.prompt(0,'请填写搜索内容!');
+                    $.comMessage({
+
+                        type:'prompt',
+
+                        text:'请填写搜索内容',
+
+                        time:4000,
+
+                        animateTop:'80px'
+                    })
                 }
             })
 

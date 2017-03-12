@@ -9,9 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" href="src/css/movie.css">
-   <!-- <link rel="stylesheet" href="component/load/load.css">-->
     <link rel="stylesheet" href="src/css/movie_detail.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -116,8 +114,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-    <script src="component/load/load.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/load/com-load.js"></script>
+    <script src="component/message/com-message.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="component/movieDetail/movie_detail.js"></script>
 
@@ -162,7 +160,16 @@
 
                 if(str == ''){
 
-                    com.prompt(0,'已没有更多内容!')
+                    $.comMessage({
+
+                        type:'warning',
+
+                        text:'已没有更多内容!',
+
+                        time:3000,
+
+                        animateTop:'80px'
+                    })
 
                 }else{
 
@@ -171,12 +178,12 @@
                 }
                 return pageResult = pageResult + pageCount;
 
-            },1);
+            });
         }
 
 
         //详情页返回事件
-        bom.moveDetail($('.com-movie-detail'),function(){
+        com.moveDetail($('.com-movie-detail'),function(){
 
             $('#video')[0].pause();
 

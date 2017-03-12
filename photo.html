@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="src/css/photo.css">
     <link rel="stylesheet" href="component/album/m2-banner.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -120,8 +119,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-    <script src="component/load/load.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/load/com-load.js"></script>
+    <script src="component/message/com-message.js"></script>
     <script src="src/js/ajax.js"></script>
     <script src="component/album/m2-banner.js"></script>
     <script src="component/album/album_render.js"></script>
@@ -183,7 +182,16 @@
 
                     if(str == ''){
 
-                        com.prompt(0,'最近只有这些哦!');
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'最近只有这些哦!',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                         return;
 
@@ -193,7 +201,7 @@
                     }
 
                     return pageResult =  page;
-                },1)
+                })
             }
 
             //==================================================================
@@ -298,7 +306,16 @@
 
                     if(imgStr == ''){
 
-                        com.prompt(0,'已没有更多内容!')
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'最近只有这些哦!',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                     }else{
 
@@ -308,7 +325,7 @@
                     }
 
                     pagesResult += 9;
-                },1);
+                });
 
             }
 

@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="src/css/say.css">
     <link rel="stylesheet" href="component/album/m2-banner.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
 </head>
 <body>
 
@@ -105,8 +104,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
-    <script src="component/load/load.js"></script>
+    <script src="component/message/com-message.js"></script>
+    <script src="component/load/com-load.js"></script>
     <script src="src/js/ajax.js"></script>
 
     <script src="component/album/m2-banner.js"></script>
@@ -222,7 +221,16 @@
 
                     if(str == ''){
 
-                        com.prompt(0,'没有啦！')
+                        $.comMessage({
+
+                            type:'prompt',
+
+                            text:'没有啦！',
+
+                            time:3000,
+
+                            animateTop:'80px'
+                        })
 
                     }else{
 
@@ -230,7 +238,7 @@
                     }
 
                     return pageResult = pageResult + pageCount;
-                },1)
+                })
             }
 
             //**************************************************

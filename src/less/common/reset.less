@@ -9,7 +9,7 @@ del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+table, caption, tbody, tfoot, thead, tr, th, td,input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,16 +17,19 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font-weight: 100;
   background: transparent;
 }
-
-body,input,button,textarea{
+body,input,select,button,textarea{
   font-family:'微软雅黑',Arial, Helvetica, sans-serif;
 }
-
+button,input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+button[disabled], html input[disabled] {
+  cursor: default;
+}
 :focus { outline: 0;}
-
 ul,ol{list-style:none;}
-
 a{text-decoration:none;}
+::-webkit-input-placeholder{font-size: 1rem;}
 
 .clearfix:after {
   clear: both;
@@ -37,13 +40,32 @@ a{text-decoration:none;}
 }
 .clearfix {zoom:1;}
 
-::-webkit-input-placeholder{font-size: 1rem;}
-*:focus{
+.v-center:after{
+  display:inline-block;
+  width:1px;
+  height:100%;
+  vertical-align:middle;
+  content:"";
+}
+
+//IE 选择框右侧下拉/输入框X/密码框眼睛
+select::-ms-expand { display: none; border: none; }
+input::-ms-clear { display: none;}
+input::-ms-reveal { display: none;}
+
+//chrome type=number移除箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+//**********移动端************
+//Ios点击后背景框
+*,*:focus{
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-*{
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
-}
+
 /*----------------CSS全局属性-----------------*/
 
 //CSS容器样式
@@ -77,7 +99,7 @@ a{text-decoration:none;}
   text-align: right;
 }
 .fw{
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .cf {
@@ -111,6 +133,12 @@ a{text-decoration:none;}
 .bc-f{
   background-color:#fff;
 }
+.bc-f9{
+  background-color:#f9f9f9;
+}
+.bc-f5{
+  background-color:#f5f5f5;
+}
 .bc-f2 {
   background-color:#f2f2f2;
 }
@@ -127,27 +155,6 @@ a{text-decoration:none;}
   background-color:#999;
 }
 
-.f12 {
-  font-size: 12px;
-}
-.f14 {
-  font-size: 14px;
-}
-.f16 {
-  font-size: 16px;
-}
-.f18 {
-  font-size: 18px;
-}
-.f20 {
-  font-size: 20px;
-}
-.f22 {
-  font-size: 22px;
-}
-.f24 {
-  font-size: 24px;
-}
 
 /*----------------flex布局---------------*/
 
@@ -211,7 +218,7 @@ a{text-decoration:none;}
 .fx-col-e{
   display:flex;
   flex-direction: column;
-  justify-content:flex-end;
+  justify-content: flex-end;
   align-items:center;
   flex-wrap: wrap;
 }
@@ -234,18 +241,8 @@ a{text-decoration:none;}
 .fx-g{
   flex-grow: 1;
 }
-
 /*-----------------其他样式-----------------*/
 
-button,input[type="button"], input[type="submit"] {
-  cursor: pointer;
-}
-button[disabled], html input[disabled] {
-  cursor: default;
-}
-textarea {
-  resize: none;
-}
 sup {
   vertical-align: text-top;
 }
@@ -268,10 +265,10 @@ sub {
   letter-spacing:1px;
 }
 .va-t {
-  vertical-align:text-top;
+  vertical-align:text-top
 }
 .va-c {
-  vertical-align:middle;
+  vertical-align:middle
 }
 .va-b {
   vertical-align:text-bottom
@@ -294,231 +291,14 @@ sub {
 .sy05{
   transform: scaleY(0.5);
 }
-
-
-@media screen and (max-width: 1200px) {
-  html{font-size:20px;}
-}
-@media screen and (max-width: 550px) {
-  html{font-size:14px;}
-}
-@media screen and (max-width: 420px) {
-  html{font-size:13.4px;}
-}
-@media screen and (max-width: 380px) {
-  html{font-size:12px;}
-}
-@media screen and (max-width: 330px) {
-  html{font-size:62.5%;}
-}
-
-/*=============featsky全局样式===============*/
-
-@cf:#fff;@cf2:#f2f2f2;@ceb:#ebebeb;
-@cdb:#dbdbdb;@cc:#ccc;@c3:#333;
-@c6:#666;@c9:#999;@c10:#101010;
-@a:#49A0DB;
-@ba:#49A0DB;
-@c:#FCFBF9;@cf9:#f9f9f9;
-
-
-.c-a{
-  color:#49A0DB;
-}
-.c-ba{
-  background-color:#49A0DB;
-}
-
-body{
-  color:@c10;
-  font-size: 1.2rem;
-}
-input{font-size: 1.2rem}
-.ul-row{
-  position: relative;
-}
-.ul-row > li{
-  display: inline-block;
-}
-/*---------导航---------*/
-header{
-  position:fixed;
-  width:100%;
-  height:50px;
-  top:0;
-  left:0;
-  background-color:#101010;
-  background-color:rgba(16,16,16,1);
-  z-index: 12;
-
-  //说明中间
-  .titles{
-    line-height: 50px;
-    width:20%;
-    text-align: center;
-    margin:0 auto;
-    letter-spacing: 1px;
-    color:@cf;
-  }
-  #logo{
-    float: left;
-    width:100px;
-    margin-top:8px;
-    margin-left:3%;
-  }
-  .menu-list{
-    position: relative;
-    width:18px;
-    height:18px;
-    margin-top:16px;
-    margin-right:3%;
-    float:right;
-    z-index: 15;
-    li{
-      position:relative;
-      height:2px;
-      width:100%;
-      background-color:@cf2;
-    }
-    li:before{
-      position:absolute;
-      left:-6px;
-      content: "";
-      width:3px;
-      height:2px;
-      background:@cf2;
-    }
-  }
-
-}
-
-/*----------content---------*/
-.container{
-  position: relative;
-  top:50px;
-}
-
-//容器布局 main:90% border
-.w85,.w90,.w95{margin:0 auto;}
-.w85{
-  width:85%;
-}
-.w90{
-  width:90%;
-}
-.w95{
-  width:95%;
-}
-//主题颜色
-//常用字体大小 h1 h2
-h1{font-size:2rem;}
-h2{font-size: 1.8rem;}
-h3{font-size: 1.6rem;}
-h4{font-size: 1.4rem;}
-h5{font-size: 1.3rem;}
-//a
-a,a:hover{
-  color:@c10;
-}
-//常用按钮
-.load-button{
-  margin:2rem auto 2rem;
-  width:100%;
-  height:3rem;
-  border-top:1px solid @cf2;
-  border-bottom:1px solid @cf2;
-  background-color: @c;
-  line-height:3rem;
-  text-align: center;
-  color:@c6;
-}
-//1px边框
-.bt-eb{
-  border-top:1px solid #ebebeb;
-}
-.bb-eb{
-  border-bottom:1px solid #ebebeb;
-}
-//按钮圆角
-.br5{border-radius: 0.5px;}
-//透明背景
 .bg-fill{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
-//flex顶部对齐
-//图片大小
-//返回按钮
-.back{
-  height:25px;
-  margin-top: 13px;
-  margin-left: 15px;
-  float: left;
-}
-
-.img-edit{
-  height:1.8rem;
-}
-//头像大小
-.img-head{
-  width:3.2rem;
-  height:3.2rem;
-  border-radius: 3.2rem;
-}
-
-div#nav{
-  position: fixed;
-  width:11rem;
-  height:100%;
-  top:0;
-  left:100%;
-  background-color:@c10;
-  //box-shadow:-2px 0px 25px 1px @c3;
-  z-index:9;
-  transform: translateX(0px);
-  transition: transform .4s;
-
-  //预留头部
-  a{color:@cf2;}
-  //导航列表组
-  .nav-item{
-    width:100%;
-    margin-top:6rem;
-    //列表
-    .nav-list{
-      color:@cc;
-      font-size:1.4rem;
-      margin-top:3rem;
-      padding:0 2rem;
-      //text-align: center;
-      //图标
-      &>img{
-        width:1.8rem;
-        vertical-align: middle;
-      }
-      span{
-        vertical-align: middle;
-        margin-left:1rem;
-      }
-      //文字
-    }
-  }
-}
-footer{
-  display: block;
-  padding:1.5rem 0px;
-  text-align: center;
-  background-color:@cf2;
-  color:@c9;
-  font-size: 1rem;
-}
-
 
 /******************移动端*********************/
-.mt1 {
-  margin-top: 0.1rem;
-}
+
 .mt3 {
   margin-top: 0.3rem;
 }
@@ -714,9 +494,6 @@ footer{
 .fr12 {
   font-size: 1.2rem;
 }
-.fr13{
-  font-size: 1.3rem;
-}
 .fr14 {
   font-size: 1.4rem;
 }
@@ -734,98 +511,214 @@ footer{
 }
 
 
-/*======component-load======*/
+/******************PC端*********************/
 
-#load{
-  position: fixed;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  background-color: rgba(0,0,0,0.1);
-  z-index:99;
-  //内部容器
-  .load-main{
-    position: relative;
-    width:120px;
-    height:44px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    text-align: center;
-    color:#f2f2f2;
-    background-color:rgba(0,0,0,0.6);
-    border-radius:5px;
-
-    //=================//
-
-    .animate{
-      position:absolute;
-      top: 14px;
-      left:14px;
-      width:30px;
-      height:18px;
-      //竖线列表
-      .animate-list {
-        position: relative;;
-        background-color: #f2f2f2;
-        width: 2px;
-        height:18px;
-        margin-left:2px;
-        animation-fill-mode: both;
-        border-radius:1px;
-        float: left;
-      }
-    }
-
-    @keyframes animate-list {
-      50% {
-        transform:scaleY(0.6)
-      }
-      100% {
-        transform:scaleY(1)
-      }
-    }
-    .animate  > div:nth-child(1) {
-      animation: animate-list 1s infinite ease-in-out;
-    }
-    .animate  > div:nth-child(2) {
-      animation: animate-list 1s 0.5s infinite ease-in-out;
-    }
-    .animate  > div:nth-child(3) {
-      animation: animate-list 1s 0.2s infinite ease-in-out;
-    }
-    .animate  > div:nth-child(4) {
-      animation: animate-list 1s 0.8s infinite ease-in-out;
-    }
-
-    //==================//
-    .animate-text{
-      position: absolute;
-      top:16px;
-      left:38px;
-      font-size: 13px;
-    }
-  }
+/*.mt3 {
+  margin-top: 3px;
+}
+.mt5 {
+  margin-top: 5px;
+}
+.mt7 {
+  margin-top: 7px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.mt40 {
+  margin-top: 40px;
+}
+.mt50 {
+  margin-top: 50px;
 }
 
+.mr1 {
+  margin-right: 1px;
+}
+.mr3 {
+  margin-right: 3px;
+}
+.mr5 {
+  margin-right: 5px;
+}
+.mr7 {
+  margin-right: 7px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr30 {
+  margin-right: 30px;
+}
 
+.ml1 {
+  margin-left: 1px;
+}
+.ml3 {
+  margin-left: 3px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.ml7 {
+  margin-left: 7px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml30 {
+  margin-left: 30px;
+}
 
+.pd3 {
+  padding: 3px;
+}
+.pd5 {
+  padding: 5px;
+}
+.pd7 {
+  padding: 7px;
+}
+.pd10 {
+  padding: 10px;
+}
+.pd15 {
+  padding: 15px;
+}
+.pd20 {
+  padding: 20px;
+}
+.pd30 {
+  padding: 30px;
+}
 
+.pdt3 {
+  padding-top: 3px;
+}
+.pdt5 {
+  padding-top: 5px;
+}
+.pdt7 {
+  padding-top: 7px;
+}
+.pdt10 {
+  padding-top: 10px;
+}
+.pdt15 {
+  padding-top: 15px;
+}
+.pdt20 {
+  padding-top: 20px;
+}
+.pdt30 {
+  padding-top: 30px;
+}
 
+.pdb3 {
+  padding-bottom: 3px;
+}
+.pdb5 {
+  padding-bottom: 5px;
+}
+.pdb7 {
+  padding-bottom: 7px;
+}
+.pdb10 {
+  padding-bottom: 10px;
+}
+.pdb15 {
+  padding-bottom: 15px;
+}
+.pdb20 {
+  padding-bottom: 20px;
+}
+.pdb30 {
+  padding-bottom: 30px;
+}
 
+.pdl3 {
+  padding-left: 3px;
+}
+.pdl5 {
+  padding-left: 5px;
+}
+.pdl7 {
+  padding-left: 7px;
+}
+.pdl10 {
+  padding-left: 10px;
+}
+.pdl15 {
+  padding-left: 15px;
+}
+.pdl20 {
+  padding-left: 20px;
+}
+.pdl30 {
+  padding-left: 30px;
+}
 
+.pdr3 {
+  padding-right: 3px;
+}
+.pdr5 {
+  padding-right: 5px;
+}
+.pdr7 {
+  padding-right: 7px;
+}
+.pdr10 {
+  padding-right: 10px;
+}
+.pdr15 {
+  padding-right: 15px;
+}
+.pdr20 {
+  padding-right: 20px;
+}
+.pdr30 {
+  padding-right: 30px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.f12 {
+  font-size: 12px;
+}
+.f14 {
+  font-size: 14px;
+}
+.f16 {
+  font-size: 16px;
+}
+.f18 {
+  font-size: 18px;
+}
+.f20 {
+  font-size: 20px;
+}
+.f22 {
+  font-size: 22px;
+}
+.f24 {
+  font-size: 24px;
+}*/

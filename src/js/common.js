@@ -2,9 +2,10 @@
 
     "use strict";
 
-    window.bom = {};
+    window.com = {};
 
     (function(){
+
 
         this.device = function(){
 
@@ -126,19 +127,18 @@
 
         };
 
-    }).apply(bom);
+
+    }).apply(com);
 
     $(function(){
 
-        bom.device();
+        com.device();
 
-        bom.page();
+        com.page();
 
-        bom.navEffect();
+        com.navEffect();
 
     })
-
-
 
 
 }(window);

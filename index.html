@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="src/css/main.css">
     <link rel="stylesheet" href="component/album/m2-banner.css">
-    <link rel="stylesheet" href="component/prompt/com-prompt.css">
+    <link rel="stylesheet" href="component/alert/com-alert.css">
 </head>
 <body>
 
@@ -91,7 +91,7 @@
 
         <section id="app-down" class="fx-row-c">
             <!--<h4 class="tc c6">FEATSKY-APP 1.0.5</h4>-->
-            <a href="" name="app"></a>
+            <!--<a href="" name="app"></a>-->
             <div class="down fw">FEATSKY-APP 1.0.7 - 下载</div>
         </section>
         <!--最新图片-->
@@ -193,7 +193,8 @@
 
     <script src="src/lib/zepto.js"></script>
     <script src="src/js/common.js"></script>
-    <script src="component/prompt/com_prompt.js"></script>
+    <script src="component/alert/com-alert.js"></script>
+    <script src="component/message/com-message.js"></script>
     <script src="src/js/ajax.js"></script>
     <!--图片组件-->
     <script src="component/album/m2-banner.js"></script>
@@ -260,7 +261,7 @@
 
                 artObj.find("[data-name='text']").text(obj.articleObj.text);  artObj.find("[data-name='text']").text(obj.articleObj.text);
 
-            },1);
+            });
 
             //OVER**********************************************************************
 
@@ -296,12 +297,10 @@
             //下载
             $('.down').on('tap',function(){
 
-                com.prompt(1,'将要下载app?',function(){
+                $.alert('将要下载app?',function(){
 
-                    window.location = 'http://www.featsky.com/app/featsky.apk';
-
+                    window.location = 'http://www.featsky.com/m-featsky/app/featsky.apk';
                 })
-
             })
 
         })
