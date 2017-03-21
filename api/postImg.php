@@ -11,9 +11,9 @@
     $c_name = iconv("UTF-8", "GB2312",$file["name"]);
 
 
-    move_uploaded_file($file["tmp_name"],"../../img/user/" . $c_name);
+    move_uploaded_file($file["tmp_name"],"../img/user/" . $c_name);
 
-    $filename = "../../img/user/" . $c_name;
+    $filename = "../img/user/" . $c_name;
 
 
     function thumb($filename,$gridObj,$width=200,$height=200){

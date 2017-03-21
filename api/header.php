@@ -3,6 +3,8 @@
 
     $con = mysql_connect("59.188.255.115","sq_featsky","123456");
 
+    //$con = mysql_connect("localhost:3306","root","");
+
     if (!$con){
 
         die('Could not connect: ' . mysql_error());
