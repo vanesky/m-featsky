@@ -11,7 +11,7 @@
 
     }
 
-    $d = date('m-d H:i',time()+60*60*8);
+    $d = date('m-d H:i',time());
 
     $sql = "INSERT INTO message (name,time,headPath,text) VALUES('$data[name]','$d','$data[imgPath]','$data[text]')";
 
