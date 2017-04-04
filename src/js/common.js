@@ -121,8 +121,15 @@
 
                 var name = $(this).attr('data-name');
 
-                window.open(name+".html","_self");
+                //$('#nav')[0].addEventListener("transitionend", function() {
 
+                    //$(this)[0].removeEventListener("transitionend",null);
+
+                    window.open(name+".html","_self");
+
+                //},true);
+
+                //$('#nav').css('-webkit-transform','translateX(0%)');
             })
 
         };
@@ -131,6 +138,16 @@
     }).apply(com);
 
     $(function(){
+
+        if(!/article_detail/g.test(document.URL)){
+
+            history.pushState(null, null, document.URL);
+
+            window.addEventListener('popstate', function () {
+
+                history.pushState(null, null, document.URL);
+            });
+        }
 
         com.device();
 
